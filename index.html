@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alfainicio — Alfabetización inicial globalizada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Fraunces:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --azul: #1A5276;
+  --azul-medio: #2E86C1;
+  --azul-claro: #5DADE2;
+  --azul-palido: #EBF5FB;
+  --azul-muy-palido: #F4F9FD;
+  --acento: #2E86C1;
+  --acento-hover: #1A6FA8;
+  --blanco: #FFFFFF;
+  --fondo: #F0F6FC;
+  --fondo-card: #FFFFFF;
+  --texto: #0D1F2D;
+  --texto-secundario: #4A6580;
+  --texto-terciario: #8AA5BC;
+  --borde: rgba(26,82,118,.10);
+  --borde-hover: rgba(46,134,193,.35);
+  --sombra-sm: 0 2px 8px rgba(26,82,118,.08);
+  --sombra-md: 0 6px 24px rgba(26,82,118,.12);
+  --sombra-lg: 0 12px 40px rgba(26,82,118,.16);
+  --radio: 14px;
+  --radio-sm: 8px;
+  --radio-lg: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  font-size: 15px;
+  line-height: 1.6;
+  background-image: radial-gradient(circle at 20% 0%, rgba(93,173,226,.07) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 100%, rgba(26,82,118,.06) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ── TOPBAR ─────────────────────────────── */
+.topbar {
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--borde);
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 62px;
+  box-shadow: var(--sombra-sm);
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-mark {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--azul-medio), var(--azul-claro));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(46,134,193,.35);
+}
+.logo-mark span { font-family: 'Fraunces', serif; font-size: 15px; color: #fff; font-weight: 600; font-style: italic; }
+.logo-name { font-family: 'Fraunces', serif; font-size: 19px; color: var(--azul); font-weight: 600; letter-spacing: -.3px; }
+.logo-tagline { font-size: 10.5px; color: var(--texto-terciario); margin-top: 1px; letter-spacing: .2px; }
+nav { display: flex; gap: 2px; }
+nav a {
+  color: var(--texto-secundario); font-size: 13.5px; padding: 6px 14px;
+  border-radius: 8px; transition: all .15s; font-weight: 700;
+}
+nav a:hover { color: var(--azul); background: var(--azul-palido); }
+nav a.activo { color: var(--azul-medio); background: var(--azul-palido); font-weight: 500; }
+.nav-btn {
+  background: var(--azul-medio) !important; color: #fff !important;
+  font-weight: 500 !important; padding: 6px 18px !important;
+  box-shadow: 0 2px 8px rgba(46,134,193,.3);
+}
+.nav-btn:hover { background: var(--acento-hover) !important; }
+
+/* ── SECCIONES ──────────────────────────── */
+.seccion { display: none; animation: fadeIn .3s ease; }
+.seccion.activa { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ── HERO ───────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-medio) 55%, var(--azul-claro) 100%);
+  padding: 72px 40px 68px;
+  display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 70% 50%, rgba(255,255,255,.08) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,.02) 40px, rgba(255,255,255,.02) 41px);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; right: -80px; bottom: -80px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #0A2540; border: 1px solid rgba(255,255,255,.15);
+  border-radius: 20px; padding: 6px 16px; font-size: 12px; color: #fff;
+  margin-bottom: 22px; width: fit-content; letter-spacing: .2px;
+  font-weight: 500; box-shadow: 0 2px 10px rgba(0,0,0,.3);
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #7FD3F5; flex-shrink: 0; }
+.hero h1 {
+  font-family: 'Fraunces', serif; font-size: 40px; color: #fff;
+  line-height: 1.2; margin-bottom: 18px; font-weight: 600;
+}
+.hero h1 em { font-style: italic; color: #A8DCEF; }
+.hero-desc { font-size: 15.5px; color: rgba(255,255,255,.8); line-height: 1.75; max-width: 460px; margin-bottom: 32px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { padding: 11px 24px; border-radius: var(--radio-sm); font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: all .18s; }
+.btn-prim { background: #fff; color: var(--azul); box-shadow: 0 2px 12px rgba(0,0,0,.15); }
+.btn-prim:hover { background: #EBF5FB; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,.2); }
+.btn-sec { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+.btn-sec:hover { background: rgba(255,255,255,.25); }
+
+.hero-card {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radio-lg); padding: 24px; position: relative; z-index: 1;
+  backdrop-filter: blur(8px);
+}
+.palabra-display {
+  background: rgba(255,255,255,.18); border-radius: 12px;
+  padding: 22px; text-align: center; margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.palabra-grande { font-family: 'Fraunces', serif; font-size: 30px; color: #fff; font-weight: 600; letter-spacing: 3px; }
+.palabra-imagen { font-size: 38px; margin-bottom: 8px; }
+.palabra-sig { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 6px; letter-spacing: .3px; }
+.palabra-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
+.palabra-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.3); transition: background .3s; }
+.palabra-dots span.on { background: #7FD3F5; }
+.enfoque-chips { display: flex; flex-direction: column; gap: 6px; }
+.e-chip { font-size: 11.5px; color: #000; font-weight: 700; background: rgba(255,255,255,.92); border-radius: 7px; padding: 6px 10px; text-align: center; border: 1px solid rgba(255,255,255,.6); letter-spacing: .1px; }
+
+/* ── STATS BAR ──────────────────────────── */
+.stats-bar {
+  background: var(--blanco); border-bottom: 1px solid var(--borde);
+  display: flex; padding: 0 40px;
+  box-shadow: var(--sombra-sm);
+}
+.stat-item {
+  display: flex; align-items: center; gap: 14px; padding: 20px 36px 20px 0;
+  border-right: 1px solid var(--borde); margin-right: 36px;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Fraunces', serif; font-size: 26px; color: var(--azul-medio); font-weight: 600; }
+.stat-label { font-size: 12px; color: var(--texto-secundario); line-height: 1.4; }
+
+/* ── PAGE LAYOUT ────────────────────────── */
+.page-header {
+  background: var(--blanco); border-bottom: 1px solid var(--borde);
+  padding: 32px 40px 0; box-shadow: var(--sombra-sm);
+}
+.page-title { font-family: 'Fraunces', serif; font-size: 26px; color: var(--azul); font-weight: 600; margin-bottom: 5px; }
+.page-desc { font-size: 14px; color: var(--texto-secundario); margin-bottom: 22px; }
+.tabs { display: flex; gap: 0; }
+.tab {
+  padding: 11px 20px; font-size: 13.5px; color: var(--texto-secundario);
+  border-bottom: 2px solid transparent; cursor: pointer; transition: all .15s;
+  display: flex; align-items: center; gap: 7px;
+}
+.tab:hover { color: var(--azul); }
+.tab.on { color: var(--azul-medio); border-bottom-color: var(--azul-medio); font-weight: 500; }
+.tab-dot { width: 7px; height: 7px; border-radius: 2px; flex-shrink: 0; }
+.page-content { padding: 32px 40px; }
+
+/* ── FILTROS ────────────────────────────── */
+.filtros { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; align-items: center; }
+.filtros-label { font-size: 12px; color: var(--texto-secundario); font-weight: 500; margin-right: 4px; }
+.chip {
+  background: var(--blanco); border: 1px solid var(--borde); border-radius: 20px;
+  padding: 5px 16px; font-size: 12.5px; color: var(--texto-secundario);
+  cursor: pointer; transition: all .15s; box-shadow: var(--sombra-sm);
+}
+.chip:hover { border-color: var(--azul-claro); color: var(--azul); }
+.chip.on { background: var(--azul-palido); border-color: var(--azul-medio); color: var(--azul-medio); font-weight: 500; }
+
+/* ── TARJETAS ───────────────────────────── */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+.tarjeta {
+  background: var(--fondo-card); border: 1px solid var(--borde);
+  border-radius: var(--radio); overflow: hidden;
+  transition: all .22s; cursor: pointer;
+  box-shadow: var(--sombra-sm);
+}
+.tarjeta:hover { border-color: var(--borde-hover); box-shadow: var(--sombra-lg); transform: translateY(-4px); }
+.tarjeta-thumb {
+  height: 96px; display: flex; align-items: center; justify-content: center;
+  font-size: 34px; position: relative; overflow: hidden;
+}
+.tarjeta-body { padding: 18px; }
+.tarjeta-tipo {
+  font-size: 11px; font-weight: 600; border-radius: 6px;
+  padding: 3px 9px; display: inline-block; margin-bottom: 9px; letter-spacing: .2px;
+}
+.tarjeta-titulo { font-size: 14px; font-weight: 500; color: var(--texto); line-height: 1.45; margin-bottom: 6px; }
+.tarjeta-meta { font-size: 12px; color: var(--texto-secundario); }
+.tarjeta-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 11px; }
+.tag { font-size: 11px; padding: 3px 9px; border-radius: 5px; background: var(--azul-muy-palido); color: var(--texto-secundario); border: 1px solid rgba(26,82,118,.07); }
+
+/* ── LISTA DE LECTURAS ──────────────────── */
+.lista { display: flex; flex-direction: column; gap: 12px; }
+.item-lista {
+  background: var(--fondo-card); border: 1px solid var(--borde); border-radius: var(--radio);
+  padding: 20px 22px; cursor: pointer; transition: all .22s;
+  display: flex; gap: 16px; align-items: flex-start;
+  box-shadow: var(--sombra-sm);
+}
+.item-lista:hover { border-color: var(--borde-hover); box-shadow: var(--sombra-md); transform: translateX(4px); }
+.item-icono {
+  width: 42px; height: 42px; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.item-titulo { font-size: 14px; font-weight: 500; color: var(--texto); margin-bottom: 5px; line-height: 1.45; }
+.item-desc { font-size: 13px; color: var(--texto-secundario); line-height: 1.55; }
+.item-tags { display: flex; gap: 5px; margin-top: 9px; flex-wrap: wrap; }
+.item-accion {
+  margin-left: auto; flex-shrink: 0;
+  color: var(--azul-claro); font-size: 18px; opacity: 0; transition: opacity .15s;
+  align-self: center;
+}
+.item-lista:hover .item-accion { opacity: 1; }
+
+/* ── SIDEBAR LAYOUT ─────────────────────── */
+.sidebar-layout { display: grid; grid-template-columns: 230px 1fr; gap: 24px; }
+.sidebar {
+  background: var(--fondo-card); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 22px; height: fit-content;
+  position: sticky; top: 82px; box-shadow: var(--sombra-sm);
+}
+.sidebar-title { font-size: 11px; font-weight: 700; color: var(--texto-terciario); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; }
+.si {
+  display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+  border-radius: 9px; font-size: 13.5px; color: var(--texto-secundario);
+  cursor: pointer; transition: all .15s;
+}
+.si:hover { background: var(--azul-palido); color: var(--azul); }
+.si.on { background: var(--azul-palido); color: var(--azul-medio); font-weight: 500; }
+.si-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+.si-count { margin-left: auto; font-size: 11px; color: var(--texto-terciario); background: var(--fondo); border-radius: 10px; padding: 1px 8px; }
+
+/* ── VIDEO CARDS ────────────────────────── */
+.video-thumb {
+  height: 120px;
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.play-btn {
+  width: 48px; height: 48px; background: rgba(255,255,255,.95);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: transform .18s; padding-left: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+}
+.tarjeta:hover .play-btn { transform: scale(1.12); }
+.video-duracion {
+  position: absolute; bottom: 10px; right: 12px;
+  background: rgba(0,0,0,.65); color: #fff; font-size: 11px;
+  padding: 3px 8px; border-radius: 5px; font-weight: 500;
+}
+
+/* ── MATERIALES ─────────────────────────── */
+.mat-thumb { position: relative; }
+.mat-formato {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(0,0,0,.55); color: #fff; font-size: 10px;
+  padding: 3px 8px; border-radius: 5px; font-weight: 600;
+}
+.btn-descargar, a.btn-descargar {
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  background: var(--azul-palido); color: var(--azul-medio); border: 1px solid rgba(46,134,193,.2);
+  border-radius: 8px; padding: 9px 14px; font-size: 13px; font-weight: 500;
+  cursor: pointer; margin-top: 13px; transition: all .15s; justify-content: center;
+  text-decoration: none; box-sizing: border-box;
+}
+a.btn-descargar { display: flex; }
+.btn-descargar:hover, a.btn-descargar:hover { background: #d6eaf8; border-color: var(--azul-medio); }
+
+/* ── ACERCA ─────────────────────────────── */
+.acerca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.acerca-texto p { font-size: 15px; color: var(--texto-secundario); line-height: 1.85; margin-bottom: 18px; }
+.acerca-texto strong { color: var(--texto); }
+.acerca-card {
+  background: var(--fondo-card); border: 1px solid var(--borde); border-radius: var(--radio);
+  overflow: hidden; box-shadow: var(--sombra-md);
+}
+.acerca-card-header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-medio) 100%);
+  padding: 22px 26px;
+}
+.acerca-card-header h3 { font-family: 'Fraunces', serif; color: #fff; font-size: 17px; margin-bottom: 4px; }
+.acerca-card-header p { color: rgba(255,255,255,.7); font-size: 12px; }
+.acerca-refs { padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; }
+.ref-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px; background: var(--azul-muy-palido); border-radius: 10px; border: 1px solid rgba(26,82,118,.06); }
+.ref-icono { font-size: 20px; flex-shrink: 0; }
+.ref-nombre { font-size: 13px; font-weight: 500; color: var(--texto); }
+.ref-detalle { font-size: 12px; color: var(--texto-secundario); margin-top: 2px; }
+.principios { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.principio {
+  background: var(--fondo-card); border: 1px solid var(--borde); border-radius: var(--radio-sm);
+  padding: 18px; border-left: 3px solid var(--azul-claro);
+  box-shadow: var(--sombra-sm);
+}
+.principio-titulo { font-size: 13px; font-weight: 600; color: var(--azul-medio); margin-bottom: 5px; }
+.principio-desc { font-size: 12px; color: var(--texto-secundario); line-height: 1.55; }
+
+/* ── FOOTER ─────────────────────────────── */
+footer {
+  background: var(--azul); margin-top: 64px;
+  padding: 40px 40px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px;
+}
+.footer-col h4 { font-family: 'Fraunces', serif; color: #fff; font-size: 14px; margin-bottom: 14px; }
+.footer-col p, .footer-col a { font-size: 13px; color: rgba(255,255,255,.55); display: block; margin-bottom: 7px; }
+.footer-col a:hover { color: #7FD3F5; }
+.footer-bottom {
+  background: rgba(0,0,0,.25); padding: 14px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom span { font-size: 12px; color: rgba(255,255,255,.4); }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="logo">
+    <div class="logo-mark"><span>Aa</span></div>
+    <div>
+      <div class="logo-name">Alfainicio</div>
+      <div class="logo-tagline">Alfabetización inicial globalizada</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#" class="activo" onclick="ir('inicio',this)">Inicio</a>
+    <a href="#" onclick="ir('actividades',this)">Actividades</a>
+    <a href="#" onclick="ir('lecturas',this)">Lecturas</a>
+    <a href="#" onclick="ir('materiales',this)">Materiales</a>
+    <a href="#" onclick="ir('videos',this)">Videos</a>
+    <a href="#" onclick="ir('familias',this)">Familias</a>
+    <a href="#" onclick="ir('acerca',this)" class="nav-btn">Acerca</a>
+  </nav>
+</header>
+
+<!-- ══ INICIO ══════════════════════════════════ -->
+<section id="inicio" class="seccion activa">
+  <div class="hero">
+    <div>
+      <div class="hero-badge">Para docentes de preescolar y primaria</div>
+      <h1>La palabra como puerta<br>de entrada a la <em>lectura y escritura</em></h1>
+      <p class="hero-desc">Recursos pedagógicos organizados alrededor del enfoque globalizado: la palabra con sentido como unidad mínima de aprendizaje, no la letra ni la sílaba.</p>
+      <div class="hero-btns">
+        <button class="btn btn-prim" onclick="ir('actividades', document.querySelector('nav a:nth-child(2)'))">Explorar actividades →</button>
+        <button class="btn btn-sec" onclick="ir('lecturas', document.querySelector('nav a:nth-child(3)'))">Lecturas teóricas</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="palabra-display">
+        <div class="palabra-imagen" id="pi">🦋</div>
+        <div class="palabra-grande" id="pw">MARIPOSA</div>
+        <div class="palabra-sig">Unidad mínima con significado</div>
+        <div class="palabra-dots">
+          <span class="on" id="d0"></span><span id="d1"></span><span id="d2"></span>
+        </div>
+      </div>
+      <div class="enfoque-chips">
+        <div class="e-chip">Enfoque ideo-visual · Decroly</div>
+        <div class="e-chip">Psicogénesis · Ferreiro & Teberosky</div>
+        <div class="e-chip">Constructivismo en el aula mexicana</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">24</div>
+      <div class="stat-label">Actividades y<br>secuencias</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Lecturas y<br>artículos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Materiales<br>descargables</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Videos y<br>tutoriales</div>
+    </div>
+  </div>
+
+  <div style="padding:40px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; max-width:1100px; margin:0 auto;">
+    <div style="background:var(--fondo-card);border:1px solid var(--borde);border-radius:var(--radio);padding:28px;cursor:pointer;transition:all .22s;box-shadow:var(--sombra-sm);" onmouseover="this.style.borderColor='var(--borde-hover)';this.style.boxShadow='var(--sombra-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--borde)';this.style.boxShadow='var(--sombra-sm)';this.style.transform='none'" onclick="ir('actividades',document.querySelector('nav a:nth-child(2)'))">
+      <div style="font-size:30px;margin-bottom:16px;">📋</div>
+      <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--azul);margin-bottom:9px;">Actividades</div>
+      <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;">Secuencias didácticas y propuestas de aula organizadas por propósito y grado.</div>
+    </div>
+    <div style="background:var(--fondo-card);border:1px solid var(--borde);border-radius:var(--radio);padding:28px;cursor:pointer;transition:all .22s;box-shadow:var(--sombra-sm);" onmouseover="this.style.borderColor='var(--borde-hover)';this.style.boxShadow='var(--sombra-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--borde)';this.style.boxShadow='var(--sombra-sm)';this.style.transform='none'" onclick="ir('lecturas',document.querySelector('nav a:nth-child(3)'))">
+      <div style="font-size:30px;margin-bottom:16px;">📚</div>
+      <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--azul);margin-bottom:9px;">Lecturas teóricas</div>
+      <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;">Artículos y textos fundamentales del enfoque globalizado, comentados y contextualizados.</div>
+    </div>
+    <div style="background:var(--fondo-card);border:1px solid var(--borde);border-radius:var(--radio);padding:28px;cursor:pointer;transition:all .22s;box-shadow:var(--sombra-sm);" onmouseover="this.style.borderColor='var(--borde-hover)';this.style.boxShadow='var(--sombra-lg)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--borde)';this.style.boxShadow='var(--sombra-sm)';this.style.transform='none'" onclick="ir('materiales',document.querySelector('nav a:nth-child(4)'))">
+      <div style="font-size:30px;margin-bottom:16px;">🖨️</div>
+      <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--azul);margin-bottom:9px;">Materiales</div>
+      <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;">Fichas, láminas y formatos listos para usar en el aula, editables y descargables.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACTIVIDADES ══════════════════════════════ -->
+<section id="actividades" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Actividades y secuencias didácticas</div>
+    <div class="page-desc">Propuestas organizadas por propósito pedagógico y nivel</div>
+    <div class="tabs">
+      <div class="tab on" onclick="setTab(this,'tab-todas')"><span class="tab-dot" style="background:var(--azul-medio)"></span>Todas</div>
+      <div class="tab" onclick="setTab(this,'tab-preescolar')"><span class="tab-dot" style="background:#4CAF79"></span>Preescolar</div>
+      <div class="tab" onclick="setTab(this,'tab-primero')"><span class="tab-dot" style="background:#5B8FD4"></span>1° primaria</div>
+      <div class="tab" onclick="setTab(this,'tab-segundo')"><span class="tab-dot" style="background:#E08C3A"></span>2° primaria</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="filtros">
+      <span class="filtros-label">Filtrar por:</span>
+      <div class="chip on">Todas</div>
+      <div class="chip">Palabra global</div>
+      <div class="chip">Escritura</div>
+      <div class="chip">Comprensión</div>
+      <div class="chip">Identidad</div>
+      <div class="chip">Juego</div>
+    </div>
+    <div class="grid-3">
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#E8F5EC;">📋</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Secuencia · 3 sesiones</span>
+          <div class="tarjeta-titulo">El banco de palabras del salón</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/El%20Banco%20de%20palabras%20del%20sal%C3%B3n.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Preescolar · Enfoque: palabra global</div>
+          <div class="tarjeta-tags"><span class="tag">Palabra global</span><span class="tag">Escritura</span><span class="tag">Identidad</span></div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#EEF3FC;">🃏</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Actividad · 1 sesión</span>
+          <div class="tarjeta-titulo">Lotería de palabras con sentido</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Loteria%20de%20palabras.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">1° primaria · Enfoque: lectura global</div>
+          <div class="tarjeta-tags"><span class="tag">Juego</span><span class="tag">Lectura global</span></div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#FEF3E8;">📖</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Secuencia · 5 sesiones</span>
+          <div class="tarjeta-titulo">Álbum de palabras propias</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Mi%20%C3%A1lbum%20de%20palabras%20propias.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Preescolar · Enfoque: identidad y escritura</div>
+          <div class="tarjeta-tags"><span class="tag">Identidad</span><span class="tag">Escritura</span></div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#F3EEF8;">🖼️</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Actividad · 1 sesión</span>
+          <div class="tarjeta-titulo">Muro de palabras del entorno</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Muro%20de%20palabras%20del%20entorno.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Preescolar o 1° · Enfoque: contexto cotidiano</div>
+          <div class="tarjeta-tags"><span class="tag">Palabra global</span><span class="tag">Contexto</span></div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#E8F5EC;">✏️</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Actividad · 2 sesiones</span>
+          <div class="tarjeta-titulo">Dictado de imágenes y palabras</div>
+          <div class="tarjeta-meta">2° primaria · Enfoque: comprensión</div>
+          <div class="tarjeta-tags"><span class="tag">Comprensión</span><span class="tag">Escritura</span></div>
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#FFF3F3;">🎭</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Secuencia · 4 sesiones</span>
+          <div class="tarjeta-titulo">Cuentos con palabras clave</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Cuentos%20con%20palabras%20clave.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">1° o 2° primaria · Enfoque: narrativa</div>
+          <div class="tarjeta-tags"><span class="tag">Comprensión</span><span class="tag">Juego</span></div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LECTURAS ══════════════════════════════════ -->
+<section id="lecturas" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Artículos y lecturas teóricas</div>
+    <div class="page-desc">Referencias comentadas del enfoque globalizado e ideo-visual</div>
+    <div class="tabs">
+      <div class="tab on"><span class="tab-dot" style="background:var(--azul-medio)"></span>Todos</div>
+      <div class="tab"><span class="tab-dot" style="background:#5B8FD4"></span>Enfoque global</div>
+      <div class="tab"><span class="tab-dot" style="background:#4CAF79"></span>Constructivismo</div>
+      <div class="tab"><span class="tab-dot" style="background:#E08C3A"></span>Psicogénesis</div>
+      <div class="tab"><span class="tab-dot" style="background:#888"></span>Política educativa MX</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="sidebar-layout">
+      <div class="sidebar">
+        <div class="sidebar-title">Por tema</div>
+        <div class="si on"><span class="si-dot" style="background:var(--azul-medio)"></span>Todos<span class="si-count">18</span></div>
+        <div class="si"><span class="si-dot" style="background:#5B8FD4"></span>Enfoque global<span class="si-count">5</span></div>
+        <div class="si"><span class="si-dot" style="background:#4CAF79"></span>Constructivismo<span class="si-count">4</span></div>
+        <div class="si"><span class="si-dot" style="background:#E08C3A"></span>Psicogénesis<span class="si-count">4</span></div>
+        <div class="si"><span class="si-dot" style="background:#C0505A"></span>Práctica docente<span class="si-count">3</span></div>
+        <div class="si"><span class="si-dot" style="background:#888"></span>Política MX<span class="si-count">2</span></div>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--borde)">
+          <div class="sidebar-title">Por tipo</div>
+          <div class="si on"><span class="si-dot" style="background:#2D5B3F"></span>Todos</div>
+          <div class="si"><span class="si-dot" style="background:#5B8FD4"></span>Libro o capítulo</div>
+          <div class="si"><span class="si-dot" style="background:#E08C3A"></span>Artículo</div>
+          <div class="si"><span class="si-dot" style="background:#4CAF79"></span>Documento oficial</div>
+        </div>
+      </div>
+      <div class="lista">
+        <div class="item-lista">
+          <div class="item-icono" style="background:#EEF3FC">📘</div>
+          <div>
+            <div class="item-titulo">Los sistemas de escritura en el desarrollo del niño — Ferreiro y Teberosky (1979)</div>
+            <div class="item-desc">Obra fundacional de la psicogénesis de la lengua escrita. Describe los niveles de conceptualización que los niños construyen antes y durante el aprendizaje formal.</div>
+            <div class="item-tags"><span class="tag">Psicogénesis</span><span class="tag">Constructivismo</span><span class="tag">Clásico</span></div>
+          </div>
+          <div class="item-accion">→</div>
+        </div>
+        <div class="item-lista">
+          <div class="item-icono" style="background:#E8F5EC">📗</div>
+          <div>
+            <div class="item-titulo">El método global de lectura — Ovide Decroly</div>
+            <div class="item-desc">Fundamentos del enfoque ideo-visual: la globalización como principio de aprendizaje y la palabra con sentido como unidad inicial para el lector.</div>
+            <div class="item-tags"><span class="tag">Enfoque global</span><span class="tag">Histórico</span></div>
+          </div>
+          <div class="item-accion">→</div>
+        </div>
+        <div class="item-lista">
+          <div class="item-icono" style="background:#FEF3E8">📙</div>
+          <div>
+            <div class="item-titulo">Alfabetización inicial y desarrollo del lenguaje — Ana Teberosky</div>
+            <div class="item-desc">Propuesta para integrar la perspectiva constructivista en prácticas cotidianas del aula de preescolar y primer grado de primaria.</div>
+            <div class="item-tags"><span class="tag">Constructivismo</span><span class="tag">Práctica docente</span></div>
+          </div>
+          <div class="item-accion">→</div>
+        </div>
+        <div class="item-lista">
+          <div class="item-icono" style="background:#F3EEF8">📄</div>
+          <div>
+            <div class="item-titulo">La lengua escrita en la educación inicial — SEP México (2017)</div>
+            <div class="item-desc">Orientaciones curriculares para el tratamiento de la lectura y escritura en preescolar, alineadas al enfoque globalizador del Nuevo Modelo Educativo.</div>
+            <div class="item-tags"><span class="tag">Política educativa</span><span class="tag">México</span><span class="tag">Curricular</span></div>
+          </div>
+          <div class="item-accion">→</div>
+        </div>
+        <div class="item-lista">
+          <div class="item-icono" style="background:#E8F5EC">📄</div>
+          <div>
+            <div class="item-titulo">¿Cómo aprenden a leer los niños? — Yetta Goodman</div>
+            <div class="item-desc">Perspectiva psicolingüística del proceso lector. La lectura como búsqueda de significado, no como decodificación letra a letra.</div>
+            <div class="item-tags"><span class="tag">Enfoque global</span><span class="tag">Psicolingüística</span></div>
+          </div>
+          <div class="item-accion">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MATERIALES ═══════════════════════════════ -->
+<section id="materiales" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Materiales descargables</div>
+    <div class="page-desc">Fichas, láminas y formatos listos para el aula</div>
+    <div class="tabs">
+      <div class="tab on"><span class="tab-dot" style="background:var(--azul-medio)"></span>Todos</div>
+      <div class="tab"><span class="tab-dot" style="background:#C0505A"></span>Láminas</div>
+      <div class="tab"><span class="tab-dot" style="background:#5B8FD4"></span>Fichas de trabajo</div>
+      <div class="tab"><span class="tab-dot" style="background:#E08C3A"></span>Formatos docentes</div>
+      <div class="tab"><span class="tab-dot" style="background:#4CAF79"></span>Tarjetas</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="grid-3">
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;font-size:32px;">🖼️<div class="mat-formato">PDF · Color</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Lámina</span>
+          <div class="tarjeta-titulo">Palabras del entorno escolar</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Muro%20de%20palabras%20del%20entorno.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">A4 · Imprimible · Preescolar o 1°</div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;font-size:32px;">🃏<div class="mat-formato">PDF · B/N</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Tarjetas</span>
+          <div class="tarjeta-titulo">Tarjetas de palabras globales</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Tarjetas%20de%20palabras%20globales.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Carta · Recortables · Plastificables</div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#FEF3E8;font-size:32px;">📋<div class="mat-formato">DOCX</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Formato docente</span>
+          <div class="tarjeta-titulo">Formato de secuencia didáctica</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Formato%20de%20secuencia%20didactica.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Word editable · Todos los grados</div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;font-size:32px;">📊<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Registro</span>
+          <div class="tarjeta-titulo">Lista de cotejo — escritura inicial</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Lista%20cotejo%20escritura%20inicial.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Carta · Por alumno · 1° primaria</div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;font-size:32px;">🖍️<div class="mat-formato">PDF · Color</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Ficha de trabajo</span>
+          <div class="tarjeta-titulo">Completa la palabra con imagen</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Ficha%20completa%20la%20palabra%20con%20imagen.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">A4 · Preescolar o 1°</div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#FFF3F3;font-size:32px;">📝<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Registro</span>
+          <div class="tarjeta-titulo">Diario de observación del proceso lector</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Guia%20de%20evaluacion%20psicogenetica.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Carta · Para el docente</div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;font-size:32px;">📊<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Evaluación</span>
+          <div class="tarjeta-titulo">Rúbrica de comprensión lectora inicial</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Rubrica%20comprensionlectoran%20inicial.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">1° y 2° Primaria · Evaluación formativa</div>
+          
+        </div>
+      </div>
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;font-size:32px;">📅<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Planeación</span>
+          <div class="tarjeta-titulo">Planeación anual globalizada</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Planeacion%20anual%20Alfabetizaci%C3%B3n%20globalizada.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">1° Primaria · Ciclo completo</div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEOS ════════════════════════════════════ -->
+<section id="videos" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Videos y tutoriales</div>
+    <div class="page-desc">Recursos audiovisuales reales sobre alfabetización inicial y lectura temprana</div>
+    <div class="tabs">
+      <div class="tab on"><span class="tab-dot" style="background:var(--azul-medio)"></span>Todos</div>
+      <div class="tab"><span class="tab-dot" style="background:#5B8FD4"></span>Conferencias</div>
+      <div class="tab"><span class="tab-dot" style="background:#E08C3A"></span>Neurociencia y lectura</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div style="display:flex;flex-direction:column;gap:32px;">
+
+      <!-- VIDEO 1 -->
+      <div style="background:var(--fondo-card);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra-md);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+            <iframe
+              src="https://www.youtube.com/embed/dzrGF9xYymI"
+              title="Así se enseña a leer — Liceo Freire"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;">
+            </iframe>
+          </div>
+          <div style="padding:24px 28px;display:flex;flex-direction:column;justify-content:center;">
+            <span style="font-size:11px;font-weight:600;background:var(--azul-palido);color:var(--azul-medio);border-radius:6px;padding:3px 9px;display:inline-block;margin-bottom:12px;width:fit-content;">Conferencia · Lectura temprana</span>
+            <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--azul);line-height:1.3;margin-bottom:10px;">Así se enseña a leer</div>
+            <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;margin-bottom:14px;">Conferencia de Jorge Eliécer Gómez López en el Liceo Freire. Propone en la edad preescolar estimulación para la lectura rápida y comprensiva con elementos de programación neurolingüística.</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="tag">Preescolar</span>
+              <span class="tag">PNL</span>
+              <span class="tag">Lectura rápida</span>
+              <span class="tag">Liceo Freire</span>
+            </div>
+            <a href="https://youtu.be/dzrGF9xYymI" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO 2 -->
+      <div style="background:var(--fondo-card);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra-md);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+            <iframe
+              src="https://www.youtube.com/embed/Ixmg0A6VAuY"
+              title="Cómo enseñar a leer hoy — Conferencia Jorge Eliécer Gómez López"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;">
+            </iframe>
+          </div>
+          <div style="padding:24px 28px;display:flex;flex-direction:column;justify-content:center;">
+            <span style="font-size:11px;font-weight:600;background:#EEF3FC;color:#1A4A8C;border-radius:6px;padding:3px 9px;display:inline-block;margin-bottom:12px;width:fit-content;">Conferencia · Familias</span>
+            <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--azul);line-height:1.3;margin-bottom:10px;">Cómo enseñar a leer hoy</div>
+            <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;margin-bottom:14px;">Charla de Jorge Eliécer Gómez López con padres del Jardín Infantil Mentes Brillantes. Comparte la aplicación práctica del programa <em>Yo soy muy inteligente</em>: lectura ágil y comprensiva, concentración y confianza, respetando el ritmo de cada niño.</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="tag">Familias</span>
+              <span class="tag">Lectura temprana</span>
+              <span class="tag">Confianza</span>
+              <span class="tag">Ritmo propio</span>
+            </div>
+            <a href="https://youtu.be/Ixmg0A6VAuY" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO 3 -->
+      <div style="background:var(--fondo-card);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra-md);">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+            <iframe
+              src="https://www.youtube.com/embed/mV-ozJ_3xl8"
+              title="Aprender a leer sin deletrear — Método Jacotot y Neurociencia"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;">
+            </iframe>
+          </div>
+          <div style="padding:24px 28px;display:flex;flex-direction:column;justify-content:center;">
+            <span style="font-size:11px;font-weight:600;background:#FEF3E8;color:#8C4A10;border-radius:6px;padding:3px 9px;display:inline-block;margin-bottom:12px;width:fit-content;">Neurociencia · Método Jacotot</span>
+            <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--azul);line-height:1.3;margin-bottom:10px;">Aprender a leer sin deletrear</div>
+            <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;margin-bottom:14px;">Hace más de 200 años Joseph Jacotot propuso una manera diferente de enseñar a leer. Hoy la neurociencia cognitiva ratifica su método de palabras y frases como la forma natural e implícita en que mejor se adquiere la habilidad lectora en los niños.</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="tag">Neurociencia</span>
+              <span class="tag">Jacotot</span>
+              <span class="tag">Lectura global</span>
+              <span class="tag">Evidencia científica</span>
+            </div>
+            <a href="https://youtu.be/mV-ozJ_3xl8" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAMILIAS ══════════════════════════════════ -->
+<section id="familias" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Recursos para familias</div>
+    <div class="page-desc">Materiales y actividades para acompañar el aprendizaje en casa</div>
+    <div class="tabs">
+      <div class="tab on" onclick="setTab(this)"><span class="tab-dot" style="background:var(--azul-medio)"></span>Todos</div>
+      <div class="tab" onclick="setTab(this)"><span class="tab-dot" style="background:#C4724F"></span>Actividades en casa</div>
+      <div class="tab" onclick="setTab(this)"><span class="tab-dot" style="background:#5B8FD4"></span>Guías de lectura</div>
+      <div class="tab" onclick="setTab(this)"><span class="tab-dot" style="background:#4CAF79"></span>Imprimibles</div>
+      <div class="tab" onclick="setTab(this)"><span class="tab-dot" style="background:#C0505A"></span>Videos</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div style="background:var(--azul-palido);border:1px solid rgba(46,134,193,.2);border-radius:var(--radio);padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sombra-sm);">
+      <div style="font-size:24px;flex-shrink:0;">💡</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--azul-medio);margin-bottom:4px;">¿Cómo usar estos recursos?</div>
+        <div style="font-size:13px;color:var(--texto-secundario);line-height:1.6;">Estos materiales están diseñados para que las familias acompañen el proceso de aprendizaje de la lectura y escritura desde casa, siguiendo el mismo enfoque globalizado que se trabaja en el aula. No se trata de adelantar contenidos, sino de enriquecer el ambiente letrado del hogar.</div>
+      </div>
+    </div>
+    <div class="filtros">
+      <span class="filtros-label">Filtrar por:</span>
+      <div class="chip on">Todos</div>
+      <div class="chip">Actividades</div>
+      <div class="chip">Guías</div>
+      <div class="chip">Imprimibles</div>
+      <div class="chip">Videos</div>
+      <div class="chip">Preescolar</div>
+      <div class="chip">Primaria</div>
+    </div>
+    <div class="grid-3">
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#FEF0E8;">🏠</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FEF0E8;color:#8C4A10">Actividad en casa</span>
+          <div class="tarjeta-titulo">El rincón de palabras en el hogar</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Mi%20%C3%A1lbum%20de%20palabras%20propias.pdf" target="_blank" class="btn-descargar">⬇ Descargar guía</a>
+          <div class="tarjeta-meta">Preescolar y 1° · Para toda la familia</div>
+          <div class="tarjeta-tags"><span class="tag">Ambiente letrado</span><span class="tag">Palabras propias</span></div>
+          
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#E8F5EC;">📖</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Guía de lectura</span>
+          <div class="tarjeta-titulo">Cómo leer en voz alta con tu hijo o hija</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Guia%20familias%20lectura%20en%20voz%20alta.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Todos los grados · 10 min al día</div>
+          <div class="tarjeta-tags"><span class="tag">Lectura compartida</span><span class="tag">Comprensión</span></div>
+          
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#EEF3FC;">🃏</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Imprimible</span>
+          <div class="tarjeta-titulo">Tarjetas de palabras para el hogar</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Tarjetas%20de%20palabras%20globales.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Preescolar · Recortables · B/N</div>
+          <div class="tarjeta-tags"><span class="tag">Palabra global</span><span class="tag">Juego</span></div>
+          
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#F3EEF8;">🎲</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Actividad en casa</span>
+          <div class="tarjeta-titulo">Juegos de palabras en familia</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Juegos%20de%20palabras%20en%20familia.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">1° y 2° primaria · Sin materiales</div>
+          <div class="tarjeta-tags"><span class="tag">Juego</span><span class="tag">Oral y escrito</span></div>
+          
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb video-thumb" style="background:#2D5B3F;">
+          <div class="play-btn">▶</div>
+          <div class="video-duracion">8 min</div>
+        </div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Video para familias</span>
+          <div class="tarjeta-titulo">¿Cómo aprende a leer tu hijo? Lo que debes saber</div>
+          <div class="tarjeta-meta">Para madres, padres y cuidadores</div>
+          <div class="tarjeta-tags"><span class="tag">Orientación</span><span class="tag">Proceso lector</span></div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb" style="background:#FFF3F3;">📝</div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Imprimible</span>
+          <div class="tarjeta-titulo">Diario de lectura familiar</div>
+          <a href="https://jhm-creator.github.io/Alfainicio/materiales/Diario%20lectura%20familiar.pdf" target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          <div class="tarjeta-meta">Todos los grados · Seguimiento mensual</div>
+          <div class="tarjeta-tags"><span class="tag">Hábito lector</span><span class="tag">Registro</span></div>
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACERCA ════════════════════════════════════ -->
+<section id="acerca" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Sobre Alfainicio</div>
+    <div class="page-desc">Fundamentos, propósito y referencias del sitio</div>
+  </div>
+  <div class="page-content">
+    <div class="acerca-grid">
+      <div>
+        <div class="acerca-texto">
+          <p><strong>Alfainicio</strong> es una colección de recursos educativos para docentes de preescolar y primaria, organizada alrededor del enfoque globalizado e ideo-visual de la alfabetización inicial.</p>
+          <p>Partimos de la premisa de que el aprendizaje de la lectura y la escritura no comienza fragmentando las palabras en letras y sílabas, sino reconociendo la <strong>palabra como unidad mínima con significado</strong> — tal como propusieron Decroly, Ferreiro y Teberosky.</p>
+          <p>Todos los recursos han sido seleccionados, elaborados o adaptados considerando el contexto educativo mexicano, los programas vigentes de la SEP y las condiciones reales del aula.</p>
+        </div>
+        <div class="principios">
+          <div class="principio">
+            <div class="principio-titulo">Palabra con sentido</div>
+            <div class="principio-desc">La unidad mínima de aprendizaje es la palabra que significa algo para el niño, no la letra aislada.</div>
+          </div>
+          <div class="principio">
+            <div class="principio-titulo">Aprendizaje globalizado</div>
+            <div class="principio-desc">El niño comprende primero el todo antes de analizar las partes que lo componen.</div>
+          </div>
+          <div class="principio">
+            <div class="principio-titulo">Construcción activa</div>
+            <div class="principio-desc">El alumno construye hipótesis sobre la escritura; el docente acompaña ese proceso.</div>
+          </div>
+          <div class="principio">
+            <div class="principio-titulo">Contexto significativo</div>
+            <div class="principio-desc">Aprender a leer y escribir desde textos reales y situaciones con propósito real.</div>
+          </div>
+        </div>
+      </div>
+      <div class="acerca-card">
+        <div class="acerca-card-header">
+          <h3>Referencias fundamentales</h3>
+          <p>Autores y obras que sostienen este enfoque</p>
+        </div>
+        <div class="acerca-refs">
+          <div class="ref-item">
+            <div class="ref-icono">👩‍🏫</div>
+            <div>
+              <div class="ref-nombre">Emilia Ferreiro & Ana Teberosky</div>
+              <div class="ref-detalle">Psicogénesis de la lengua escrita · Los sistemas de escritura en el desarrollo del niño</div>
+            </div>
+          </div>
+          <div class="ref-item">
+            <div class="ref-icono">👨‍🏫</div>
+            <div>
+              <div class="ref-nombre">Ovide Decroly</div>
+              <div class="ref-detalle">Método global · Centros de interés · Globalización del aprendizaje</div>
+            </div>
+          </div>
+          <div class="ref-item">
+            <div class="ref-icono">👩‍🔬</div>
+            <div>
+              <div class="ref-nombre">Yetta & Kenneth Goodman</div>
+              <div class="ref-detalle">Enfoque psicolingüístico · Lectura como búsqueda de significado</div>
+            </div>
+          </div>
+          <div class="ref-item">
+            <div class="ref-icono">📘</div>
+            <div>
+              <div class="ref-nombre">SEP México — Plan y Programas</div>
+              <div class="ref-detalle">Enfoque de lenguaje · Educación preescolar y primaria · Currículo vigente</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-col">
+    <div style="font-family:'Fraunces',serif;font-size:18px;color:#fff;font-weight:600;margin-bottom:6px;">Alfainicio</div>
+    <p>Colección de recursos sobre alfabetización inicial desde un enfoque globalizado, para docentes de preescolar y primaria en México.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Secciones</h4>
+    <a href="#" onclick="ir('actividades',null)">Actividades y secuencias</a>
+    <a href="#" onclick="ir('lecturas',null)">Lecturas teóricas</a>
+    <a href="#" onclick="ir('materiales',null)">Materiales descargables</a>
+    <a href="#" onclick="ir('videos',null)">Videos y tutoriales</a>
+    <a href="#" onclick="ir('familias',null)">Recursos para familias</a>
+  </div>
+  <div class="footer-col">
+    <h4>Sobre el sitio</h4>
+    <a href="#" onclick="ir('acerca',null)">Acerca de Alfainicio</a>
+    <a href="#">Contacto</a>
+    <a href="#">Aviso de privacidad</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Alfainicio · Alfabetización inicial globalizada</span>
+  <span>Hecho con propósito pedagógico · México</span>
+</div>
+
+<script>
+// Navegación
+function ir(id, linkEl) {
+  document.querySelectorAll('.seccion').forEach(s => s.classList.remove('activa'));
+  document.getElementById(id).classList.add('activa');
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('activo'));
+  if (linkEl) linkEl.classList.add('activo');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Tabs dentro de sección
+function setTab(el, id) {
+  const tabs = el.closest('.tabs').querySelectorAll('.tab');
+  tabs.forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+}
+
+// Chips filtro
+document.querySelectorAll('.chip').forEach(c => {
+  c.addEventListener('click', function() {
+    const row = this.closest('.filtros');
+    row.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+
+// Sidebar items
+document.querySelectorAll('.si').forEach(s => {
+  s.addEventListener('click', function() {
+    const sb = this.closest('.sidebar');
+    const group = this.closest('div');
+    group.querySelectorAll('.si').forEach(x => x.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+
+// Rotación de palabras en hero
+const palabras = [
+  {w:'MARIPOSA', i:'🦋'},
+  {w:'CASA', i:'🏠'},
+  {w:'ÁRBOL', i:'🌳'}
+];
+let pi = 0;
+setInterval(() => {
+  pi = (pi + 1) % palabras.length;
+  document.getElementById('pw').textContent = palabras[pi].w;
+  document.getElementById('pi').textContent = palabras[pi].i;
+  document.querySelectorAll('.palabra-dots span').forEach((d,i) => d.classList.toggle('on', i===pi));
+}, 2500);
+</script>
+</body>
+</html>
