@@ -352,6 +352,7 @@ footer {
     <a href="#" onclick="ir('materiales',this)">Materiales</a>
     <a href="#" onclick="ir('videos',this)">Videos</a>
     <a href="#" onclick="ir('familias',this)">Familias</a>
+    <a href="#" onclick="ir('docentes',this)">Docentes</a>
     <a href="#" onclick="ir('acerca',this)" class="nav-btn">Acerca</a>
   </nav>
 </header>
@@ -835,6 +836,92 @@ footer {
   </div>
 </section>
 
+<!-- ══ DOCENTES ══════════════════════════════════ -->
+<section id="docentes" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Recursos para docentes</div>
+    <div class="page-desc">Formatos, guías y herramientas de apoyo para la práctica docente</div>
+    <div class="tabs">
+      <div class="tab on" onclick="setTab(this)"><span class="tab-dot" style="background:var(--azul-medio)"></span>Todos</div>
+      <div class="tab" onclick="setTab(this)"><span class="tab-dot" style="background:#5B8FD4"></span>Planeación</div>
+      <div class="tab" onclick="setTab(this)"><span class="tab-dot" style="background:#E08C3A"></span>Evaluación</div>
+      <div class="tab" onclick="setTab(this)"><span class="tab-dot" style="background:#4CAF79"></span>Registro</div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div style="background:var(--azul-palido);border:1px solid rgba(46,134,193,.2);border-radius:var(--radio);padding:18px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--sombra-sm);">
+      <div style="font-size:24px;flex-shrink:0;">🎓</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--azul-medio);margin-bottom:4px;">Para tu práctica en el aula</div>
+        <div style="font-size:13px;color:var(--texto-secundario);line-height:1.6;">Estos recursos están diseñados para facilitar la planeación, el seguimiento y la evaluación del proceso de alfabetización inicial desde el enfoque globalizado. Todos son descargables y adaptables a tu grupo.</div>
+      </div>
+    </div>
+    <div class="grid-3">
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;font-size:32px;">📅<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Planeación</span>
+          <div class="tarjeta-titulo">Planeación anual — Alfabetización globalizada</div>
+          <div class="tarjeta-meta">1° Primaria · Ciclo completo</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#FEF3E8;font-size:32px;">📋<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Formato docente</span>
+          <div class="tarjeta-titulo">Formato de secuencia didáctica</div>
+          <div class="tarjeta-meta">Todos los grados · Editable</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#FFF3F3;font-size:32px;">📝<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Evaluación</span>
+          <div class="tarjeta-titulo">Guía de evaluación psicogenética</div>
+          <div class="tarjeta-meta">Diagnóstico inicial · Todos los grados</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;font-size:32px;">📊<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Registro</span>
+          <div class="tarjeta-titulo">Lista de cotejo — escritura inicial</div>
+          <div class="tarjeta-meta">Carta · Por alumno · 1° primaria</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Lista_cotejo_escritura_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;font-size:32px;">📊<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Evaluación</span>
+          <div class="tarjeta-titulo">Rúbrica de comprensión lectora inicial</div>
+          <div class="tarjeta-meta">1° y 2° Primaria · Evaluación formativa</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Rubrica_comprension_lectora_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;font-size:32px;">📋<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-body">
+          <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Secuencia</span>
+          <div class="tarjeta-titulo">El banco de palabras del salón</div>
+          <div class="tarjeta-meta">Preescolar · Secuencia de 3 sesiones</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══ FAMILIAS ══════════════════════════════════ -->
 <section id="familias" class="seccion">
   <div class="page-header">
@@ -1029,6 +1116,7 @@ footer {
     <a href="#" onclick="ir('lecturas',null)">Lecturas teóricas</a>
     <a href="#" onclick="ir('materiales',null)">Materiales descargables</a>
     <a href="#" onclick="ir('videos',null)">Videos y tutoriales</a>
+    <a href="#" onclick="ir('docentes',null)">Recursos para docentes</a>
     <a href="#" onclick="ir('familias',null)">Recursos para familias</a>
   </div>
   <div class="footer-col">
