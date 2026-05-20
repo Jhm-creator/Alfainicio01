@@ -31,6 +31,124 @@
   --radio-sm: 8px;
   --radio-lg: 20px;
 }
+
+/* ── MODO OSCURO ────────────────────────────── */
+body.oscuro {
+  --azul: #7EC8E3;
+  --azul-medio: #5DADE2;
+  --azul-claro: #85C1E9;
+  --azul-palido: #0D2137;
+  --azul-muy-palido: #0A1A2B;
+  --acento: #5DADE2;
+  --acento-hover: #3498DB;
+  --blanco: #1A2B3C;
+  --fondo: #0D1B2A;
+  --fondo-card: #142233;
+  --texto: #E8F4FD;
+  --texto-secundario: #8FBFD8;
+  --texto-terciario: #4A7A9B;
+  --borde: rgba(93,173,226,.12);
+  --borde-hover: rgba(93,173,226,.4);
+  --sombra-sm: 0 2px 8px rgba(0,0,0,.3);
+  --sombra-md: 0 6px 24px rgba(0,0,0,.4);
+  --sombra-lg: 0 12px 40px rgba(0,0,0,.5);
+}
+body.oscuro .topbar {
+  background: rgba(13,27,42,.92);
+}
+body.oscuro .hero {
+  background: linear-gradient(135deg, #0A1A2B 0%, #0D2137 55%, #0F2D4A 100%);
+}
+body.oscuro .hero-badge {
+  background: #071320;
+}
+body.oscuro .hero-card {
+  background: rgba(93,173,226,.08);
+  border-color: rgba(93,173,226,.2);
+}
+body.oscuro .palabra-display {
+  background: rgba(93,173,226,.1);
+  border-color: rgba(93,173,226,.15);
+}
+body.oscuro .e-chip {
+  background: rgba(93,173,226,.15);
+  color: #85C1E9;
+  border-color: rgba(93,173,226,.2);
+}
+body.oscuro footer {
+  background: #071320;
+}
+body.oscuro .footer-bottom {
+  background: rgba(0,0,0,.4);
+}
+body.oscuro .search-input {
+  background: #0D2137;
+  color: var(--texto);
+}
+body.oscuro .search-input:focus {
+  background: #142233;
+}
+body.oscuro .search-results {
+  background: #142233;
+}
+body.oscuro .search-results-header {
+  background: #0D2137;
+}
+body.oscuro .search-result-item:hover {
+  background: #0D2137;
+}
+body.oscuro .tag {
+  background: #0D2137;
+  border-color: rgba(93,173,226,.1);
+  color: var(--texto-secundario);
+}
+body.oscuro .btn-descargar, body.oscuro a.btn-descargar {
+  background: #0D2137;
+  border-color: rgba(93,173,226,.25);
+  color: var(--azul-claro);
+}
+body.oscuro .btn-descargar:hover, body.oscuro a.btn-descargar:hover {
+  background: #0A1A2B;
+}
+body.oscuro .acerca-card-header {
+  background: linear-gradient(135deg, #071320 0%, #0D2137 100%);
+}
+body.oscuro .ref-item {
+  background: #0D2137;
+}
+
+/* Transición suave al cambiar modo */
+body, .topbar, .tarjeta, .item-lista, .acerca-card,
+.sidebar, .stats-bar, .page-header, footer {
+  transition: background .3s ease, border-color .3s ease, color .3s ease;
+}
+
+/* ── TOGGLE MODO OSCURO ─────────────────────── */
+.dark-toggle {
+  width: 42px; height: 24px;
+  background: var(--azul-palido); border: 1.5px solid var(--borde);
+  border-radius: 12px; cursor: pointer; position: relative;
+  transition: background .3s, border-color .3s;
+  flex-shrink: 0; display: flex; align-items: center;
+}
+.dark-toggle::after {
+  content: '☀️';
+  position: absolute; left: 2px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  transition: transform .3s ease;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; line-height: 18px; text-align: center;
+}
+body.oscuro .dark-toggle {
+  background: #0D2137;
+  border-color: rgba(93,173,226,.3);
+}
+body.oscuro .dark-toggle::after {
+  content: '🌙';
+  transform: translateX(18px);
+  background: #142233;
+}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -318,6 +436,93 @@ a.btn-descargar { display: flex; }
 .principio-titulo { font-size: 13px; font-weight: 600; color: var(--azul-medio); margin-bottom: 5px; }
 .principio-desc { font-size: 12px; color: var(--texto-secundario); line-height: 1.55; }
 
+/* ── CONTADOR ANIMADO ───────────────────────── */
+.stat-num {
+  transition: transform .1s ease;
+}
+.stat-num.pulso {
+  transform: scale(1.18);
+  color: var(--azul-medio);
+}
+
+/* ── BÚSQUEDA GLOBAL ────────────────────────── */
+.search-wrap {
+  position: relative; display: flex; align-items: center;
+}
+.search-input {
+  width: 0; opacity: 0; pointer-events: none;
+  background: var(--azul-palido); border: 1px solid var(--borde);
+  border-radius: 20px; padding: 6px 36px 6px 14px;
+  font-size: 13px; color: var(--texto); outline: none;
+  transition: width .3s ease, opacity .3s ease, border-color .2s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.search-input.abierto {
+  width: 220px; opacity: 1; pointer-events: all;
+}
+.search-input:focus { border-color: var(--azul-medio); background: #fff; }
+.search-input::placeholder { color: var(--texto-terciario); }
+.search-btn {
+  position: absolute; right: 6px;
+  background: none; border: none; cursor: pointer;
+  color: var(--texto-secundario); font-size: 15px;
+  padding: 4px; border-radius: 6px; transition: color .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.search-btn:hover { color: var(--azul-medio); }
+.search-btn.cerrar { right: 6px; }
+
+/* Panel de resultados */
+.search-panel {
+  display: none; position: fixed;
+  top: 62px; left: 0; right: 0; bottom: 0;
+  background: rgba(13,31,45,.5);
+  backdrop-filter: blur(4px); z-index: 90;
+  animation: fadeIn .15s ease;
+}
+.search-panel.visible { display: block; }
+.search-results {
+  background: var(--blanco); max-width: 680px;
+  margin: 24px auto 0; border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-lg); overflow: hidden;
+  max-height: calc(100vh - 110px); display: flex; flex-direction: column;
+  border: 1px solid var(--borde);
+}
+.search-results-header {
+  padding: 14px 20px; border-bottom: 1px solid var(--borde);
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--azul-muy-palido);
+}
+.search-results-label { font-size: 12px; color: var(--texto-secundario); font-weight: 500; }
+.search-results-count { font-size: 12px; color: var(--azul-medio); font-weight: 600; }
+.search-results-lista {
+  overflow-y: auto; flex: 1; padding: 8px 0;
+}
+.search-result-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 20px; cursor: pointer; transition: background .12s;
+  border-bottom: 1px solid rgba(26,82,118,.05);
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: var(--azul-muy-palido); }
+.sri-icono {
+  width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.sri-titulo { font-size: 13.5px; font-weight: 500; color: var(--texto); line-height: 1.4; margin-bottom: 3px; }
+.sri-titulo mark { background: #FFF3A3; color: var(--texto); border-radius: 2px; padding: 0 2px; }
+.sri-meta { font-size: 11.5px; color: var(--texto-terciario); }
+.sri-badge {
+  margin-left: auto; flex-shrink: 0; align-self: center;
+  font-size: 10px; font-weight: 600; border-radius: 5px;
+  padding: 3px 8px; white-space: nowrap;
+}
+.search-empty {
+  padding: 40px 20px; text-align: center;
+  color: var(--texto-terciario); font-size: 14px;
+}
+.search-empty-icon { font-size: 32px; margin-bottom: 10px; }
+
 /* ── FOOTER ─────────────────────────────── */
 footer {
   background: var(--azul); margin-top: 64px;
@@ -355,7 +560,25 @@ footer {
     <a href="#" onclick="ir('docentes',this)">Docentes</a>
     <a href="#" onclick="ir('acerca',this)" class="nav-btn">Acerca</a>
   </nav>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="search-wrap">
+      <input type="text" class="search-input" id="searchInput" placeholder="Buscar recursos…" autocomplete="off">
+      <button class="search-btn" id="searchBtn" title="Buscar">🔍</button>
+    </div>
+    <div class="dark-toggle" id="darkToggle" title="Cambiar modo claro/oscuro"></div>
+  </div>
 </header>
+
+<!-- Panel de resultados de búsqueda -->
+<div class="search-panel" id="searchPanel">
+  <div class="search-results">
+    <div class="search-results-header">
+      <span class="search-results-label" id="searchLabel">Resultados</span>
+      <span class="search-results-count" id="searchCount"></span>
+    </div>
+    <div class="search-results-lista" id="searchLista"></div>
+  </div>
+</div>
 
 <!-- ══ INICIO ══════════════════════════════════ -->
 <section id="inicio" class="seccion activa">
@@ -388,19 +611,19 @@ footer {
 
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-num">24</div>
+      <div class="stat-num" id="stat-actividades">0</div>
       <div class="stat-label">Actividades y<br>secuencias</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">18</div>
+      <div class="stat-num" id="stat-lecturas">0</div>
       <div class="stat-label">Lecturas y<br>artículos</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">30+</div>
+      <div class="stat-num" id="stat-materiales">0</div>
       <div class="stat-label">Materiales<br>descargables</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">12</div>
+      <div class="stat-num" id="stat-videos">0</div>
       <div class="stat-label">Videos y<br>tutoriales</div>
     </div>
   </div>
@@ -1408,6 +1631,198 @@ setInterval(() => {
   document.getElementById('pi').textContent = palabras[pi].i;
   document.querySelectorAll('.palabra-dots span').forEach((d,i) => d.classList.toggle('on', i===pi));
 }, 2500);
+
+// ── BÚSQUEDA GLOBAL ──────────────────────────────────────────────────────────
+
+// Índice de todos los recursos del sitio
+const INDICE = [
+  // ACTIVIDADES
+  { titulo:'El banco de palabras del salón', meta:'Preescolar · Secuencia · 3 sesiones', seccion:'actividades', color:'#E8F5EC', icon:'📋', badge:'Actividades', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'Lotería de palabras con sentido', meta:'1° primaria · Juego · Lectura global', seccion:'actividades', color:'#EEF3FC', icon:'🃏', badge:'Actividades', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'Álbum de palabras propias', meta:'Preescolar · Identidad y escritura', seccion:'actividades', color:'#FEF3E8', icon:'📖', badge:'Actividades', badgeColor:'#8C4A10', badgeBg:'#FEF3E8' },
+  { titulo:'Muro de palabras del entorno', meta:'Preescolar o 1° · Contexto cotidiano', seccion:'actividades', color:'#F3EEF8', icon:'🖼️', badge:'Actividades', badgeColor:'#5A2A8C', badgeBg:'#F3EEF8' },
+  { titulo:'Formato de secuencia didáctica', meta:'Todos los grados · Editable', seccion:'actividades', color:'#E8F5EC', icon:'✏️', badge:'Actividades', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'Cuentos con palabras clave', meta:'1° o 2° primaria · Comprensión · Narrativa', seccion:'actividades', color:'#FFF3F3', icon:'🎭', badge:'Actividades', badgeColor:'#8C1A1A', badgeBg:'#FFF3F3' },
+  { titulo:'Planeación anual — Alfabetización globalizada', meta:'1° Primaria · Ciclo completo', seccion:'actividades', color:'#F3EEF8', icon:'📅', badge:'Actividades', badgeColor:'#5A2A8C', badgeBg:'#F3EEF8' },
+  { titulo:'Plan de sesión — Los 4 momentos', meta:'Todos los grados · Metodología 4 momentos', seccion:'actividades', color:'#E8F5EC', icon:'📝', badge:'Actividades', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'Actividades para promover la alfabetización', meta:'Preescolar y Primaria · Variedad de propuestas', seccion:'actividades', color:'#FEF3E8', icon:'🎯', badge:'Actividades', badgeColor:'#8C4A10', badgeBg:'#FEF3E8' },
+  // LECTURAS
+  { titulo:'¿Qué hipótesis tienen los niños acerca del sistema de escritura?', meta:'Psicogénesis · Constructivismo', seccion:'lecturas', color:'#EEF3FC', icon:'📘', badge:'Lecturas', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'El espacio de la lectura', meta:'Enfoque global · Ambiente letrado', seccion:'lecturas', color:'#E8F5EC', icon:'📗', badge:'Lecturas', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'El método Decroly', meta:'Enfoque global · Histórico', seccion:'lecturas', color:'#FEF3E8', icon:'📙', badge:'Lecturas', badgeColor:'#8C4A10', badgeBg:'#FEF3E8' },
+  { titulo:'La alfabetización: los niños y la última década del siglo', meta:'Constructivismo · Investigación', seccion:'lecturas', color:'#F3EEF8', icon:'📄', badge:'Lecturas', badgeColor:'#5A2A8C', badgeBg:'#F3EEF8' },
+  { titulo:'Alfabetización inicial: aportes y limitaciones', meta:'Constructivismo · Práctica docente', seccion:'lecturas', color:'#E8F5EC', icon:'📄', badge:'Lecturas', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'La enseñanza y el aprendizaje de la lectura y escritura — Primaria Fase 3', meta:'Enfoque global · Curricular · SEP', seccion:'lecturas', color:'#E8F5EC', icon:'📗', badge:'Lecturas', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'La adquisición y desarrollo del lenguaje', meta:'Constructivismo · Desarrollo del lenguaje', seccion:'lecturas', color:'#EEF3FC', icon:'📘', badge:'Lecturas', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'Metodología de los 4 momentos', meta:'Enfoque global · Metodología', seccion:'lecturas', color:'#FEF3E8', icon:'📙', badge:'Lecturas', badgeColor:'#8C4A10', badgeBg:'#FEF3E8' },
+  { titulo:'Aportaciones de la psicología a la alfabetización inicial', meta:'Constructivismo · Psicología educativa', seccion:'lecturas', color:'#F3EEF8', icon:'📄', badge:'Lecturas', badgeColor:'#5A2A8C', badgeBg:'#F3EEF8' },
+  { titulo:'Didáctica de la lengua escrita', meta:'Enfoque global · Práctica docente', seccion:'lecturas', color:'#E8F5EC', icon:'📗', badge:'Lecturas', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'Nacimos para aprender', meta:'Constructivismo · Neuroeducación', seccion:'lecturas', color:'#FFF3F3', icon:'📄', badge:'Lecturas', badgeColor:'#8C1A1A', badgeBg:'#FFF3F3' },
+  // MATERIALES
+  { titulo:'Muro de palabras del entorno', meta:'Lámina · A4 · Imprimible · Preescolar', seccion:'materiales', color:'#E8F5EC', icon:'🖼️', badge:'Materiales', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'Tarjetas de palabras globales', meta:'Tarjetas · Recortables · Plastificables', seccion:'materiales', color:'#EEF3FC', icon:'🃏', badge:'Materiales', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'Lista de cotejo — escritura inicial', meta:'Registro · 1° primaria · Por alumno', seccion:'materiales', color:'#F3EEF8', icon:'📊', badge:'Materiales', badgeColor:'#5A2A8C', badgeBg:'#F3EEF8' },
+  { titulo:'Completa la palabra con imagen', meta:'Ficha de trabajo · A4 · Preescolar', seccion:'materiales', color:'#E8F5EC', icon:'🖍️', badge:'Materiales', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'Guía de evaluación psicogenética', meta:'Evaluación · Diagnóstico inicial', seccion:'materiales', color:'#FFF3F3', icon:'📝', badge:'Materiales', badgeColor:'#8C1A1A', badgeBg:'#FFF3F3' },
+  { titulo:'Rúbrica de comprensión lectora inicial', meta:'Evaluación · 1° y 2° Primaria', seccion:'materiales', color:'#EEF3FC', icon:'📊', badge:'Materiales', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'Lotería de palabras', meta:'Juego · 1° primaria · Lectura global', seccion:'materiales', color:'#EEF3FC', icon:'🃏', badge:'Materiales', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  // VIDEOS
+  { titulo:'Así se enseña a leer', meta:'Conferencia · Liceo Freire · Lectura temprana', seccion:'videos', color:'#EEF3FC', icon:'▶️', badge:'Videos', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'Cómo enseñar a leer hoy', meta:'Conferencia · Familias · Lectura temprana', seccion:'videos', color:'#EEF3FC', icon:'▶️', badge:'Videos', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'Aprender a leer sin deletrear', meta:'Neurociencia · Método Jacotot · Evidencia científica', seccion:'videos', color:'#FEF3E8', icon:'▶️', badge:'Videos', badgeColor:'#8C4A10', badgeBg:'#FEF3E8' },
+  // FAMILIAS
+  { titulo:'El rincón de palabras en el hogar', meta:'Actividad en casa · Preescolar y 1°', seccion:'familias', color:'#FEF0E8', icon:'🏠', badge:'Familias', badgeColor:'#8C4A10', badgeBg:'#FEF0E8' },
+  { titulo:'Cómo leer en voz alta con tu hijo o hija', meta:'Guía de lectura · 10 min al día', seccion:'familias', color:'#E8F5EC', icon:'📖', badge:'Familias', badgeColor:'#2D5B3F', badgeBg:'#E8F5EC' },
+  { titulo:'Tarjetas de palabras para el hogar', meta:'Imprimible · Preescolar · Recortables', seccion:'familias', color:'#EEF3FC', icon:'🃏', badge:'Familias', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+  { titulo:'Juegos de palabras en familia', meta:'Actividad en casa · 1° y 2° primaria', seccion:'familias', color:'#F3EEF8', icon:'🎲', badge:'Familias', badgeColor:'#5A2A8C', badgeBg:'#F3EEF8' },
+  { titulo:'Diario de lectura familiar', meta:'Imprimible · Seguimiento mensual', seccion:'familias', color:'#FFF3F3', icon:'📝', badge:'Familias', badgeColor:'#8C1A1A', badgeBg:'#FFF3F3' },
+  // DOCENTES
+  { titulo:'Guía de evaluación psicogenética', meta:'Evaluación · Diagnóstico inicial · Todos los grados', seccion:'docentes', color:'#FFF3F3', icon:'📝', badge:'Docentes', badgeColor:'#8C1A1A', badgeBg:'#FFF3F3' },
+  { titulo:'Lista de cotejo — escritura inicial', meta:'Registro · Por alumno · 1° primaria', seccion:'docentes', color:'#F3EEF8', icon:'📊', badge:'Docentes', badgeColor:'#5A2A8C', badgeBg:'#F3EEF8' },
+  { titulo:'Rúbrica de comprensión lectora inicial', meta:'Evaluación · 1° y 2° Primaria', seccion:'docentes', color:'#EEF3FC', icon:'📊', badge:'Docentes', badgeColor:'#1A4A8C', badgeBg:'#EEF3FC' },
+];
+
+const seccionNombres = {
+  actividades: 'Actividades',
+  lecturas: 'Lecturas',
+  materiales: 'Materiales',
+  videos: 'Videos',
+  familias: 'Familias',
+  docentes: 'Docentes'
+};
+
+const searchInput = document.getElementById('searchInput');
+const searchBtn   = document.getElementById('searchBtn');
+const searchPanel = document.getElementById('searchPanel');
+const searchLista = document.getElementById('searchLista');
+const searchCount = document.getElementById('searchCount');
+const searchLabel = document.getElementById('searchLabel');
+
+function highlight(text, query) {
+  if (!query) return text;
+  const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+
+function renderResults(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) { cerrarSearch(); return; }
+
+  const matches = INDICE.filter(r =>
+    r.titulo.toLowerCase().includes(q) || r.meta.toLowerCase().includes(q)
+  );
+
+  searchCount.textContent = matches.length === 0 ? '' : `${matches.length} resultado${matches.length !== 1 ? 's' : ''}`;
+  searchLabel.textContent = `Buscando: "${query}"`;
+
+  if (matches.length === 0) {
+    searchLista.innerHTML = `<div class="search-empty"><div class="search-empty-icon">🔍</div>Sin resultados para "<strong>${query}</strong>"<br><span style="font-size:12px;margin-top:6px;display:block;">Intenta con otra palabra clave</span></div>`;
+  } else {
+    searchLista.innerHTML = matches.map(r => `
+      <div class="search-result-item" onclick="irDesdeSearch('${r.seccion}')">
+        <div class="sri-icono" style="background:${r.color}">${r.icon}</div>
+        <div style="flex:1;min-width:0">
+          <div class="sri-titulo">${highlight(r.titulo, query.trim())}</div>
+          <div class="sri-meta">${highlight(r.meta, query.trim())}</div>
+        </div>
+        <div class="sri-badge" style="background:${r.badgeBg};color:${r.badgeColor}">${r.badge}</div>
+      </div>
+    `).join('');
+  }
+  searchPanel.classList.add('visible');
+}
+
+function cerrarSearch() {
+  searchPanel.classList.remove('visible');
+  searchInput.classList.remove('abierto');
+  searchInput.value = '';
+  searchBtn.textContent = '🔍';
+}
+
+function irDesdeSearch(seccionId) {
+  cerrarSearch();
+  const navLink = document.querySelector(`nav a[onclick*="'${seccionId}'"]`);
+  ir(seccionId, navLink);
+}
+
+// Toggle abrir/cerrar buscador
+searchBtn.addEventListener('click', () => {
+  const abierto = searchInput.classList.contains('abierto');
+  if (abierto && searchInput.value === '') {
+    cerrarSearch();
+  } else if (!abierto) {
+    searchInput.classList.add('abierto');
+    searchBtn.textContent = '✕';
+    setTimeout(() => searchInput.focus(), 320);
+  } else {
+    cerrarSearch();
+  }
+});
+
+// Búsqueda en tiempo real
+searchInput.addEventListener('input', () => renderResults(searchInput.value));
+
+// Cerrar al hacer clic fuera del panel
+searchPanel.addEventListener('click', (e) => {
+  if (e.target === searchPanel) cerrarSearch();
+});
+
+// Cerrar con Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') cerrarSearch();
+});
+// ── MODO OSCURO ──────────────────────────────────────────────────────────────
+const darkToggle = document.getElementById('darkToggle');
+
+// Recordar preferencia del usuario
+if (localStorage.getItem('alfainicio-oscuro') === 'true') {
+  document.body.classList.add('oscuro');
+}
+
+darkToggle.addEventListener('click', () => {
+  document.body.classList.toggle('oscuro');
+  localStorage.setItem('alfainicio-oscuro',
+    document.body.classList.contains('oscuro') ? 'true' : 'false'
+  );
+});
+</script>
+function animarContador(id, destino, duracion = 1400, sufijo = '') {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const inicio = performance.now();
+  function paso(ahora) {
+    const progreso = Math.min((ahora - inicio) / duracion, 1);
+    // Ease out quart
+    const ease = 1 - Math.pow(1 - progreso, 4);
+    const actual = Math.floor(ease * destino);
+    el.textContent = actual + sufijo;
+    if (progreso < 1) {
+      requestAnimationFrame(paso);
+    } else {
+      el.textContent = destino + sufijo;
+      el.classList.add('pulso');
+      setTimeout(() => el.classList.remove('pulso'), 200);
+    }
+  }
+  requestAnimationFrame(paso);
+}
+
+// Lanzar contadores cuando la sección inicio sea visible
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Pequeños retrasos escalonados para efecto en cascada
+      setTimeout(() => animarContador('stat-actividades', 9),   0);
+      setTimeout(() => animarContador('stat-lecturas',    11),  120);
+      setTimeout(() => animarContador('stat-materiales',  12),  240);
+      setTimeout(() => animarContador('stat-videos',       3),  360);
+      statsObs.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) statsObs.observe(statsBar);
 </script>
 </body>
 </html>
