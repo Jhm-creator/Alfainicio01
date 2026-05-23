@@ -408,6 +408,49 @@ nav a.activo { color: var(--azul-medio); background: var(--azul-palido); font-we
 a.btn-descargar { display: flex; }
 .btn-descargar:hover, a.btn-descargar:hover { background: #d6eaf8; border-color: var(--azul-medio); }
 
+/* ── BOTÓN COMPARTIR ────────────────────────── */
+.tarjeta-acciones {
+  display: flex; gap: 8px; margin-top: 13px; align-items: stretch;
+}
+.tarjeta-acciones a.btn-descargar {
+  margin-top: 0; flex: 1;
+}
+.btn-compartir {
+  width: 40px; min-width: 40px; height: auto;
+  background: var(--azul-palido); color: var(--texto-secundario);
+  border: 1px solid rgba(46,134,193,.2); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .15s; font-size: 15px;
+  flex-shrink: 0;
+}
+.btn-compartir:hover {
+  background: #d6eaf8; color: var(--azul-medio);
+  border-color: var(--azul-medio); transform: scale(1.08);
+}
+.btn-compartir.copiado {
+  background: #E8F8EC; color: #2D7A45;
+  border-color: #4CAF79;
+}
+
+/* ── TOAST ──────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(16px);
+  background: #1A2B3C; color: #fff;
+  padding: 11px 22px; border-radius: 24px;
+  font-size: 13px; font-weight: 500;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+  opacity: 0; pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+  z-index: 9999; white-space: nowrap;
+  display: flex; align-items: center; gap: 8px;
+}
+.toast.visible {
+  opacity: 1; transform: translateX(-50%) translateY(0);
+}
+body.oscuro .toast {
+  background: #E8F4FD; color: #0D1B2A;
+}
+
 /* ── ACERCA ─────────────────────────────── */
 .acerca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
 .acerca-texto p { font-size: 15px; color: var(--texto-secundario); line-height: 1.85; margin-bottom: 18px; }
@@ -589,6 +632,341 @@ a.btn-descargar { display: flex; }
 }
 .search-empty-icon { font-size: 32px; margin-bottom: 10px; }
 
+/* ── NOVEDADES ──────────────────────────────── */
+.novedades-wrap {
+  padding: 0 40px 48px;
+  max-width: 1100px; margin: 0 auto;
+}
+.novedades-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.novedades-titulo {
+  font-family: 'Fraunces', serif; font-size: 20px;
+  color: var(--azul); font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+}
+.novedades-titulo::before {
+  content: '';
+  width: 4px; height: 22px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--azul-medio), var(--azul-claro));
+  display: block;
+}
+.novedades-ver-todo {
+  font-size: 12.5px; color: var(--azul-medio); font-weight: 500;
+  cursor: pointer; display: flex; align-items: center; gap: 5px;
+  transition: gap .15s;
+}
+.novedades-ver-todo:hover { gap: 9px; }
+.novedades-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.novedad-card {
+  background: var(--fondo-card); border: 1px solid var(--borde);
+  border-radius: var(--radio); overflow: hidden;
+  box-shadow: var(--sombra-sm); transition: all .22s; cursor: pointer;
+  position: relative;
+}
+.novedad-card:hover {
+  border-color: var(--borde-hover); box-shadow: var(--sombra-lg);
+  transform: translateY(-4px);
+}
+.novedad-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  background: #E8F84A; color: #1A3A00;
+  font-size: 10px; font-weight: 800; letter-spacing: .5px;
+  padding: 3px 9px; border-radius: 20px; text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  animation: pulsoBadge 2.5s ease-in-out infinite;
+}
+@keyframes pulsoBadge {
+  0%, 100% { box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+  50%       { box-shadow: 0 2px 14px rgba(180,220,0,.5); }
+}
+.novedad-thumb {
+  height: 88px; display: flex; align-items: center;
+  justify-content: center; font-size: 30px;
+}
+.novedad-body { padding: 14px 16px 16px; }
+.novedad-seccion {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .4px; color: var(--texto-terciario); margin-bottom: 5px;
+}
+.novedad-titulo {
+  font-size: 13.5px; font-weight: 500; color: var(--texto);
+  line-height: 1.4; margin-bottom: 8px;
+}
+.novedad-meta { font-size: 11.5px; color: var(--texto-terciario); margin-bottom: 11px; }
+.novedad-btn {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; background: var(--azul-palido); color: var(--azul-medio);
+  border: 1px solid rgba(46,134,193,.2); border-radius: 7px;
+  padding: 8px; font-size: 12px; font-weight: 500;
+  cursor: pointer; transition: background .15s; text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box;
+}
+.novedad-btn:hover { background: #d6eaf8; }
+
+/* ── LÍNEA DEL TIEMPO ──────────────────────── */
+.timeline-wrap { position: relative; padding: 0 0 40px; }
+.timeline-intro {
+  background: linear-gradient(135deg, var(--azul-palido), var(--azul-muy-palido));
+  border: 1px solid rgba(46,134,193,.15); border-radius: var(--radio);
+  padding: 18px 22px; margin-bottom: 32px;
+  display: flex; gap: 14px; align-items: center;
+  font-size: 13.5px; color: var(--texto-secundario); line-height: 1.6;
+}
+.tl-eras {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;
+}
+.tl-era-btn {
+  padding: 6px 16px; border-radius: 20px; font-size: 12.5px; font-weight: 500;
+  border: 1px solid var(--borde); background: var(--fondo-card);
+  color: var(--texto-secundario); cursor: pointer; transition: all .14s;
+}
+.tl-era-btn:hover { border-color: var(--azul-claro); color: var(--azul); }
+.tl-era-btn.on { background: var(--azul-palido); border-color: var(--azul-medio); color: var(--azul-medio); font-weight: 600; }
+
+/* Eje central */
+.timeline-axis {
+  position: relative; padding-left: 48px;
+}
+.timeline-axis::before {
+  content: '';
+  position: absolute; left: 18px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, var(--azul-medio), var(--azul-claro));
+  border-radius: 1px;
+}
+.tl-hito {
+  position: relative; margin-bottom: 10px;
+  opacity: 0; transform: translateX(-10px);
+  animation: tl-entrada .35s ease forwards;
+}
+@keyframes tl-entrada {
+  to { opacity: 1; transform: translateX(0); }
+}
+.tl-hito-header {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: var(--fondo-card); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 16px 18px;
+  cursor: pointer; transition: all .2s; position: relative;
+}
+.tl-hito-header:hover { border-color: var(--borde-hover); box-shadow: var(--sombra-sm); }
+.tl-hito.activo .tl-hito-header {
+  border-color: var(--azul-medio); box-shadow: var(--sombra-md);
+  background: var(--azul-muy-palido);
+}
+/* Nodo en el eje */
+.tl-hito-header::before {
+  content: '';
+  position: absolute; left: -38px; top: 50%; transform: translateY(-50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--fondo-card); border: 2.5px solid var(--azul-claro);
+  transition: all .2s; z-index: 1;
+}
+.tl-hito.activo .tl-hito-header::before {
+  background: var(--azul-medio); border-color: var(--azul-medio);
+  box-shadow: 0 0 0 4px rgba(46,134,193,.2);
+  width: 16px; height: 16px; left: -39px;
+}
+.tl-año {
+  font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600;
+  color: var(--azul-medio); min-width: 52px; flex-shrink: 0; line-height: 1.2;
+}
+.tl-hito.activo .tl-año { color: var(--azul); }
+.tl-info { flex: 1; }
+.tl-titulo {
+  font-size: 14px; font-weight: 500; color: var(--texto); line-height: 1.4; margin-bottom: 3px;
+}
+.tl-subtitulo { font-size: 12px; color: var(--texto-terciario); }
+.tl-icono {
+  font-size: 20px; flex-shrink: 0; width: 38px; height: 38px;
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+}
+.tl-era-badge {
+  font-size: 10px; font-weight: 700; border-radius: 5px;
+  padding: 2px 7px; flex-shrink: 0; align-self: flex-start; margin-top: 2px;
+}
+.tl-chevron {
+  color: var(--texto-terciario); font-size: 11px; flex-shrink: 0;
+  transition: transform .2s; margin-top: 3px;
+}
+.tl-hito.activo .tl-chevron { transform: rotate(180deg); color: var(--azul-medio); }
+/* Detalle expandido */
+.tl-detalle {
+  display: none; margin: 4px 0 6px 0; padding: 18px 20px;
+  background: var(--fondo-card); border: 1px solid var(--azul-claro);
+  border-top: none; border-radius: 0 0 var(--radio) var(--radio);
+  border-left-width: 3px;
+}
+.tl-hito.activo .tl-detalle { display: block; }
+.tl-detalle-texto {
+  font-size: 13.5px; color: var(--texto-secundario); line-height: 1.8; margin-bottom: 10px;
+}
+.tl-detalle-dato {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: var(--azul-muy-palido); border-radius: 8px; padding: 10px 14px;
+  font-size: 12.5px; color: var(--texto-secundario); line-height: 1.6;
+  border-left: 3px solid var(--azul-claro);
+}
+.tl-detalle-dato strong { color: var(--azul-medio); }
+
+/* ── FAQ ────────────────────────────────────── */
+.faq-intro {
+  background: linear-gradient(135deg, var(--azul-palido), var(--azul-muy-palido));
+  border: 1px solid rgba(46,134,193,.15); border-radius: var(--radio);
+  padding: 20px 24px; margin-bottom: 28px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.faq-intro-icon { font-size: 26px; flex-shrink: 0; }
+.faq-intro-texto { font-size: 13.5px; color: var(--texto-secundario); line-height: 1.7; }
+.faq-intro-texto strong { color: var(--texto); }
+.faq-cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.faq-cat {
+  padding: 6px 16px; border-radius: 20px; font-size: 12.5px; font-weight: 500;
+  border: 1px solid var(--borde); background: var(--fondo-card);
+  color: var(--texto-secundario); cursor: pointer; transition: all .14s;
+}
+.faq-cat:hover { border-color: var(--azul-claro); color: var(--azul); }
+.faq-cat.on { background: var(--azul-palido); border-color: var(--azul-medio); color: var(--azul-medio); font-weight: 600; }
+.faq-lista { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: var(--fondo-card); border: 1px solid var(--borde);
+  border-radius: var(--radio); overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.faq-item:hover { border-color: var(--borde-hover); }
+.faq-item.abierto { border-color: var(--azul-claro); box-shadow: var(--sombra-sm); }
+.faq-pregunta {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px 20px; cursor: pointer; user-select: none;
+}
+.faq-num {
+  width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0;
+  background: var(--azul-palido); color: var(--azul-medio);
+  font-size: 11px; font-weight: 700; display: flex; align-items: center;
+  justify-content: center; margin-top: 1px;
+}
+.faq-item.abierto .faq-num { background: var(--azul-medio); color: #fff; }
+.faq-texto-pregunta {
+  flex: 1; font-size: 14px; font-weight: 500; color: var(--texto); line-height: 1.45;
+}
+.faq-chevron {
+  color: var(--texto-terciario); font-size: 12px; flex-shrink: 0;
+  transition: transform .22s; margin-top: 3px;
+}
+.faq-item.abierto .faq-chevron { transform: rotate(180deg); color: var(--azul-medio); }
+.faq-respuesta {
+  display: none; padding: 0 20px 20px 60px; border-top: 1px solid var(--borde);
+  padding-top: 16px;
+}
+.faq-item.abierto .faq-respuesta { display: block; }
+.faq-respuesta p {
+  font-size: 13.5px; color: var(--texto-secundario); line-height: 1.8; margin-bottom: 12px;
+}
+.faq-respuesta p:last-child { margin-bottom: 0; }
+.faq-respuesta strong { color: var(--texto); }
+.faq-respuesta ul { padding-left: 18px; margin-bottom: 12px; }
+.faq-respuesta li {
+  font-size: 13.5px; color: var(--texto-secundario); line-height: 1.75; margin-bottom: 4px;
+}
+.faq-cat-badge {
+  display: inline-block; font-size: 10.5px; font-weight: 600;
+  border-radius: 5px; padding: 2px 8px; margin-bottom: 10px;
+}
+.faq-recurso {
+  background: var(--azul-muy-palido); border: 1px solid rgba(46,134,193,.12);
+  border-radius: 8px; padding: 10px 14px; margin-top: 10px;
+  font-size: 12.5px; color: var(--azul-medio); display: flex; gap: 8px; align-items: center;
+}
+.faq-vacio {
+  text-align: center; padding: 48px 20px; color: var(--texto-terciario); font-size: 14px;
+}
+
+/* ── GLOSARIO ───────────────────────────────── */
+.glosario-controles {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px;
+}
+.alfa-wrap {
+  display: flex; gap: 4px; flex-wrap: wrap;
+}
+.alfa-btn {
+  width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--borde);
+  background: var(--fondo-card); color: var(--texto-secundario); font-size: 12.5px;
+  font-weight: 600; cursor: pointer; transition: all .14s;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.alfa-btn:hover { border-color: var(--azul-claro); color: var(--azul); background: var(--azul-muy-palido); }
+.alfa-btn.on { background: var(--azul-medio); color: #fff; border-color: var(--azul-medio); }
+.alfa-btn:disabled { opacity: .3; cursor: default; pointer-events: none; }
+.glosario-tema-chips { display: flex; gap: 7px; flex-wrap: wrap; }
+.g-chip {
+  padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 500;
+  border: 1px solid var(--borde); background: var(--fondo-card);
+  color: var(--texto-secundario); cursor: pointer; transition: all .14s;
+}
+.g-chip:hover { border-color: var(--azul-claro); color: var(--azul); }
+.g-chip.on { background: var(--azul-palido); border-color: var(--azul-medio); color: var(--azul-medio); font-weight: 600; }
+.glosario-busca {
+  background: var(--fondo-card); border: 1px solid var(--borde); border-radius: 20px;
+  padding: 7px 16px; font-size: 13px; color: var(--texto); outline: none;
+  font-family: 'Plus Jakarta Sans', sans-serif; width: 220px; transition: border-color .15s;
+}
+.glosario-busca:focus { border-color: var(--azul-medio); }
+.glosario-busca::placeholder { color: var(--texto-terciario); }
+.glosario-lista { display: flex; flex-direction: column; gap: 0; }
+.glosario-grupo { margin-bottom: 28px; }
+.glosario-letra {
+  font-family: 'Fraunces', serif; font-size: 26px; font-weight: 600;
+  color: var(--azul-medio); margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 2px solid var(--azul-palido); display: flex; align-items: center; gap: 12px;
+}
+.glosario-letra span { font-size: 12px; color: var(--texto-terciario); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; }
+.termino {
+  background: var(--fondo-card); border: 1px solid var(--borde);
+  border-radius: var(--radio); margin-bottom: 10px; overflow: hidden;
+  transition: box-shadow .2s, border-color .2s;
+}
+.termino:hover { border-color: var(--borde-hover); box-shadow: var(--sombra-sm); }
+.termino-header {
+  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+  cursor: pointer; user-select: none;
+}
+.termino-icono {
+  width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 17px;
+}
+.termino-nombre {
+  font-size: 14.5px; font-weight: 600; color: var(--texto); flex: 1;
+}
+.termino-tag {
+  font-size: 10.5px; font-weight: 600; border-radius: 5px; padding: 3px 8px;
+  flex-shrink: 0;
+}
+.termino-chevron {
+  color: var(--texto-terciario); font-size: 12px; transition: transform .2s; flex-shrink: 0;
+}
+.termino.abierto .termino-chevron { transform: rotate(180deg); }
+.termino-cuerpo {
+  display: none; padding: 0 20px 18px 72px; border-top: 1px solid var(--borde);
+  padding-top: 14px;
+}
+.termino.abierto .termino-cuerpo { display: block; }
+.termino-def {
+  font-size: 13.5px; color: var(--texto-secundario); line-height: 1.75; margin-bottom: 10px;
+}
+.termino-ejemplo {
+  background: var(--azul-muy-palido); border-left: 3px solid var(--azul-claro);
+  border-radius: 0 8px 8px 0; padding: 10px 14px;
+  font-size: 12.5px; color: var(--texto-secundario); font-style: italic; line-height: 1.6;
+}
+.termino-ejemplo strong { color: var(--azul-medio); font-style: normal; }
+.glosario-vacio {
+  text-align: center; padding: 48px 20px; color: var(--texto-terciario); font-size: 14px;
+}
+.glosario-vacio-icon { font-size: 36px; margin-bottom: 12px; }
+
 /* ── FOOTER ─────────────────────────────── */
 footer {
   background: var(--azul); margin-top: 64px;
@@ -624,6 +1002,9 @@ footer {
     <a href="#" onclick="ir('videos',this)">Videos</a>
     <a href="#" onclick="ir('familias',this)">Familias</a>
     <a href="#" onclick="ir('docentes',this)">Docentes</a>
+    <a href="#" onclick="ir('glosario',this)">Glosario</a>
+    <a href="#" onclick="ir('faq',this)">FAQ</a>
+    <a href="#" onclick="ir('timeline',this)">Historia</a>
     <a href="#" onclick="ir('acerca',this)" class="nav-btn">Acerca</a>
   </nav>
   <div style="display:flex;align-items:center;gap:10px;">
@@ -711,9 +1092,54 @@ footer {
       <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;">Fichas, láminas y formatos listos para usar en el aula, editables y descargables.</div>
     </div>
   </div>
-</section>
 
-<!-- ══ ACTIVIDADES ══════════════════════════════ -->
+  <!-- ── NOVEDADES ─────────────────────────────── -->
+  <div class="novedades-wrap">
+    <div class="novedades-header">
+      <div class="novedades-titulo">Últimas novedades</div>
+      <div class="novedades-ver-todo" onclick="ir('materiales', document.querySelector('nav a:nth-child(4)'))">Ver todos los recursos →</div>
+    </div>
+    <div class="novedades-grid">
+
+      <!-- Novedad 1 -->
+      <div class="novedad-card" onclick="ir('lecturas', document.querySelector('nav a:nth-child(3)'))">
+        <div class="novedad-badge">Nuevo</div>
+        <div class="novedad-thumb" style="background:#FEF3E8;">📙</div>
+        <div class="novedad-body">
+          <div class="novedad-seccion">Lecturas</div>
+          <div class="novedad-titulo">Nacimos para aprender</div>
+          <div class="novedad-meta">Constructivismo · Neuroeducación</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/nacimos_para_%20aprender.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+      <!-- Novedad 2 -->
+      <div class="novedad-card" onclick="ir('lecturas', document.querySelector('nav a:nth-child(3)'))">
+        <div class="novedad-badge">Nuevo</div>
+        <div class="novedad-thumb" style="background:#E8F5EC;">📗</div>
+        <div class="novedad-body">
+          <div class="novedad-seccion">Lecturas</div>
+          <div class="novedad-titulo">Didáctica de la lengua escrita</div>
+          <div class="novedad-meta">Enfoque global · Práctica docente</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/did%C3%A1ctica_de_la_lengua_escrita.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+      <!-- Novedad 3 -->
+      <div class="novedad-card" onclick="ir('actividades', document.querySelector('nav a:nth-child(2)'))">
+        <div class="novedad-badge">Nuevo</div>
+        <div class="novedad-thumb" style="background:#FEF3E8;">🎯</div>
+        <div class="novedad-body">
+          <div class="novedad-seccion">Actividades</div>
+          <div class="novedad-titulo">Actividades para promover la alfabetización</div>
+          <div class="novedad-meta">Preescolar y Primaria · Variedad de propuestas</div>
+          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/actividades_para_promover_la_alfabetizaci%C3%B3n.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <section id="actividades" class="seccion">
   <div class="page-header">
     <div class="page-title">Actividades y secuencias didácticas</div>
@@ -1416,6 +1842,80 @@ footer {
   </div>
 </section>
 
+<!-- ══ GLOSARIO ══════════════════════════════════ -->
+<section id="glosario" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Glosario de alfabetización</div>
+    <div class="page-desc">Términos clave del enfoque globalizado, la psicogénesis y la práctica docente</div>
+  </div>
+  <div class="page-content">
+
+    <div class="glosario-controles">
+      <input type="text" class="glosario-busca" id="glosarioBusca" placeholder="🔍  Buscar término…">
+      <div class="glosario-tema-chips">
+        <div class="g-chip on" data-tema="todos">Todos</div>
+        <div class="g-chip" data-tema="Psicogénesis">Psicogénesis</div>
+        <div class="g-chip" data-tema="Enfoque global">Enfoque global</div>
+        <div class="g-chip" data-tema="Constructivismo">Constructivismo</div>
+        <div class="g-chip" data-tema="Evaluación">Evaluación</div>
+        <div class="g-chip" data-tema="Práctica docente">Práctica docente</div>
+      </div>
+    </div>
+
+    <div class="alfa-wrap" id="alfaWrap" style="margin-bottom:20px;"></div>
+
+    <div class="glosario-lista" id="glosarioLista"></div>
+
+  </div>
+</section>
+
+<!-- ══ TIMELINE ════════════════════════════════ -->
+<section id="timeline" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Historia del enfoque globalizado</div>
+    <div class="page-desc">Hitos clave desde Decroly hasta el currículo mexicano actual — haz clic en cada uno para saber más</div>
+  </div>
+  <div class="page-content">
+    <div class="timeline-intro">
+      <span style="font-size:22px;flex-shrink:0">🕰️</span>
+      Más de 100 años de historia pedagógica respaldan el enfoque globalizado. Desde los centros de interés de Decroly hasta la psicogénesis de Ferreiro y su integración al currículo mexicano actual.
+    </div>
+    <div class="tl-eras" id="tlEras"></div>
+    <div class="timeline-wrap">
+      <div class="timeline-axis" id="timelineAxis"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ═══════════════════════════════════════ -->
+<section id="faq" class="seccion">
+  <div class="page-header">
+    <div class="page-title">Preguntas frecuentes</div>
+    <div class="page-desc">Respuestas a las dudas más comunes sobre el enfoque globalizado y su aplicación en el aula</div>
+  </div>
+  <div class="page-content">
+
+    <div class="faq-intro">
+      <div class="faq-intro-icon">💡</div>
+      <div class="faq-intro-texto">
+        <strong>¿Tienes dudas sobre el enfoque?</strong> Aquí encontrarás respuestas directas a las preguntas que más hacen los docentes al acercarse por primera vez a la alfabetización globalizada. Haz clic en cualquier pregunta para desplegarla.
+      </div>
+    </div>
+
+    <div class="faq-cats">
+      <div class="faq-cat on" data-cat="todas">Todas</div>
+      <div class="faq-cat" data-cat="Enfoque">El enfoque</div>
+      <div class="faq-cat" data-cat="Práctica">En el aula</div>
+      <div class="faq-cat" data-cat="Evaluación">Evaluación</div>
+      <div class="faq-cat" data-cat="Familias">Familias</div>
+      <div class="faq-cat" data-cat="Dudas">Dudas comunes</div>
+    </div>
+
+    <div class="faq-lista" id="faqLista"></div>
+
+  </div>
+</section>
+
 <!-- ══ ACERCA ════════════════════════════════════ -->
 <section id="acerca" class="seccion">
   <div class="page-header">
@@ -1503,6 +2003,9 @@ footer {
     <a href="#" onclick="ir('videos',null)">Videos y tutoriales</a>
     <a href="#" onclick="ir('docentes',null)">Recursos para docentes</a>
     <a href="#" onclick="ir('familias',null)">Recursos para familias</a>
+    <a href="#" onclick="ir('glosario',null)">Glosario</a>
+    <a href="#" onclick="ir('faq',null)">Preguntas frecuentes</a>
+    <a href="#" onclick="ir('timeline',null)">Historia del enfoque</a>
   </div>
   <div class="footer-col">
     <h4>Sobre el sitio</h4>
@@ -1982,6 +2485,486 @@ const statsObs = new IntersectionObserver((entries) => {
 
 const statsBar = document.querySelector('.stats-bar');
 if (statsBar) statsObs.observe(statsBar);
+
+// ── BOTÓN COMPARTIR ──────────────────────────────────────────────────────────
+
+// Crear toast global
+const toast = document.createElement('div');
+toast.className = 'toast';
+toast.id = 'shareToast';
+document.body.appendChild(toast);
+
+let toastTimer;
+function mostrarToast(msg) {
+  clearTimeout(toastTimer);
+  toast.innerHTML = msg;
+  toast.classList.add('visible');
+  toastTimer = setTimeout(() => toast.classList.remove('visible'), 2600);
+}
+
+function copiarEnlace(url, btn) {
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = '✓';
+    btn.classList.add('copiado');
+    mostrarToast('✓ &nbsp;¡Enlace copiado! Listo para compartir por WhatsApp o correo.');
+    setTimeout(() => {
+      btn.textContent = '🔗';
+      btn.classList.remove('copiado');
+    }, 2000);
+  }).catch(() => {
+    // Fallback para navegadores sin clipboard API
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    mostrarToast('✓ &nbsp;¡Enlace copiado!');
+  });
+}
+
+// Envolver cada btn-descargar con el contenedor tarjeta-acciones + btn-compartir
+document.querySelectorAll('a.btn-descargar').forEach(btn => {
+  // Evitar duplicados
+  if (btn.closest('.tarjeta-acciones')) return;
+
+  const url  = btn.href;
+  const wrap = document.createElement('div');
+  wrap.className = 'tarjeta-acciones';
+
+  const shareBtn = document.createElement('button');
+  shareBtn.className = 'btn-compartir';
+  shareBtn.textContent = '🔗';
+  shareBtn.title = 'Copiar enlace para compartir';
+  shareBtn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    copiarEnlace(url, shareBtn);
+  });
+
+  btn.parentNode.insertBefore(wrap, btn);
+  wrap.appendChild(btn);
+  wrap.appendChild(shareBtn);
+});
+
+// ── GLOSARIO ─────────────────────────────────────────────────────────────────
+const TERMINOS = [
+  { letra:'A', nombre:'Ambiente letrado', tema:'Práctica docente', icono:'🏫', bgColor:'#E8F5EC', tagColor:'#2D5B3F', tagBg:'#E8F5EC',
+    def:'Conjunto de textos escritos presentes en el entorno del aula y la escuela que rodean al niño de manera natural: carteles, calendarios, listas de asistencia, títulos de libros, etiquetas. Su propuesta es que el niño viva inmerso en la cultura escrita antes de aprender a leer formalmente.',
+    ejemplo:'<strong>En el aula:</strong> tener el nombre de cada niño visible en su lugar, una pared con los días de la semana, un mural de palabras del entorno cercano.' },
+  { letra:'A', nombre:'Alfabetización inicial', tema:'Constructivismo', icono:'✏️', bgColor:'#EEF3FC', tagColor:'#1A4A8C', tagBg:'#EEF3FC',
+    def:'Proceso mediante el cual los niños se apropian del sistema de escritura y sus usos sociales. Desde el enfoque constructivista no se trata solo de "aprender las letras", sino de comprender cómo funciona la lengua escrita como sistema de representación.',
+    ejemplo:'<strong>Ejemplo:</strong> un niño en nivel silábico que escribe "AO" para "gato" no está equivocado; está en un momento específico de su construcción del sistema.' },
+  { letra:'C', nombre:'Centros de interés', tema:'Enfoque global', icono:'🌐', bgColor:'#FEF3E8', tagColor:'#8C4A10', tagBg:'#FEF3E8',
+    def:'Concepto clave de Ovide Decroly. Son los núcleos temáticos organizadores del aprendizaje, elegidos a partir de las necesidades e intereses reales del niño: alimentación, protección, trabajo, juego. Las palabras que se trabajan nacen de estos centros y tienen sentido real para el aprendiz.',
+    ejemplo:'<strong>En la práctica:</strong> si el centro de interés es "la familia", las palabras globales serán mamá, papá, hermano, casa, nombres propios del grupo.' },
+  { letra:'C', nombre:'Conciencia fonológica', tema:'Práctica docente', icono:'👂', bgColor:'#F3EEF8', tagColor:'#5A2A8C', tagBg:'#F3EEF8',
+    def:'Capacidad para reflexionar sobre los sonidos del lenguaje oral: identificar rimas, separar sílabas, reconocer el sonido inicial de una palabra. Es diferente al conocimiento fonético (reconocer letras) y se desarrolla gradualmente antes y durante el aprendizaje de la lectura.',
+    ejemplo:'<strong>Actividad:</strong> "¿Qué palabras riman con SOL? ¿Con cuántos golpes de mano digo MA-RI-PO-SA?"' },
+  { letra:'C', nombre:'Conflicto cognitivo', tema:'Constructivismo', icono:'⚡', bgColor:'#FEF3E8', tagColor:'#8C4A10', tagBg:'#FEF3E8',
+    def:'Situación en que el niño enfrenta una contradicción entre su hipótesis actual y la realidad del sistema de escritura. Es el motor del aprendizaje constructivista: la inestabilidad cognitiva obliga al niño a revisar y reconstruir su comprensión.',
+    ejemplo:'<strong>Ejemplo clásico:</strong> un niño en nivel silábico escribe "IO" para "OSO". Al notar que su escritura no se parece a lo que ve escrito en los libros, enfrenta un conflicto que lo impulsa a avanzar.' },
+  { letra:'E', nombre:'Escritura espontánea', tema:'Psicogénesis', icono:'📝', bgColor:'#E8F5EC', tagColor:'#2D5B3F', tagBg:'#E8F5EC',
+    def:'Producción escrita que el niño realiza sin que el adulto le dicte letra por letra. Permite observar qué hipótesis tiene el niño sobre el sistema de escritura. Es una herramienta diagnóstica y pedagógica central en el enfoque constructivista.',
+    ejemplo:'<strong>Consigna diagnóstica:</strong> "Escribe como tú puedas los nombres de estos animales" (mostrando imágenes). La forma en que el niño escribe revela su nivel psicogenético.' },
+  { letra:'E', nombre:'Evaluación psicogenética', tema:'Evaluación', icono:'📊', bgColor:'#EEF3FC', tagColor:'#1A4A8C', tagBg:'#EEF3FC',
+    def:'Diagnóstico cualitativo que permite identificar el nivel de conceptualización de la escritura de cada alumno. Se realiza pidiendo al niño que escriba espontáneamente una lista de palabras y que intente leer lo que escribió. No es una prueba de éxito o fracaso.',
+    ejemplo:'<strong>Palabras frecuentes:</strong> se pide escribir 4 palabras de diferente longitud (ej: sol, gato, mariposa, computadora) y una oración. La lectura posterior es tan informativa como la escritura.' },
+  { letra:'G', nombre:'Globalización', tema:'Enfoque global', icono:'🔭', bgColor:'#EEF3FC', tagColor:'#1A4A8C', tagBg:'#EEF3FC',
+    def:'Principio pedagógico de Decroly que establece que el aprendizaje parte del todo hacia las partes. El niño percibe y comprende primero la unidad global (la palabra, la frase) antes de analizar sus componentes (sílabas, letras). Opuesto al método sintético que empieza por las letras.',
+    ejemplo:'<strong>Aplicación:</strong> presentar primero la palabra MARIPOSA completa con imagen, antes de descomponerla en sílabas o letras. El significado precede al análisis.' },
+  { letra:'H', nombre:'Hipótesis presilábica', tema:'Psicogénesis', icono:'🔬', bgColor:'#FFF3F3', tagColor:'#8C1A1A', tagBg:'#FFF3F3',
+    def:'Etapa inicial en que el niño no establece aún relación entre escritura y sonidos. Usa grafías variadas sin correspondencia sonora sistemática. Cree que la escritura es una representación icónica del objeto.',
+    ejemplo:'<strong>Ejemplo:</strong> escribe "OAMT" para cualquier palabra, o usa seudoletras. Puede distinguir entre "dibujo" y "escritura" pero no controla el valor sonoro.' },
+  { letra:'H', nombre:'Hipótesis silábica', tema:'Psicogénesis', icono:'🔬', bgColor:'#FFF3F3', tagColor:'#8C1A1A', tagBg:'#FFF3F3',
+    def:'Momento en el desarrollo psicogenético en que el niño establece una correspondencia entre cada sílaba oral y una grafía escrita. Escribe una letra por cada sílaba pronunciada.',
+    ejemplo:'<strong>Ejemplo:</strong> escribe "AO" para "gato" (ga=A, to=O) o "POA" para "pelota".' },
+  { letra:'H', nombre:'Hipótesis silábico-alfabética', tema:'Psicogénesis', icono:'🔬', bgColor:'#FFF3F3', tagColor:'#8C1A1A', tagBg:'#FFF3F3',
+    def:'Nivel de transición entre la hipótesis silábica y la alfabética. El niño alterna entre asignar una letra a una sílaba y asignar una letra a un fonema dentro de la misma escritura.',
+    ejemplo:'<strong>Ejemplo:</strong> escribe "POSA" para "mariposa" mezclando correspondencias silábicas y alfabéticas en la misma palabra.' },
+  { letra:'H', nombre:'Hipótesis alfabética', tema:'Psicogénesis', icono:'🔬', bgColor:'#FFF3F3', tagColor:'#8C1A1A', tagBg:'#FFF3F3',
+    def:'Nivel más avanzado donde el niño comprende que cada grafía representa un sonido (fonema). Empieza a escribir con correspondencia sonora sistemática, aunque aún puede cometer errores ortográficos.',
+    ejemplo:'<strong>Ejemplo:</strong> escribe "GATO" o "CAZA" por "casa". Ya domina el principio alfabético pero no todas las convenciones ortográficas.' },
+  { letra:'M', nombre:'Método global (ideo-visual)', tema:'Enfoque global', icono:'👁️', bgColor:'#E8F5EC', tagColor:'#2D5B3F', tagBg:'#E8F5EC',
+    def:'Propuesta de Decroly para enseñar a leer partiendo de palabras completas con significado. El niño reconoce visualmente la palabra como imagen antes de analizarla.',
+    ejemplo:'<strong>Secuencia:</strong> 1) presentar la palabra con imagen, 2) reconocimiento global repetido, 3) comparación entre palabras, 4) análisis de partes.' },
+  { letra:'N', nombre:'Niveles psicogenéticos', tema:'Psicogénesis', icono:'📊', bgColor:'#F3EEF8', tagColor:'#5A2A8C', tagBg:'#F3EEF8',
+    def:'Etapas de construcción del sistema de escritura descritas por Ferreiro y Teberosky: presilábico, silábico, silábico-alfabético y alfabético. No son edades fijas ni escalones rígidos, sino momentos cualitativos del pensamiento.',
+    ejemplo:'<strong>Para el docente:</strong> identificar el nivel de cada alumno permite proponer actividades con el conflicto cognitivo adecuado, ni demasiado fáciles ni imposibles.' },
+  { letra:'P', nombre:'Palabra generadora', tema:'Enfoque global', icono:'💬', bgColor:'#EEF3FC', tagColor:'#1A4A8C', tagBg:'#EEF3FC',
+    def:'Palabra de alta significación para el grupo que sirve como punto de partida para el trabajo de alfabetización. Debe ser significativa, fonéticamente rica y vinculada a la experiencia del niño.',
+    ejemplo:'<strong>Ejemplo:</strong> a partir de "FAMILIA" pueden surgir: mamá, papá, hermanos, y por recombinación: "fama", "lima", "lama".' },
+  { letra:'P', nombre:'Psicogénesis de la lengua escrita', tema:'Psicogénesis', icono:'🧠', bgColor:'#FEF3E8', tagColor:'#8C4A10', tagBg:'#FEF3E8',
+    def:'Teoría de Ferreiro y Teberosky (1979) que describe cómo los niños construyen activamente el conocimiento sobre la escritura. El niño no es receptor pasivo: formula hipótesis, las prueba y las reconstruye.',
+    ejemplo:'<strong>Implicación pedagógica:</strong> el error del niño es una ventana a su pensamiento, no un fracaso. El docente debe leer esos errores para ajustar la enseñanza.' },
+  { letra:'S', nombre:'Secuencia didáctica', tema:'Práctica docente', icono:'📋', bgColor:'#E8F5EC', tagColor:'#2D5B3F', tagBg:'#E8F5EC',
+    def:'Serie de actividades articuladas con un propósito pedagógico claro, diseñadas para llevarse a cabo en varias sesiones. Parte de una situación comunicativa real y lleva al niño desde el reconocimiento global hasta el análisis y la producción.',
+    ejemplo:'<strong>Estructura típica:</strong> sesión 1: presentación global / sesión 2: comparación y análisis / sesión 3: síntesis y aplicación en producción propia.' },
+  { letra:'T', nombre:'Texto significativo', tema:'Constructivismo', icono:'📄', bgColor:'#EEF3FC', tagColor:'#1A4A8C', tagBg:'#EEF3FC',
+    def:'Texto con propósito comunicativo real: listas, cartas, cuentos, noticias, recetas. Aprender a través de textos sin función comunicativa (sílabas sin sentido) dificulta la comprensión del para qué de la escritura.',
+    ejemplo:'<strong>En práctica:</strong> escribir una carta real para los padres, leer el menú del comedor, crear el reglamento del salón. El texto tiene destinatario y propósito reales.' },
+  { letra:'V', nombre:'Valor sonoro convencional', tema:'Psicogénesis', icono:'🔤', bgColor:'#F3EEF8', tagColor:'#5A2A8C', tagBg:'#F3EEF8',
+    def:'Conocimiento de la correspondencia entre grafema y fonema establecida culturalmente. El niño en nivel alfabético ya comprende el principio, pero debe apropiarse de las convenciones ortográficas del sistema.',
+    ejemplo:'<strong>Ejemplo:</strong> saber que "B" representa el sonido /b/ es el valor sonoro convencional. Saber que "vaca" se escribe con "v" es una convención ortográfica adicional.' },
+  { letra:'Z', nombre:'Zona de desarrollo próximo (ZDP)', tema:'Constructivismo', icono:'🚀', bgColor:'#E8F5EC', tagColor:'#2D5B3F', tagBg:'#E8F5EC',
+    def:'Concepto de Vygotsky. Distancia entre lo que el niño puede hacer solo y lo que puede hacer con ayuda. La enseñanza eficaz ocurre en esa zona: ni tan fácil que no represente reto, ni tan difícil que sea inaccesible.',
+    ejemplo:'<strong>En alfabetización:</strong> un niño silábico puede avanzar con situaciones que le generen conflicto cognitivo: escribir con otra persona, comparar su escritura con la convencional.' },
+];
+
+const glosarioLista  = document.getElementById('glosarioLista');
+const alfaWrap       = document.getElementById('alfaWrap');
+const glosarioBusca  = document.getElementById('glosarioBusca');
+let filtroLetra = 'todas', filtroTema = 'todos', filtroBusca2 = '';
+
+const letrasDisponibles = [...new Set(TERMINOS.map(t => t.letra))].sort();
+['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'].forEach(l => {
+  const btn = document.createElement('button');
+  btn.className = 'alfa-btn';
+  btn.textContent = l;
+  if (!letrasDisponibles.includes(l)) btn.disabled = true;
+  btn.addEventListener('click', () => {
+    filtroLetra = filtroLetra === l ? 'todas' : l;
+    document.querySelectorAll('.alfa-btn').forEach(b => b.classList.toggle('on', b.textContent === filtroLetra));
+    renderGlosario();
+  });
+  alfaWrap.appendChild(btn);
+});
+
+document.querySelectorAll('.g-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.g-chip').forEach(c => c.classList.remove('on'));
+    chip.classList.add('on');
+    filtroTema = chip.dataset.tema;
+    renderGlosario();
+  });
+});
+
+if (glosarioBusca) {
+  glosarioBusca.addEventListener('input', () => {
+    filtroBusca2 = glosarioBusca.value.trim().toLowerCase();
+    renderGlosario();
+  });
+}
+
+function highlightG(text, q) {
+  if (!q) return text;
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  return text.replace(re, '<mark style="background:#FFF3A3;border-radius:2px;padding:0 2px;">$1</mark>');
+}
+
+function renderGlosario() {
+  if (!glosarioLista) return;
+  const lista = TERMINOS.filter(t => {
+    const letraOk = filtroLetra === 'todas' || t.letra === filtroLetra;
+    const temaOk  = filtroTema  === 'todos'  || t.tema  === filtroTema;
+    const buscaOk = !filtroBusca2 || t.nombre.toLowerCase().includes(filtroBusca2) || t.def.toLowerCase().includes(filtroBusca2);
+    return letraOk && temaOk && buscaOk;
+  });
+  if (lista.length === 0) {
+    glosarioLista.innerHTML = `<div class="glosario-vacio"><div class="glosario-vacio-icon">🔍</div>No hay términos que coincidan.<br><span style="font-size:12px;margin-top:6px;display:block;">Prueba con otro filtro o término.</span></div>`;
+    return;
+  }
+  const grupos = {};
+  lista.forEach(t => { if (!grupos[t.letra]) grupos[t.letra] = []; grupos[t.letra].push(t); });
+  glosarioLista.innerHTML = Object.keys(grupos).sort().map(letra => `
+    <div class="glosario-grupo">
+      <div class="glosario-letra">${letra} <span>${grupos[letra].length} término${grupos[letra].length !== 1 ? 's' : ''}</span></div>
+      ${grupos[letra].map(t => `
+        <div class="termino">
+          <div class="termino-header" onclick="this.closest('.termino').classList.toggle('abierto')">
+            <div class="termino-icono" style="background:${t.bgColor}">${t.icono}</div>
+            <div class="termino-nombre">${highlightG(t.nombre, filtroBusca2)}</div>
+            <div class="termino-tag" style="background:${t.tagBg};color:${t.tagColor}">${t.tema}</div>
+            <div class="termino-chevron">▼</div>
+          </div>
+          <div class="termino-cuerpo">
+            <div class="termino-def">${highlightG(t.def, filtroBusca2)}</div>
+            <div class="termino-ejemplo">${t.ejemplo}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+renderGlosario();
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+const FAQ = [
+  { cat:'Enfoque', num:'01',
+    pregunta:'¿En qué se diferencia el enfoque globalizado del método silábico?',
+    respuesta:`<p>El método silábico parte de las partes mínimas — letras y sílabas — para llegar a las palabras. El niño aprende primero "ma, me, mi, mo, mu" y luego combina para leer "mamá". El problema es que ese proceso puede tardar mucho en producir lectura con sentido real.</p>
+<p>El enfoque globalizado parte al revés: primero la <strong>palabra completa con significado</strong> (MAMÁ, CASA, MI NOMBRE). El niño reconoce y comprende antes de analizar. El análisis de sílabas y letras viene después, cuando el niño ya tiene una base de palabras reconocidas globalmente.</p>
+<p>La diferencia central es pedagógica y cognitiva: <strong>el significado precede al análisis</strong>, no al contrario.</p>` },
+
+  { cat:'Enfoque', num:'02',
+    pregunta:'¿El método global significa que nunca se enseñan las sílabas ni las letras?',
+    respuesta:`<p>No. Es un malentendido frecuente. El enfoque globalizado <strong>sí incluye el análisis</strong> de las palabras en sílabas y letras, pero en el momento adecuado del proceso y partiendo de palabras que el niño ya reconoce.</p>
+<p>La secuencia típica es: 1) presentación global de la palabra con imagen, 2) reconocimiento visual repetido, 3) comparación entre palabras para notar semejanzas y diferencias, 4) análisis de componentes (sílabas, letras), 5) síntesis: formación de nuevas palabras con esos componentes.</p>
+<p>El análisis silábico y fonético tiene lugar, pero <strong>nace del todo hacia las partes</strong>, no al revés.</p>` },
+
+  { cat:'Práctica', num:'03',
+    pregunta:'¿Cómo selecciono las palabras para trabajar con el grupo?',
+    respuesta:`<p>Las palabras deben cumplir tres criterios fundamentales:</p>
+<ul>
+  <li><strong>Significativas:</strong> que tengan carga afectiva o funcional para el niño. Los nombres propios, los nombres de su familia, palabras de su entorno cercano siempre funcionan.</li>
+  <li><strong>Fonéticamente ricas:</strong> que permitan luego generar otras palabras por análisis y recombinación de sus partes.</li>
+  <li><strong>Variadas en longitud y estructura:</strong> incluir palabras cortas y largas, con distintos grupos silábicos.</li>
+</ul>
+<p>Una buena estrategia es partir de los <strong>centros de interés</strong> del grupo (la familia, los animales, la escuela) y dejar que los propios niños propongan las palabras que quieren aprender.</p>`,
+    recurso:'💡 Recurso relacionado: El banco de palabras del salón — Actividades' },
+
+  { cat:'Práctica', num:'04',
+    pregunta:'¿Cuántas palabras globales debo trabajar antes de empezar el análisis?',
+    respuesta:`<p>No hay un número fijo, pero la mayoría de los enfoques sugieren <strong>entre 8 y 15 palabras</strong> antes de comenzar el análisis sistemático. Lo más importante no es la cantidad sino la calidad del reconocimiento: el niño debe reconocer las palabras de manera fluida y segura.</p>
+<p>Un indicador práctico: cuando el niño puede leer las tarjetas de su banco de palabras sin dudar, está listo para comenzar a comparar, analizar y recombinar.</p>
+<p>Recuerda que el análisis no se hace de golpe: va surgiendo de manera natural cuando el niño empieza a notar que "MAMÁ" y "MARIPOSA" empiezan igual.</p>` },
+
+  { cat:'Evaluación', num:'05',
+    pregunta:'¿Cómo evalúo el nivel psicogenético de mis alumnos?',
+    respuesta:`<p>La evaluación psicogenética se realiza con una <strong>situación de escritura espontánea</strong>: se le pide al niño que escriba como pueda una lista de 4 a 6 palabras de diferente longitud (sin dictado letra a letra) y una oración corta.</p>
+<p>Luego se le pide que <strong>lea lo que escribió</strong>, señalando con el dedo. Esta lectura es tan informativa como la escritura misma.</p>
+<p>Para interpretar los resultados, observa:</p>
+<ul>
+  <li>¿Usa grafías que parecen letras o solo garabatos?</li>
+  <li>¿Hay correspondencia entre lo que escribe y los sonidos?</li>
+  <li>¿Escribe una grafía por sílaba o intenta representar cada fonema?</li>
+  <li>¿La longitud de la escritura varía según la longitud de la palabra?</li>
+</ul>`,
+    recurso:'📥 Descarga: Guía de evaluación psicogenética — Materiales' },
+
+  { cat:'Evaluación', num:'06',
+    pregunta:'¿Cómo registro el avance de cada niño a lo largo del año?',
+    respuesta:`<p>Lo más práctico es llevar una <strong>carpeta o portafolio individual</strong> con muestras de escritura espontánea tomadas en momentos clave del año: inicio, mitad y final del ciclo. La comparación entre muestras muestra el avance de manera muy clara.</p>
+<p>Complementa con la lista de cotejo de escritura inicial, que permite registrar de manera rápida el nivel de cada alumno en un solo documento para todo el grupo.</p>
+<p>Recuerda que el avance no es lineal ni simultáneo: es completamente normal que en un mismo grupo coexistan niños en diferentes niveles psicogenéticos.</p>`,
+    recurso:'📥 Descarga: Lista de cotejo — escritura inicial — Materiales' },
+
+  { cat:'Dudas', num:'07',
+    pregunta:'¿El enfoque globalizado funciona con niños que tienen dificultades de aprendizaje?',
+    respuesta:`<p>Sí, y con frecuencia resulta especialmente beneficioso. Partir de palabras con significado personal reduce la ansiedad y el bloqueo que muchos niños con dificultades experimentan frente al aprendizaje de sílabas abstractas.</p>
+<p>El hecho de que <strong>cada niño aprende a su propio ritmo</strong> y de que el error se entiende como una etapa del proceso (no como fracaso) crea un ambiente más seguro para los niños que avanzan más lento.</p>
+<p>Para niños con necesidades específicas, la clave es ajustar la cantidad de palabras que se trabajan simultáneamente y asegurarse de que las palabras elegidas tengan una carga afectiva muy alta para ese niño en particular.</p>` },
+
+  { cat:'Dudas', num:'08',
+    pregunta:'¿Puedo combinar el enfoque globalizado con otros métodos?',
+    respuesta:`<p>El enfoque globalizado no es excluyente por naturaleza, pero combinarlo mal puede generar confusión en los niños. Lo más importante es mantener la <strong>coherencia pedagógica</strong>: no mezclar el inicio del proceso (partir de la palabra global) con el inicio del método silábico (partir de la sílaba).</p>
+<p>Sí es perfectamente compatible combinar el trabajo con palabras globales con actividades de conciencia fonológica (rimas, segmentación silábica oral) ya que estas no parten de la letra escrita sino del sonido oral.</p>
+<p>La psicogénesis tampoco es incompatible: puede usarse como marco evaluativo y el enfoque global como estrategia didáctica.</p>` },
+
+  { cat:'Dudas', num:'09',
+    pregunta:'¿Es lo mismo "método global" que "método constructivista"?',
+    respuesta:`<p>No exactamente, aunque se complementan. Son dos marcos con orígenes diferentes:</p>
+<ul>
+  <li>El <strong>método global</strong> (Decroly) es una propuesta didáctica concreta: cómo enseñar a leer partiendo de la palabra con sentido. Es un "cómo hacer".</li>
+  <li>El <strong>constructivismo</strong> (Ferreiro, Piaget, Vygotsky) es un marco psicológico sobre cómo aprenden los niños: construyendo activamente el conocimiento. Es un "cómo aprende el niño".</li>
+</ul>
+<p>En la práctica, muchos docentes combinan ambos: usan el método global como estrategia didáctica y el constructivismo (psicogénesis) como marco para entender y respetar el proceso del niño.</p>` },
+
+  { cat:'Familias', num:'10',
+    pregunta:'¿Cómo explico a las familias que no usamos el método silábico tradicional?',
+    respuesta:`<p>Esta es una de las conversaciones más importantes al inicio del ciclo. Algunas claves para esa charla:</p>
+<ul>
+  <li>Explica que el objetivo final es el mismo: que su hijo aprenda a leer y escribir bien. El camino es diferente.</li>
+  <li>Muéstrales ejemplos concretos de lo que el niño ya puede hacer: reconocer su nombre, el de sus compañeros, palabras del aula.</li>
+  <li>Anticipa que al inicio el niño puede no "deletrear" palabras nuevas, pero sí leer con sentido las que conoce globalmente.</li>
+  <li>Evita hablar de "métodos" en abstracto: habla de actividades concretas.</li>
+</ul>
+<p>Entregar la guía para familias puede ser un buen punto de partida para esta conversación.</p>`,
+    recurso:'📥 Descarga: Guía familias — lectura en voz alta — Familias' },
+
+  { cat:'Familias', num:'11',
+    pregunta:'¿Qué pueden hacer las familias en casa para apoyar el proceso?',
+    respuesta:`<p>Las familias no necesitan "enseñar a leer" en casa: eso puede generar confusión si usan estrategias distintas a las del aula. Lo que sí pueden hacer, con enorme impacto:</p>
+<ul>
+  <li><strong>Leer en voz alta</strong> todos los días, aunque sea 10 minutos. No importa qué leen: cuentos, recetas, noticias.</li>
+  <li><strong>Hablar sobre lo que leen:</strong> "¿Qué crees que va a pasar? ¿Por qué el personaje hizo eso?"</li>
+  <li>Jugar con las palabras: rimas, trabalenguas, adivinanzas. Desarrollan la conciencia fonológica sin esfuerzo.</li>
+  <li>Dejar que el niño vea que los adultos leen: que la lectura es una actividad cotidiana, no solo escolar.</li>
+</ul>`,
+    recurso:'📥 Descarga: Juegos de palabras en familia — Familias' },
+
+  { cat:'Práctica', num:'12',
+    pregunta:'¿Cómo organizo el tiempo en el aula para trabajar con el enfoque?',
+    respuesta:`<p>No existe una única manera, pero una distribución funcional para muchos docentes es:</p>
+<ul>
+  <li><strong>Momento de lectura compartida</strong> (10-15 min): leer juntos un texto significativo, canción, poema, cuento corto.</li>
+  <li><strong>Trabajo con palabras</strong> (15-20 min): presentación o revisión de palabras globales, juegos de reconocimiento, comparación.</li>
+  <li><strong>Escritura espontánea o guiada</strong> (15-20 min): producción propia de los niños en su nivel.</li>
+  <li><strong>Cierre y socialización</strong> (5-10 min): compartir producciones, reflexión breve del grupo.</li>
+</ul>
+<p>Lo más importante no es el tiempo exacto sino la <strong>regularidad diaria</strong> y que cada actividad tenga un propósito comunicativo real.</p>`,
+    recurso:'📥 Descarga: Formato de secuencia didáctica — Actividades' },
+];
+
+const faqLista = document.getElementById('faqLista');
+let filtroCat = 'todas';
+
+document.querySelectorAll('.faq-cat').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.faq-cat').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    filtroCat = btn.dataset.cat;
+    renderFaq();
+  });
+});
+
+function renderFaq() {
+  if (!faqLista) return;
+  const lista = FAQ.filter(f => filtroCat === 'todas' || f.cat === filtroCat);
+  if (lista.length === 0) {
+    faqLista.innerHTML = `<div class="faq-vacio">No hay preguntas en esta categoría todavía.</div>`;
+    return;
+  }
+  faqLista.innerHTML = lista.map((f, i) => `
+    <div class="faq-item" id="faq-${f.num}">
+      <div class="faq-pregunta" onclick="this.closest('.faq-item').classList.toggle('abierto')">
+        <div class="faq-num">${f.num}</div>
+        <div class="faq-texto-pregunta">${f.pregunta}</div>
+        <div class="faq-chevron">▼</div>
+      </div>
+      <div class="faq-respuesta">
+        ${f.respuesta}
+        ${f.recurso ? `<div class="faq-recurso">📎 &nbsp;${f.recurso}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+renderFaq();
+
+// ── LÍNEA DEL TIEMPO ─────────────────────────────────────────────────────────
+const HITOS = [
+  { año:'1907', era:'Orígenes', icono:'🌱', bgColor:'#E8F5EC', eraColor:'#2D5B3F', eraBg:'#E8F5EC',
+    titulo:'Ovide Decroly y los Centros de Interés',
+    subtitulo:'Bruselas, Bélgica',
+    detalle:'El médico y pedagogo belga Ovide Decroly funda su escuela "L\'Ermitage" en Bruselas y desarrolla su método ideo-visual. Plantea que el aprendizaje debe partir de los intereses naturales del niño, organizados en centros de interés: alimentación, protección, trabajo, juego. La palabra con sentido —no la sílaba— es la unidad mínima de enseñanza.',
+    dato:'<strong>Principio central:</strong> "El niño percibe globalmente antes de analizar las partes. La globalización no es un método, es una ley psicológica del desarrollo infantil."' },
+
+  { año:'1921', era:'Orígenes', icono:'📖', bgColor:'#E8F5EC', eraColor:'#2D5B3F', eraBg:'#E8F5EC',
+    titulo:'Publicación de "L\'Étude des Anormaux"',
+    subtitulo:'Decroly sistematiza su método',
+    detalle:'Decroly publica sus fundamentos teóricos y pedagógicos del método global de lectura. Describe la globalización como principio psicológico: el cerebro humano percibe totalidades antes que partes. Este trabajo influirá en generaciones de pedagogos europeos y latinoamericanos.',
+    dato:'<strong>Legado:</strong> el método de Decroly llegará a México a través de las misiones pedagógicas y las reformas educativas de los años 30-40.' },
+
+  { año:'1934', era:'Expansión', icono:'🌍', bgColor:'#EEF3FC', eraColor:'#1A4A8C', eraBg:'#EEF3FC',
+    titulo:'Muerte de Decroly y expansión internacional',
+    subtitulo:'El método se extiende a América Latina',
+    detalle:'Tras la muerte de Decroly, su método ya se practica en escuelas de varios países latinoamericanos. En México, el movimiento vasconcelista y las misiones culturales habían introducido ideas pedagógicas renovadoras que encontraron resonancia con el enfoque globalizado.',
+    dato:'<strong>En México:</strong> las ideas de Decroly confluyen con la educación socialista del cardenismo y la búsqueda de métodos que conecten la escuela con la vida real del niño.' },
+
+  { año:'1955', era:'Expansión', icono:'🏫', bgColor:'#EEF3FC', eraColor:'#1A4A8C', eraBg:'#EEF3FC',
+    titulo:'Jean Piaget y la epistemología genética',
+    subtitulo:'Ginebra, Suiza',
+    detalle:'Aunque Piaget no se dedicó directamente a la alfabetización, su teoría del desarrollo cognitivo por estadios y el concepto de construcción activa del conocimiento proveen el marco teórico que luego Ferreiro y Teberosky aplicarán específicamente a la lengua escrita.',
+    dato:'<strong>Aporte clave:</strong> el niño no es un receptor pasivo; construye el conocimiento a través de la acción y el conflicto cognitivo. Esta idea transforma radicalmente la pedagogía de la lectura.' },
+
+  { año:'1970', era:'Psicogénesis', icono:'🧠', bgColor:'#FEF3E8', eraColor:'#8C4A10', eraBg:'#FEF3E8',
+    titulo:'Emilia Ferreiro inicia sus investigaciones',
+    subtitulo:'Buenos Aires y Ginebra',
+    detalle:'La investigadora argentina Emilia Ferreiro, discípula de Piaget, comienza sus estudios sobre cómo los niños construyen el conocimiento de la lengua escrita. Trabaja con niños de sectores populares en Argentina y con Ana Teberosky desarrolla la teoría de la psicogénesis de la lengua escrita.',
+    dato:'<strong>Pregunta central de su investigación:</strong> ¿Qué sabe el niño sobre la escritura antes de que la escuela le enseñe? La respuesta cambió la pedagogía latinoamericana.' },
+
+  { año:'1979', era:'Psicogénesis', icono:'📚', bgColor:'#FEF3E8', eraColor:'#8C4A10', eraBg:'#FEF3E8',
+    titulo:'"Los sistemas de escritura en el desarrollo del niño"',
+    subtitulo:'Ferreiro y Teberosky — Obra fundacional',
+    detalle:'Emilia Ferreiro y Ana Teberosky publican su obra fundacional que describe los niveles psicogenéticos: presilábico, silábico, silábico-alfabético y alfabético. Demuestran que los niños no aprenden la escritura de la nada: construyen hipótesis progresivas y coherentes sobre cómo funciona el sistema.',
+    dato:'<strong>Impacto:</strong> esta obra se convierte en referencia obligatoria para la formación docente en toda América Latina y transforma los enfoques curriculares de la región.' },
+
+  { año:'1984', era:'Psicogénesis', icono:'🔬', bgColor:'#FEF3E8', eraColor:'#8C4A10', eraBg:'#FEF3E8',
+    titulo:'"Nuevas perspectivas sobre los procesos de lectura y escritura"',
+    subtitulo:'Ferreiro — Expansión de la teoría',
+    detalle:'Ferreiro profundiza en las implicaciones didácticas de la psicogénesis y establece el diálogo entre la investigación psicológica y la práctica pedagógica. Sus ideas comienzan a permear los planes de estudio de México, Argentina, Brasil y otros países.',
+    dato:'<strong>Avance:</strong> se consolida la idea de que el "error" del niño es información valiosa para el docente, no un fracaso a corregir mediante repetición mecánica.' },
+
+  { año:'1993', era:'México', icono:'🇲🇽', bgColor:'#F3EEF8', eraColor:'#5A2A8C', eraBg:'#F3EEF8',
+    titulo:'Reforma curricular de educación básica en México',
+    subtitulo:'SEP México — Integración constructivista',
+    detalle:'La Secretaría de Educación Pública de México emprende una reforma curricular que integra formalmente el enfoque constructivista a los planes y programas de primaria. Los libros de texto gratuitos se rediseñan con propuestas que reconocen los niveles psicogenéticos y proponen situaciones de escritura significativa.',
+    dato:'<strong>Cambio concreto:</strong> se abandona oficialmente la cartilla silábica como único recurso y se promueve el trabajo con textos completos y situaciones comunicativas reales desde el primer grado.' },
+
+  { año:'2000', era:'México', icono:'📋', bgColor:'#F3EEF8', eraColor:'#5A2A8C', eraBg:'#F3EEF8',
+    titulo:'Consolidación del enfoque en formación docente',
+    subtitulo:'Escuelas Normales y actualización magisterial',
+    detalle:'Durante los años 2000 el enfoque constructivista y el conocimiento de la psicogénesis se consolidan como contenidos obligatorios en la formación inicial de docentes en las Escuelas Normales mexicanas. Se producen materiales de actualización para maestros en servicio.',
+    dato:'<strong>Tensión persistente:</strong> aunque el enfoque oficial es constructivista, muchos docentes en aula continúan usando el método silábico por tradición familiar o por sentirse más seguros con él.' },
+
+  { año:'2009', era:'México', icono:'📘', bgColor:'#F3EEF8', eraColor:'#5A2A8C', eraBg:'#F3EEF8',
+    titulo:'Reforma integral de educación básica (RIEB)',
+    subtitulo:'SEP México',
+    detalle:'La RIEB reenfoca los planes de estudio hacia el desarrollo de competencias. En lengua, el énfasis en prácticas sociales del lenguaje refuerza la idea de que leer y escribir deben tener propósito comunicativo real. Se fortalece la perspectiva de que la alfabetización es un proceso social, no solo cognitivo.',
+    dato:'<strong>Nuevo énfasis:</strong> el concepto de "prácticas sociales del lenguaje" integra la dimensión cultural y social a la alfabetización, complementando el enfoque psicogenético.' },
+
+  { año:'2017', era:'Actual', icono:'🌟', bgColor:'#FFF3F3', eraColor:'#8C1A1A', eraBg:'#FFF3F3',
+    titulo:'Nuevo Modelo Educativo — Aprendizajes Clave',
+    subtitulo:'SEP México',
+    detalle:'La SEP publica el Nuevo Modelo Educativo con el documento "Aprendizajes Clave para la educación integral". El enfoque comunicativo y funcional de la lengua se mantiene, con énfasis en situaciones de aprendizaje significativas, trabajo por proyectos y respeto a los ritmos individuales de los niños.',
+    dato:'<strong>Para la alfabetización:</strong> se reafirma que el docente debe conocer el proceso de construcción de la escritura de cada niño para diseñar intervenciones adecuadas a su nivel de conceptualización.' },
+
+  { año:'2022', era:'Actual', icono:'📗', bgColor:'#FFF3F3', eraColor:'#8C1A1A', eraBg:'#FFF3F3',
+    titulo:'Nueva Escuela Mexicana — Plan de Estudios 2022',
+    subtitulo:'SEP México — Reforma más reciente',
+    detalle:'La SEP presenta el Plan de Estudios 2022 con el marco curricular de la Nueva Escuela Mexicana. Se reorganizan los contenidos en Fases (en lugar de grados) y se promueven los proyectos comunitarios como eje articulador. El enfoque globalizador cobra nueva relevancia al integrar las asignaturas en torno a situaciones reales.',
+    dato:'<strong>Fase 3 (1° y 2° primaria):</strong> el documento curricular específico "La enseñanza y el aprendizaje de la lectura y escritura" orienta la alfabetización inicial con principios directamente vinculados al enfoque globalizado.' },
+
+  { año:'Hoy', era:'Actual', icono:'🚀', bgColor:'#FFF3F3', eraColor:'#8C1A1A', eraBg:'#FFF3F3',
+    titulo:'Alfainicio — Recursos para el aula mexicana',
+    subtitulo:'Confluencia de más de 100 años de pedagogía',
+    detalle:'Alfainicio recoge más de un siglo de investigación y práctica pedagógica para ofrecer recursos concretos y accesibles a docentes mexicanos. El enfoque globalizado, la psicogénesis de Ferreiro y el currículo vigente confluyen en materiales diseñados para el aula real, con las condiciones y el contexto del sistema educativo mexicano.',
+    dato:'<strong>Propósito:</strong> acercar la teoría a la práctica cotidiana del aula, con recursos descargables, secuencias concretas y herramientas de evaluación accesibles para cualquier docente.' },
+];
+
+const tlEras   = document.getElementById('tlEras');
+const tlAxis   = document.getElementById('timelineAxis');
+let eraActiva  = 'todas';
+
+const ERAS = ['todas', 'Orígenes', 'Expansión', 'Psicogénesis', 'México', 'Actual'];
+const ERA_LABELS = { todas:'Todas las eras', Orígenes:'Orígenes (1907–1934)', Expansión:'Expansión (1934–1960)', Psicogénesis:'Psicogénesis (1970–1990)', México:'México (1993–2017)', Actual:'Actualidad' };
+
+if (tlEras) {
+  ERAS.forEach(era => {
+    const btn = document.createElement('div');
+    btn.className = 'tl-era-btn' + (era === 'todas' ? ' on' : '');
+    btn.textContent = ERA_LABELS[era] || era;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tl-era-btn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      eraActiva = era;
+      renderTimeline();
+    });
+    tlEras.appendChild(btn);
+  });
+}
+
+function renderTimeline() {
+  if (!tlAxis) return;
+  const lista = HITOS.filter(h => eraActiva === 'todas' || h.era === eraActiva);
+  tlAxis.innerHTML = lista.map((h, i) => `
+    <div class="tl-hito" style="animation-delay:${i * 60}ms" onclick="toggleHito(this)">
+      <div class="tl-hito-header">
+        <div class="tl-año">${h.año}</div>
+        <div class="tl-icono" style="background:${h.bgColor}">${h.icono}</div>
+        <div class="tl-info">
+          <div class="tl-titulo">${h.titulo}</div>
+          <div class="tl-subtitulo">${h.subtitulo}</div>
+        </div>
+        <div class="tl-era-badge" style="background:${h.eraBg};color:${h.eraColor}">${h.era}</div>
+        <div class="tl-chevron">▼</div>
+      </div>
+      <div class="tl-detalle">
+        <p class="tl-detalle-texto">${h.detalle}</p>
+        <div class="tl-detalle-dato">💡 &nbsp;${h.dato}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleHito(el) {
+  const yaAbierto = el.classList.contains('activo');
+  document.querySelectorAll('.tl-hito').forEach(h => h.classList.remove('activo'));
+  if (!yaAbierto) el.classList.add('activo');
+}
+
+renderTimeline();
 </script>
 </body>
 </html>
