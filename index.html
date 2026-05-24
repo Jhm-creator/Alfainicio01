@@ -321,6 +321,12 @@ nav a.activo { color: var(--azul-medio); background: var(--azul-palido); font-we
   height: 96px; display: flex; align-items: center; justify-content: center;
   font-size: 34px; position: relative; overflow: hidden;
 }
+.tarjeta-thumb svg { display: block; width: 100%; height: 96px; }
+.mat-thumb .mat-formato {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(0,0,0,.55); color: #fff; font-size: 10px;
+  padding: 3px 8px; border-radius: 5px; font-weight: 600; z-index: 2;
+}
 .tarjeta-body { padding: 18px; }
 .tarjeta-tipo {
   font-size: 11px; font-weight: 600; border-radius: 6px;
@@ -1165,7 +1171,25 @@ footer {
 
       <!-- 1. El banco de palabras del salón -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#E8F5EC;">📋</div>
+        <div class="tarjeta-thumb" style="background:#E8F5EC;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#E8F5EC"/>
+  <!-- Tarjetas de palabras -->
+  <rect x="20" y="18" width="70" height="40" rx="6" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="55" y="34" font-family="serif" font-size="9" fill="#2D5B3F" text-anchor="middle" font-weight="bold">MAMÁ</text>
+  <rect x="24" y="38" width="62" height="14" rx="3" fill="#E8F5EC"/>
+  <text x="55" y="48" font-family="sans-serif" font-size="7" fill="#4CAF79" text-anchor="middle">palabra propia</text>
+  <rect x="100" y="14" width="70" height="40" rx="6" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="135" y="30" font-family="serif" font-size="9" fill="#2D5B3F" text-anchor="middle" font-weight="bold">CASA</text>
+  <rect x="104" y="34" width="62" height="14" rx="3" fill="#E8F5EC"/>
+  <text x="135" y="44" font-family="sans-serif" font-size="7" fill="#4CAF79" text-anchor="middle">entorno</text>
+  <rect x="180" y="20" width="70" height="40" rx="6" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="215" y="36" font-family="serif" font-size="9" fill="#2D5B3F" text-anchor="middle" font-weight="bold">SOL</text>
+  <rect x="184" y="40" width="62" height="14" rx="3" fill="#E8F5EC"/>
+  <text x="215" y="50" font-family="sans-serif" font-size="7" fill="#4CAF79" text-anchor="middle">naturaleza</text>
+  <!-- línea banco -->
+  <rect x="12" y="68" width="276" height="3" rx="1.5" fill="#4CAF79" opacity=".3"/>
+  <text x="150" y="84" font-family="sans-serif" font-size="8" fill="#2D5B3F" text-anchor="middle" opacity=".7">Banco colectivo del salón</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Secuencia · 3 sesiones</span>
           <div class="tarjeta-titulo" data-grado="Preescolar">El banco de palabras del salón</div>
@@ -1177,7 +1201,35 @@ footer {
 
       <!-- 2. Lotería de palabras -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#EEF3FC;">🃏</div>
+        <div class="tarjeta-thumb" style="background:#EEF3FC;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#EEF3FC"/>
+  <!-- Tablero lotería -->
+  <rect x="20" y="10" width="80" height="76" rx="6" fill="#fff" stroke="#5B8FD4" stroke-width="1.5"/>
+  <line x1="20" y1="35" x2="100" y2="35" stroke="#EEF3FC" stroke-width="1"/>
+  <line x1="20" y1="60" x2="100" y2="60" stroke="#EEF3FC" stroke-width="1"/>
+  <line x1="47" y1="10" x2="47" y2="86" stroke="#EEF3FC" stroke-width="1"/>
+  <line x1="74" y1="10" x2="74" y2="86" stroke="#EEF3FC" stroke-width="1"/>
+  <text x="34" y="26" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">SOL</text>
+  <text x="61" y="26" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">MAR</text>
+  <text x="88" y="26" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">LUNA</text>
+  <text x="34" y="51" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">PATO</text>
+  <rect x="52" y="40" width="22" height="18" rx="2" fill="#EEF3FC"/>
+  <text x="63" y="51" font-family="serif" font-size="7" fill="#5B8FD4" text-anchor="middle">GATO</text>
+  <text x="88" y="51" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">PERA</text>
+  <text x="34" y="76" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">OJO</text>
+  <rect x="52" y="65" width="22" height="18" rx="2" fill="#5B8FD4" opacity=".2"/>
+  <text x="63" y="76" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">NUBE</text>
+  <text x="88" y="76" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">PINO</text>
+  <!-- Ficha -->
+  <circle cx="160" cy="30" r="18" fill="#5B8FD4" opacity=".15" stroke="#5B8FD4" stroke-width="1.5"/>
+  <text x="160" y="26" font-family="serif" font-size="8" fill="#1A4A8C" text-anchor="middle" font-weight="bold">GATO</text>
+  <text x="160" y="36" font-family="sans-serif" font-size="18" text-anchor="middle">🐱</text>
+  <!-- fichas apiladas -->
+  <circle cx="220" cy="48" r="14" fill="#5B8FD4" opacity=".25"/>
+  <circle cx="240" cy="44" r="14" fill="#5B8FD4" opacity=".3"/>
+  <circle cx="260" cy="50" r="14" fill="#5B8FD4" opacity=".35"/>
+  <text x="240" y="82" font-family="sans-serif" font-size="8" fill="#1A4A8C" text-anchor="middle" opacity=".7">¡Lotería de palabras!</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Actividad · 1 sesión</span>
           <div class="tarjeta-titulo" data-grado="1° primaria">Lotería de palabras con sentido</div>
@@ -1189,7 +1241,30 @@ footer {
 
       <!-- 3. Álbum de palabras propias -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#FEF3E8;">📖</div>
+        <div class="tarjeta-thumb" style="background:#FEF3E8;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FEF3E8"/>
+  <!-- Álbum abierto -->
+  <rect x="30" y="8" width="110" height="80" rx="4" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <rect x="30" y="8" width="55" height="80" rx="4" fill="#FFF9F2" stroke="#E08C3A" stroke-width="1.5"/>
+  <line x1="85" y1="8" x2="85" y2="88" stroke="#E08C3A" stroke-width="1" stroke-dasharray="3,2"/>
+  <!-- Página izquierda -->
+  <rect x="36" y="16" width="40" height="28" rx="3" fill="#FEF3E8"/>
+  <text x="56" y="34" font-family="sans-serif" font-size="18" text-anchor="middle">👦</text>
+  <text x="56" y="52" font-family="serif" font-size="8" fill="#8C4A10" text-anchor="middle" font-weight="bold">MI NOMBRE</text>
+  <text x="56" y="63" font-family="serif" font-size="7" fill="#8C4A10" text-anchor="middle">es especial</text>
+  <!-- Página derecha -->
+  <rect x="91" y="16" width="40" height="28" rx="3" fill="#FEF3E8"/>
+  <text x="111" y="34" font-family="sans-serif" font-size="18" text-anchor="middle">🏠</text>
+  <text x="111" y="52" font-family="serif" font-size="8" fill="#8C4A10" text-anchor="middle" font-weight="bold">MI CASA</text>
+  <text x="111" y="63" font-family="serif" font-size="7" fill="#8C4A10" text-anchor="middle">mi hogar</text>
+  <!-- Más álbumes apilados -->
+  <rect x="155" y="20" width="90" height="60" rx="4" fill="#fff" stroke="#E08C3A" stroke-width="1" opacity=".5"/>
+  <rect x="165" y="15" width="90" height="60" rx="4" fill="#fff" stroke="#E08C3A" stroke-width="1" opacity=".7"/>
+  <rect x="175" y="10" width="90" height="60" rx="4" fill="#FFF9F2" stroke="#E08C3A" stroke-width="1.5"/>
+  <text x="220" y="44" font-family="serif" font-size="9" fill="#8C4A10" text-anchor="middle" font-weight="bold">PALABRAS</text>
+  <text x="220" y="56" font-family="serif" font-size="8" fill="#E08C3A" text-anchor="middle">PROPIAS</text>
+  <text x="150" y="88" font-family="sans-serif" font-size="7.5" fill="#8C4A10" text-anchor="middle" opacity=".7">identidad · escritura · significado</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Secuencia · 5 sesiones</span>
           <div class="tarjeta-titulo" data-grado="Preescolar">Álbum de palabras propias</div>
@@ -1201,7 +1276,34 @@ footer {
 
       <!-- 4. Muro de palabras del entorno -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#F3EEF8;">🖼️</div>
+        <div class="tarjeta-thumb" style="background:#F3EEF8;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#F3EEF8"/>
+  <!-- Muro con tarjetas -->
+  <rect x="10" y="10" width="280" height="60" rx="4" fill="#E8E0F0" stroke="#9B59B6" stroke-width="1" opacity=".4"/>
+  <!-- Tarjetas pegadas -->
+  <rect x="18" y="16" width="48" height="28" rx="3" fill="#fff" stroke="#9B59B6" stroke-width="1"/>
+  <text x="42" y="28" font-family="serif" font-size="8" fill="#5A2A8C" text-anchor="middle" font-weight="bold">ESCUELA</text>
+  <text x="42" y="38" font-family="sans-serif" font-size="11" text-anchor="middle">🏫</text>
+  <rect x="74" y="16" width="48" height="28" rx="3" fill="#fff" stroke="#9B59B6" stroke-width="1"/>
+  <text x="98" y="28" font-family="serif" font-size="8" fill="#5A2A8C" text-anchor="middle" font-weight="bold">MERCADO</text>
+  <text x="98" y="38" font-family="sans-serif" font-size="11" text-anchor="middle">🛒</text>
+  <rect x="130" y="16" width="48" height="28" rx="3" fill="#fff" stroke="#9B59B6" stroke-width="1"/>
+  <text x="154" y="28" font-family="serif" font-size="8" fill="#5A2A8C" text-anchor="middle" font-weight="bold">PARQUE</text>
+  <text x="154" y="38" font-family="sans-serif" font-size="11" text-anchor="middle">🌳</text>
+  <rect x="186" y="16" width="48" height="28" rx="3" fill="#fff" stroke="#9B59B6" stroke-width="1"/>
+  <text x="210" y="28" font-family="serif" font-size="8" fill="#5A2A8C" text-anchor="middle" font-weight="bold">IGLESIA</text>
+  <text x="210" y="38" font-family="sans-serif" font-size="11" text-anchor="middle">⛪</text>
+  <rect x="242" y="16" width="40" height="28" rx="3" fill="#E8E0F0" stroke="#9B59B6" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="262" y="34" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#9B59B6">+</text>
+  <!-- Segunda fila -->
+  <rect x="18" y="50" width="48" height="14" rx="2" fill="#F3EEF8" stroke="#9B59B6" stroke-width=".8"/>
+  <text x="42" y="60" font-family="serif" font-size="7.5" fill="#5A2A8C" text-anchor="middle">FARMACIA</text>
+  <rect x="74" y="50" width="48" height="14" rx="2" fill="#F3EEF8" stroke="#9B59B6" stroke-width=".8"/>
+  <text x="98" y="60" font-family="serif" font-size="7.5" fill="#5A2A8C" text-anchor="middle">BIBLIOTECA</text>
+  <rect x="130" y="50" width="48" height="14" rx="2" fill="#F3EEF8" stroke="#9B59B6" stroke-width=".8"/>
+  <text x="154" y="60" font-family="serif" font-size="7.5" fill="#5A2A8C" text-anchor="middle">CANCHA</text>
+  <text x="150" y="84" font-family="sans-serif" font-size="7.5" fill="#5A2A8C" text-anchor="middle" opacity=".7">Palabras del entorno cotidiano</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Actividad · 1 sesión</span>
           <div class="tarjeta-titulo" data-grado="Preescolar">Muro de palabras del entorno</div>
@@ -1213,7 +1315,27 @@ footer {
 
       <!-- 5. Formato de secuencia didáctica -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#E8F5EC;">✏️</div>
+        <div class="tarjeta-thumb" style="background:#E8F5EC;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#E8F5EC"/>
+  <!-- Documento con formato -->
+  <rect x="30" y="8" width="100" height="80" rx="4" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <rect x="30" y="8" width="100" height="18" rx="4" fill="#4CAF79"/>
+  <text x="80" y="20" font-family="sans-serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="bold">SECUENCIA DIDÁCTICA</text>
+  <rect x="36" y="32" width="60" height="5" rx="2" fill="#E8F5EC"/>
+  <rect x="36" y="41" width="80" height="4" rx="2" fill="#F0F0F0"/>
+  <rect x="36" y="49" width="72" height="4" rx="2" fill="#F0F0F0"/>
+  <rect x="36" y="57" width="78" height="4" rx="2" fill="#F0F0F0"/>
+  <rect x="36" y="68" width="50" height="10" rx="3" fill="#E8F5EC" stroke="#4CAF79" stroke-width="1"/>
+  <text x="61" y="76" font-family="sans-serif" font-size="6.5" fill="#2D5B3F" text-anchor="middle">propósito</text>
+  <!-- Fases -->
+  <rect x="150" y="12" width="130" height="18" rx="4" fill="#4CAF79" opacity=".15"/>
+  <text x="215" y="24" font-family="sans-serif" font-size="8" fill="#2D5B3F" text-anchor="middle">① Presentación global</text>
+  <rect x="150" y="34" width="130" height="18" rx="4" fill="#4CAF79" opacity=".1"/>
+  <text x="215" y="46" font-family="sans-serif" font-size="8" fill="#2D5B3F" text-anchor="middle">② Análisis y comparación</text>
+  <rect x="150" y="56" width="130" height="18" rx="4" fill="#4CAF79" opacity=".15"/>
+  <text x="215" y="68" font-family="sans-serif" font-size="8" fill="#2D5B3F" text-anchor="middle">③ Síntesis y producción</text>
+  <text x="215" y="88" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" opacity=".6">Editable · Todos los grados</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Formato docente</span>
           <div class="tarjeta-titulo" data-grado="Todos">Formato de secuencia didáctica</div>
@@ -1225,7 +1347,29 @@ footer {
 
       <!-- 6. Cuentos con palabras clave -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#FFF3F3;">🎭</div>
+        <div class="tarjeta-thumb" style="background:#FFF3F3;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FFF3F3"/>
+  <!-- Libro abierto con cuento -->
+  <rect x="20" y="10" width="120" height="76" rx="5" fill="#fff" stroke="#C0505A" stroke-width="1.5"/>
+  <line x1="80" y1="10" x2="80" y2="86" stroke="#C0505A" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="50" y="26" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-style="italic">Había una vez</text>
+  <text x="50" y="38" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-style="italic">una</text>
+  <rect x="28" y="41" width="44" height="14" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="50" y="51" font-family="serif" font-size="8" fill="#C0505A" text-anchor="middle" font-weight="bold">MARIPOSA</text>
+  <text x="50" y="65" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-style="italic">que vivía en</text>
+  <rect x="28" y="68" width="44" height="14" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="50" y="78" font-family="serif" font-size="8" fill="#C0505A" text-anchor="middle" font-weight="bold">el BOSQUE</text>
+  <!-- Página derecha ilustración -->
+  <text x="110" y="55" font-family="sans-serif" font-size="30" text-anchor="middle">🦋</text>
+  <!-- Palabras flotando -->
+  <rect x="155" y="15" width="50" height="16" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="180" y="26" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-weight="bold">BOSQUE</text>
+  <rect x="215" y="35" width="60" height="16" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="245" y="46" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-weight="bold">MARIPOSA</text>
+  <rect x="160" y="58" width="46" height="16" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="183" y="69" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-weight="bold">FLOR</text>
+  <text x="215" y="88" font-family="sans-serif" font-size="7" fill="#8C1A1A" text-anchor="middle" opacity=".7">Narración con palabras clave</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Secuencia · 4 sesiones</span>
           <div class="tarjeta-titulo" data-grado="2° primaria">Cuentos con palabras clave</div>
@@ -1237,7 +1381,41 @@ footer {
 
       <!-- 7. Planeación anual -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#F3EEF8;">📅</div>
+        <div class="tarjeta-thumb" style="background:#F3EEF8;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#F3EEF8"/>
+  <!-- Calendario anual -->
+  <rect x="15" y="8" width="270" height="72" rx="5" fill="#fff" stroke="#9B59B6" stroke-width="1.5"/>
+  <rect x="15" y="8" width="270" height="16" rx="5" fill="#9B59B6"/>
+  <text x="150" y="19" font-family="sans-serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="bold">PLANEACIÓN ANUAL · 1° PRIMARIA</text>
+  <!-- Meses en grid -->
+  <g font-family="sans-serif" font-size="6.5" fill="#5A2A8C">
+    <rect x="20" y="28" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="40" y="37" text-anchor="middle">AGO</text>
+    <rect x="64" y="28" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="84" y="37" text-anchor="middle">SEP</text>
+    <rect x="108" y="28" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="128" y="37" text-anchor="middle">OCT</text>
+    <rect x="152" y="28" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="172" y="37" text-anchor="middle">NOV</text>
+    <rect x="196" y="28" width="40" height="14" rx="2" fill="#9B59B6" opacity=".3"/>
+    <text x="216" y="37" text-anchor="middle" fill="#4A0080">DIC</text>
+    <rect x="240" y="28" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="260" y="37" text-anchor="middle">ENE</text>
+    <rect x="20" y="46" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="40" y="55" text-anchor="middle">FEB</text>
+    <rect x="64" y="46" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="84" y="55" text-anchor="middle">MAR</text>
+    <rect x="108" y="46" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="128" y="55" text-anchor="middle">ABR</text>
+    <rect x="152" y="46" width="40" height="14" rx="2" fill="#9B59B6" opacity=".3"/>
+    <text x="172" y="55" text-anchor="middle" fill="#4A0080">MAY</text>
+    <rect x="196" y="46" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="216" y="55" text-anchor="middle">JUN</text>
+    <rect x="240" y="46" width="40" height="14" rx="2" fill="#F3EEF8"/>
+    <text x="260" y="55" text-anchor="middle">JUL</text>
+  </g>
+  <text x="150" y="88" font-family="sans-serif" font-size="7" fill="#5A2A8C" text-anchor="middle" opacity=".7">Ciclo escolar completo · Editable</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Planeación</span>
           <div class="tarjeta-titulo" data-grado="1° primaria">Planeación anual — Alfabetización globalizada</div>
@@ -1249,7 +1427,31 @@ footer {
 
       <!-- 8. Plan de sesión 4 momentos -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#E8F5EC;">📝</div>
+        <div class="tarjeta-thumb" style="background:#E8F5EC;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#E8F5EC"/>
+  <!-- 4 momentos como bloques -->
+  <rect x="10" y="12" width="62" height="52" rx="5" fill="#4CAF79" opacity=".15" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="41" y="30" font-family="sans-serif" font-size="20" text-anchor="middle">🌍</text>
+  <text x="41" y="46" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" font-weight="bold">GLOBAL</text>
+  <text x="41" y="56" font-family="sans-serif" font-size="6" fill="#2D5B3F" text-anchor="middle">Momento 1</text>
+  <rect x="80" y="12" width="62" height="52" rx="5" fill="#4CAF79" opacity=".25" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="111" y="30" font-family="sans-serif" font-size="20" text-anchor="middle">🔍</text>
+  <text x="111" y="46" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" font-weight="bold">ANÁLISIS</text>
+  <text x="111" y="56" font-family="sans-serif" font-size="6" fill="#2D5B3F" text-anchor="middle">Momento 2</text>
+  <rect x="150" y="12" width="62" height="52" rx="5" fill="#4CAF79" opacity=".35" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="181" y="30" font-family="sans-serif" font-size="20" text-anchor="middle">🧩</text>
+  <text x="181" y="46" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" font-weight="bold">SÍNTESIS</text>
+  <text x="181" y="56" font-family="sans-serif" font-size="6" fill="#2D5B3F" text-anchor="middle">Momento 3</text>
+  <rect x="220" y="12" width="70" height="52" rx="5" fill="#4CAF79" opacity=".5" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="255" y="30" font-family="sans-serif" font-size="20" text-anchor="middle">✏️</text>
+  <text x="255" y="46" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" font-weight="bold">APLICACIÓN</text>
+  <text x="255" y="56" font-family="sans-serif" font-size="6" fill="#2D5B3F" text-anchor="middle">Momento 4</text>
+  <!-- Flechas -->
+  <path d="M72 38 L80 38" stroke="#4CAF79" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M142 38 L150 38" stroke="#4CAF79" stroke-width="2"/>
+  <path d="M212 38 L220 38" stroke="#4CAF79" stroke-width="2"/>
+  <text x="150" y="84" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" opacity=".7">Metodología de los 4 momentos</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Formato docente</span>
           <div class="tarjeta-titulo" data-grado="Todos">Plan de sesión — Los 4 momentos</div>
@@ -1261,7 +1463,22 @@ footer {
 
       <!-- 9. Actividades para promover la alfabetización -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#FEF3E8;">🎯</div>
+        <div class="tarjeta-thumb" style="background:#FEF3E8;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FEF3E8"/>
+  <!-- Constelación de actividades -->
+  <circle cx="75" cy="40" r="28" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <text x="75" y="34" font-family="sans-serif" font-size="16" text-anchor="middle">✏️</text>
+  <text x="75" y="52" font-family="sans-serif" font-size="7" fill="#8C4A10" text-anchor="middle" font-weight="bold">Escritura</text>
+  <circle cx="160" cy="35" r="24" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <text x="160" y="30" font-family="sans-serif" font-size="14" text-anchor="middle">📖</text>
+  <text x="160" y="47" font-family="sans-serif" font-size="7" fill="#8C4A10" text-anchor="middle" font-weight="bold">Lectura</text>
+  <circle cx="235" cy="48" r="22" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <text x="235" y="43" font-family="sans-serif" font-size="13" text-anchor="middle">🎲</text>
+  <text x="235" y="60" font-family="sans-serif" font-size="7" fill="#8C4A10" text-anchor="middle" font-weight="bold">Juego</text>
+  <line x1="103" y1="40" x2="136" y2="37" stroke="#E08C3A" stroke-width="1" stroke-dasharray="3,2" opacity=".5"/>
+  <line x1="184" y1="39" x2="213" y2="46" stroke="#E08C3A" stroke-width="1" stroke-dasharray="3,2" opacity=".5"/>
+  <text x="150" y="88" font-family="sans-serif" font-size="7" fill="#8C4A10" text-anchor="middle" opacity=".7">Variedad de propuestas · Preescolar y Primaria</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Secuencia</span>
           <div class="tarjeta-titulo" data-grado="Todos">Actividades para promover la alfabetización</div>
@@ -1450,7 +1667,31 @@ footer {
 
       <!-- 1. Muro de palabras del entorno -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;font-size:32px;">🖼️<div class="mat-formato">PDF · Color</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#E8F5EC"/>
+  <rect x="15" y="8" width="270" height="75" rx="4" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <rect x="15" y="8" width="270" height="14" rx="4" fill="#4CAF79" opacity=".2"/>
+  <text x="150" y="18" font-family="sans-serif" font-size="7.5" fill="#2D5B3F" text-anchor="middle" font-weight="bold">MURO DE PALABRAS DEL ENTORNO</text>
+  <g font-family="serif" font-size="8" fill="#2D5B3F">
+    <rect x="22" y="26" width="52" height="22" rx="3" fill="#E8F5EC"/>
+    <text x="48" y="40" text-anchor="middle" font-weight="bold">ESCUELA</text>
+    <rect x="80" y="26" width="52" height="22" rx="3" fill="#E8F5EC"/>
+    <text x="106" y="40" text-anchor="middle" font-weight="bold">MERCADO</text>
+    <rect x="138" y="26" width="52" height="22" rx="3" fill="#E8F5EC"/>
+    <text x="164" y="40" text-anchor="middle" font-weight="bold">PARQUE</text>
+    <rect x="196" y="26" width="52" height="22" rx="3" fill="#E8F5EC"/>
+    <text x="222" y="40" text-anchor="middle" font-weight="bold">IGLESIA</text>
+    <rect x="22" y="53" width="52" height="22" rx="3" fill="#F0F8F0"/>
+    <text x="48" y="67" text-anchor="middle">farmacia</text>
+    <rect x="80" y="53" width="52" height="22" rx="3" fill="#F0F8F0"/>
+    <text x="106" y="67" text-anchor="middle">biblioteca</text>
+    <rect x="138" y="53" width="52" height="22" rx="3" fill="#F0F8F0"/>
+    <text x="164" y="67" text-anchor="middle">cancha</text>
+    <rect x="196" y="53" width="52" height="22" rx="3" fill="#F0F8F0"/>
+    <text x="222" y="67" text-anchor="middle">tienda</text>
+  </g>
+  <text x="260" y="82" font-family="sans-serif" font-size="6.5" fill="#4CAF79" text-anchor="middle">A4 · Color</text>
+</svg><div class="mat-formato">PDF · Color</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Lámina</span>
           <div class="tarjeta-titulo" data-tipo="Láminas">Muro de palabras del entorno</div>
@@ -1461,7 +1702,25 @@ footer {
 
       <!-- 2. Tarjetas de palabras globales -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;font-size:32px;">🃏<div class="mat-formato">PDF · B/N</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#EEF3FC"/>
+  <!-- Stack de tarjetas -->
+  <rect x="10" y="20" width="75" height="55" rx="4" fill="#d8e6f7" stroke="#5B8FD4" stroke-width="1" transform="rotate(-8,48,48)"/>
+  <rect x="15" y="18" width="75" height="55" rx="4" fill="#e4edf8" stroke="#5B8FD4" stroke-width="1" transform="rotate(-4,53,46)"/>
+  <rect x="20" y="16" width="75" height="55" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="2"/>
+  <text x="57" y="38" font-family="sans-serif" font-size="18" text-anchor="middle">🌳</text>
+  <text x="57" y="56" font-family="serif" font-size="10" fill="#1A4A8C" text-anchor="middle" font-weight="bold">ÁRBOL</text>
+  <rect x="115" y="20" width="75" height="55" rx="4" fill="#d8e6f7" stroke="#5B8FD4" stroke-width="1" transform="rotate(6,153,48)"/>
+  <rect x="118" y="18" width="75" height="55" rx="4" fill="#e4edf8" stroke="#5B8FD4" stroke-width="1" transform="rotate(3,156,46)"/>
+  <rect x="120" y="16" width="75" height="55" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="2"/>
+  <text x="157" y="38" font-family="sans-serif" font-size="18" text-anchor="middle">☀️</text>
+  <text x="157" y="56" font-family="serif" font-size="10" fill="#1A4A8C" text-anchor="middle" font-weight="bold">SOL</text>
+  <rect x="210" y="20" width="75" height="55" rx="4" fill="#d8e6f7" stroke="#5B8FD4" stroke-width="1" transform="rotate(-5,248,48)"/>
+  <rect x="213" y="16" width="75" height="55" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="2"/>
+  <text x="250" y="38" font-family="sans-serif" font-size="18" text-anchor="middle">🐶</text>
+  <text x="250" y="56" font-family="serif" font-size="10" fill="#1A4A8C" text-anchor="middle" font-weight="bold">PERRO</text>
+  <text x="150" y="88" font-family="sans-serif" font-size="7" fill="#1A4A8C" text-anchor="middle" opacity=".7">Recortables · Plastificables · B/N</text>
+</svg><div class="mat-formato">PDF · B/N</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Tarjetas</span>
           <div class="tarjeta-titulo" data-tipo="Tarjetas">Tarjetas de palabras globales</div>
@@ -1472,7 +1731,20 @@ footer {
 
       <!-- 3. Formato de secuencia didáctica -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#FEF3E8;font-size:32px;">📋<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#FEF3E8;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FEF3E8"/>
+  <rect x="30" y="6" width="240" height="82" rx="5" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <rect x="30" y="6" width="240" height="16" rx="5" fill="#E08C3A" opacity=".3"/>
+  <text x="150" y="17" font-family="sans-serif" font-size="8" fill="#8C4A10" text-anchor="middle" font-weight="bold">FORMATO · SECUENCIA DIDÁCTICA</text>
+  <text x="42" y="35" font-family="sans-serif" font-size="7" fill="#8C4A10">Propósito:</text>
+  <rect x="90" y="28" width="170" height="8" rx="2" fill="#FEF3E8"/>
+  <text x="42" y="50" font-family="sans-serif" font-size="7" fill="#8C4A10">Materiales:</text>
+  <rect x="90" y="43" width="170" height="8" rx="2" fill="#FEF3E8"/>
+  <text x="42" y="65" font-family="sans-serif" font-size="7" fill="#8C4A10">Actividades:</text>
+  <rect x="38" y="68" width="222" height="8" rx="2" fill="#FEF3E8"/>
+  <rect x="38" y="79" width="180" height="5" rx="2" fill="#F0E8D8"/>
+  <text x="260" y="90" font-family="sans-serif" font-size="6.5" fill="#E08C3A" text-anchor="end">Editable</text>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Formato docente</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Formato de secuencia didáctica</div>
@@ -1483,7 +1755,29 @@ footer {
 
       <!-- 4. Lista de cotejo escritura inicial -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;font-size:32px;">📊<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#F3EEF8"/>
+  <rect x="20" y="6" width="260" height="82" rx="5" fill="#fff" stroke="#9B59B6" stroke-width="1.5"/>
+  <rect x="20" y="6" width="260" height="16" rx="5" fill="#9B59B6" opacity=".2"/>
+  <text x="150" y="17" font-family="sans-serif" font-size="7.5" fill="#5A2A8C" text-anchor="middle" font-weight="bold">LISTA DE COTEJO · ESCRITURA INICIAL</text>
+  <!-- Tabla -->
+  <rect x="25" y="26" width="90" height="55" rx="2" fill="#F8F4FC" stroke="#9B59B6" stroke-width=".8"/>
+  <text x="70" y="36" font-family="sans-serif" font-size="7" fill="#5A2A8C" text-anchor="middle" font-weight="bold">Nombre</text>
+  <text x="70" y="48" font-family="sans-serif" font-size="6.5" fill="#5A2A8C" text-anchor="middle">Juan M.</text>
+  <text x="70" y="60" font-family="sans-serif" font-size="6.5" fill="#5A2A8C" text-anchor="middle">Sofía R.</text>
+  <text x="70" y="72" font-family="sans-serif" font-size="6.5" fill="#5A2A8C" text-anchor="middle">Luis T.</text>
+  <rect x="118" y="26" width="40" height="55" rx="2" fill="#F8F4FC" stroke="#9B59B6" stroke-width=".8"/>
+  <text x="138" y="36" font-family="sans-serif" font-size="6.5" fill="#5A2A8C" text-anchor="middle" font-weight="bold">Nivel</text>
+  <text x="138" y="48" font-family="sans-serif" font-size="6.5" fill="#9B59B6" text-anchor="middle">Sil.</text>
+  <text x="138" y="60" font-family="sans-serif" font-size="6.5" fill="#4CAF79" text-anchor="middle">Alf.</text>
+  <text x="138" y="72" font-family="sans-serif" font-size="6.5" fill="#E08C3A" text-anchor="middle">PreS.</text>
+  <rect x="161" y="26" width="110" height="55" rx="2" fill="#F8F4FC" stroke="#9B59B6" stroke-width=".8"/>
+  <text x="216" y="36" font-family="sans-serif" font-size="6.5" fill="#5A2A8C" text-anchor="middle" font-weight="bold">Observaciones</text>
+  <rect x="165" y="42" width="102" height="6" rx="2" fill="#EEE8F4"/>
+  <rect x="165" y="54" width="88" height="6" rx="2" fill="#EEE8F4"/>
+  <rect x="165" y="66" width="95" height="6" rx="2" fill="#EEE8F4"/>
+  <text x="150" y="90" font-family="sans-serif" font-size="7" fill="#5A2A8C" text-anchor="middle" opacity=".7">Por alumno · 1° primaria</text>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Registro</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Lista de cotejo — escritura inicial</div>
@@ -1494,7 +1788,26 @@ footer {
 
       <!-- 5. Ficha completa la palabra con imagen -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;font-size:32px;">🖍️<div class="mat-formato">PDF · Color</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#E8F5EC"/>
+  <rect x="15" y="8" width="270" height="75" rx="5" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <rect x="15" y="8" width="270" height="13" rx="5" fill="#4CAF79" opacity=".2"/>
+  <text x="150" y="17" font-family="sans-serif" font-size="7.5" fill="#2D5B3F" text-anchor="middle" font-weight="bold">COMPLETA LA PALABRA CON IMAGEN</text>
+  <!-- Fichas de actividad -->
+  <rect x="22" y="24" width="60" height="50" rx="4" fill="#F8FBF8" stroke="#4CAF79" stroke-width="1"/>
+  <text x="52" y="42" font-family="sans-serif" font-size="20" text-anchor="middle">🦁</text>
+  <rect x="25" y="54" width="54" height="14" rx="2" fill="#E8F5EC"/>
+  <text x="52" y="63" font-family="serif" font-size="9" fill="#2D5B3F" text-anchor="middle">L _ _ N</text>
+  <rect x="95" y="24" width="60" height="50" rx="4" fill="#F8FBF8" stroke="#4CAF79" stroke-width="1"/>
+  <text x="125" y="42" font-family="sans-serif" font-size="20" text-anchor="middle">🐸</text>
+  <rect x="98" y="54" width="54" height="14" rx="2" fill="#E8F5EC"/>
+  <text x="125" y="63" font-family="serif" font-size="9" fill="#2D5B3F" text-anchor="middle">R _ N _</text>
+  <rect x="168" y="24" width="60" height="50" rx="4" fill="#F8FBF8" stroke="#4CAF79" stroke-width="1"/>
+  <text x="198" y="42" font-family="sans-serif" font-size="20" text-anchor="middle">🦋</text>
+  <rect x="171" y="54" width="54" height="14" rx="2" fill="#E8F5EC"/>
+  <text x="198" y="63" font-family="serif" font-size="7.5" fill="#2D5B3F" text-anchor="middle">M _ R _ P _ S _</text>
+  <text x="258" y="55" font-family="sans-serif" font-size="22" text-anchor="middle">✏️</text>
+</svg><div class="mat-formato">PDF · Color</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Ficha de trabajo</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">Completa la palabra con imagen</div>
@@ -1505,7 +1818,29 @@ footer {
 
       <!-- 6. Guía de evaluación psicogenética -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#FFF3F3;font-size:32px;">📝<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#FFF3F3;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FFF3F3"/>
+  <!-- Diagrama de niveles -->
+  <rect x="15" y="8" width="270" height="75" rx="5" fill="#fff" stroke="#C0505A" stroke-width="1.5"/>
+  <rect x="15" y="8" width="270" height="14" rx="5" fill="#C0505A" opacity=".2"/>
+  <text x="150" y="18" font-family="sans-serif" font-size="7.5" fill="#8C1A1A" text-anchor="middle" font-weight="bold">GUÍA DE EVALUACIÓN PSICOGENÉTICA</text>
+  <!-- Niveles con escalera -->
+  <rect x="22" y="26" width="52" height="50" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="48" y="42" font-family="sans-serif" font-size="7" fill="#8C1A1A" text-anchor="middle" font-weight="bold">PRE-</text>
+  <text x="48" y="52" font-family="sans-serif" font-size="7" fill="#8C1A1A" text-anchor="middle" font-weight="bold">SILÁBICO</text>
+  <text x="48" y="64" font-family="sans-serif" font-size="16" text-anchor="middle">📝</text>
+  <rect x="80" y="22" width="52" height="54" rx="3" fill="#FFF0E0" stroke="#E08C3A" stroke-width="1"/>
+  <text x="106" y="38" font-family="sans-serif" font-size="7" fill="#8C4A10" text-anchor="middle" font-weight="bold">SILÁBICO</text>
+  <text x="106" y="56" font-family="sans-serif" font-size="16" text-anchor="middle">✏️</text>
+  <rect x="138" y="18" width="52" height="58" rx="3" fill="#FFF9E8" stroke="#F0C040" stroke-width="1"/>
+  <text x="164" y="34" font-family="sans-serif" font-size="6" fill="#7A5A00" text-anchor="middle" font-weight="bold">SIL.-</text>
+  <text x="164" y="42" font-family="sans-serif" font-size="6" fill="#7A5A00" text-anchor="middle" font-weight="bold">ALFAB.</text>
+  <text x="164" y="60" font-family="sans-serif" font-size="16" text-anchor="middle">🖊️</text>
+  <rect x="196" y="14" width="52" height="62" rx="3" fill="#E8F5EC" stroke="#4CAF79" stroke-width="1"/>
+  <text x="222" y="30" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" font-weight="bold">ALFAB.</text>
+  <text x="222" y="56" font-family="sans-serif" font-size="16" text-anchor="middle">📖</text>
+  <text x="258" y="50" font-family="sans-serif" font-size="20" text-anchor="middle">🔬</text>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Evaluación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Guía de evaluación psicogenética</div>
@@ -1516,7 +1851,30 @@ footer {
 
       <!-- 7. Rúbrica de comprensión lectora inicial -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;font-size:32px;">📊<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#EEF3FC"/>
+  <rect x="15" y="8" width="270" height="75" rx="5" fill="#fff" stroke="#5B8FD4" stroke-width="1.5"/>
+  <rect x="15" y="8" width="270" height="14" rx="5" fill="#5B8FD4" opacity=".2"/>
+  <text x="150" y="18" font-family="sans-serif" font-size="7.5" fill="#1A4A8C" text-anchor="middle" font-weight="bold">RÚBRICA · COMPRENSIÓN LECTORA</text>
+  <!-- Columnas de criterio -->
+  <text x="42" y="33" font-family="sans-serif" font-size="7" fill="#1A4A8C" text-anchor="middle" font-weight="bold">Criterio</text>
+  <text x="104" y="33" font-family="sans-serif" font-size="7" fill="#C0505A" text-anchor="middle">Inicial</text>
+  <text x="164" y="33" font-family="sans-serif" font-size="7" fill="#E08C3A" text-anchor="middle">En proceso</text>
+  <text x="232" y="33" font-family="sans-serif" font-size="7" fill="#4CAF79" text-anchor="middle">Logrado</text>
+  <line x1="20" y1="36" x2="280" y2="36" stroke="#EEF3FC" stroke-width="1"/>
+  <text x="42" y="49" font-family="sans-serif" font-size="6.5" fill="#4A6580">Identifica tema</text>
+  <circle cx="104" cy="46" r="5" fill="#FFF" stroke="#C0505A" stroke-width="1.5"/>
+  <circle cx="164" cy="46" r="5" fill="#FFF" stroke="#E08C3A" stroke-width="1.5"/>
+  <circle cx="232" cy="46" r="5" fill="#4CAF79"/>
+  <text x="42" y="63" font-family="sans-serif" font-size="6.5" fill="#4A6580">Infiere datos</text>
+  <circle cx="104" cy="60" r="5" fill="#FFF" stroke="#C0505A" stroke-width="1.5"/>
+  <circle cx="164" cy="60" r="5" fill="#E08C3A"/>
+  <circle cx="232" cy="60" r="5" fill="#FFF" stroke="#4CAF79" stroke-width="1.5"/>
+  <text x="42" y="77" font-family="sans-serif" font-size="6.5" fill="#4A6580">Opina con base</text>
+  <circle cx="104" cy="74" r="5" fill="#C0505A"/>
+  <circle cx="164" cy="74" r="5" fill="#FFF" stroke="#E08C3A" stroke-width="1.5"/>
+  <circle cx="232" cy="74" r="5" fill="#FFF" stroke="#4CAF79" stroke-width="1.5"/>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Evaluación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Rúbrica de comprensión lectora inicial</div>
@@ -1527,7 +1885,34 @@ footer {
 
       <!-- 8. Planeación anual -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;font-size:32px;">📅<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#F3EEF8;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#F3EEF8"/>
+  <rect x="15" y="8" width="270" height="75" rx="5" fill="#fff" stroke="#9B59B6" stroke-width="1.5"/>
+  <rect x="15" y="8" width="270" height="15" rx="5" fill="#9B59B6" opacity=".2"/>
+  <text x="150" y="18" font-family="sans-serif" font-size="7.5" fill="#5A2A8C" text-anchor="middle" font-weight="bold">PLANEACIÓN ANUAL · ALFABETIZACIÓN GLOBALIZADA</text>
+  <g font-family="sans-serif" font-size="6.5">
+    <rect x="20" y="27" width="38" height="50" rx="2" fill="#F3EEF8" stroke="#9B59B6" stroke-width=".8"/>
+    <text x="39" y="37" fill="#5A2A8C" text-anchor="middle" font-weight="bold">AGO</text>
+    <rect x="22" y="41" width="34" height="7" rx="1" fill="#9B59B6" opacity=".3"/>
+    <rect x="22" y="51" width="28" height="5" rx="1" fill="#E8E0F0"/>
+    <rect x="22" y="59" width="31" height="5" rx="1" fill="#E8E0F0"/>
+    <rect x="22" y="67" width="25" height="5" rx="1" fill="#E8E0F0"/>
+    <rect x="62" y="27" width="38" height="50" rx="2" fill="#F3EEF8" stroke="#9B59B6" stroke-width=".8"/>
+    <text x="81" y="37" fill="#5A2A8C" text-anchor="middle" font-weight="bold">SEP</text>
+    <rect x="64" y="41" width="34" height="7" rx="1" fill="#9B59B6" opacity=".2"/>
+    <rect x="64" y="51" width="30" height="5" rx="1" fill="#E8E0F0"/>
+    <rect x="64" y="59" width="26" height="5" rx="1" fill="#E8E0F0"/>
+    <rect x="64" y="67" width="32" height="5" rx="1" fill="#E8E0F0"/>
+    <rect x="104" y="27" width="38" height="50" rx="2" fill="#F3EEF8" stroke="#9B59B6" stroke-width=".8"/>
+    <text x="123" y="37" fill="#5A2A8C" text-anchor="middle" font-weight="bold">OCT</text>
+    <rect x="146" y="27" width="38" height="50" rx="2" fill="#F3EEF8" stroke="#9B59B6" stroke-width=".8"/>
+    <text x="165" y="37" fill="#5A2A8C" text-anchor="middle" font-weight="bold">NOV</text>
+    <rect x="188" y="27" width="38" height="50" rx="2" fill="#9B59B6" opacity=".15" stroke="#9B59B6" stroke-width=".8"/>
+    <text x="207" y="37" fill="#4A0080" text-anchor="middle" font-weight="bold">DIC</text>
+    <text x="230" y="55" fill="#9B59B6" font-size="22" text-anchor="middle">…</text>
+    <text x="265" y="55" font-size="20" text-anchor="middle">📅</text>
+  </g>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Planeación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Planeación anual — Alfabetización globalizada</div>
@@ -1538,7 +1923,25 @@ footer {
 
       <!-- 9. El banco de palabras del salón -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;font-size:32px;">📋<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#E8F5EC;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#E8F5EC"/>
+  <rect x="15" y="8" width="270" height="75" rx="5" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <rect x="15" y="8" width="270" height="14" rx="5" fill="#4CAF79" opacity=".2"/>
+  <text x="150" y="17" font-family="sans-serif" font-size="7.5" fill="#2D5B3F" text-anchor="middle" font-weight="bold">EL BANCO DE PALABRAS DEL SALÓN</text>
+  <rect x="22" y="26" width="60" height="30" rx="3" fill="#E8F5EC"/>
+  <text x="52" y="36" font-family="sans-serif" font-size="12" text-anchor="middle">📌</text>
+  <text x="52" y="50" font-family="serif" font-size="8.5" fill="#2D5B3F" text-anchor="middle" font-weight="bold">ÁRBOL</text>
+  <rect x="90" y="26" width="60" height="30" rx="3" fill="#E8F5EC"/>
+  <text x="120" y="36" font-family="sans-serif" font-size="12" text-anchor="middle">📌</text>
+  <text x="120" y="50" font-family="serif" font-size="8.5" fill="#2D5B3F" text-anchor="middle" font-weight="bold">MARIPOSA</text>
+  <rect x="158" y="26" width="60" height="30" rx="3" fill="#E8F5EC"/>
+  <text x="188" y="36" font-family="sans-serif" font-size="12" text-anchor="middle">📌</text>
+  <text x="188" y="50" font-family="serif" font-size="8.5" fill="#2D5B3F" text-anchor="middle" font-weight="bold">FAMILIA</text>
+  <rect x="226" y="26" width="52" height="30" rx="3" fill="#F0F8F0" stroke="#4CAF79" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="252" y="44" font-family="sans-serif" font-size="18" fill="#4CAF79" text-anchor="middle">+</text>
+  <rect x="22" y="62" width="256" height="14" rx="3" fill="#F0F8F0"/>
+  <text x="150" y="72" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle">Secuencia de 3 sesiones · Preescolar</text>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Secuencia</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">El banco de palabras del salón</div>
@@ -1549,7 +1952,24 @@ footer {
 
       <!-- 10. Cuentos con palabras clave -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#FFF3F3;font-size:32px;">🎭<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#FFF3F3;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FFF3F3"/>
+  <rect x="15" y="8" width="120" height="80" rx="5" fill="#fff" stroke="#C0505A" stroke-width="1.5"/>
+  <line x1="75" y1="8" x2="75" y2="88" stroke="#C0505A" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="45" y="26" font-family="serif" font-size="7.5" fill="#8C1A1A" text-anchor="middle" font-style="italic">"Había una vez</text>
+  <text x="45" y="37" font-family="serif" font-size="7.5" fill="#8C1A1A" text-anchor="middle" font-style="italic">una pequeña</text>
+  <rect x="22" y="40" width="46" height="13" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="45" y="49" font-family="serif" font-size="8" fill="#C0505A" text-anchor="middle" font-weight="bold">SEMILLA</text>
+  <text x="45" y="62" font-family="serif" font-size="7.5" fill="#8C1A1A" text-anchor="middle" font-style="italic">que quería</text>
+  <text x="45" y="73" font-family="serif" font-size="7.5" fill="#8C1A1A" text-anchor="middle" font-style="italic">ser árbol..."</text>
+  <text x="105" y="50" font-family="sans-serif" font-size="26" text-anchor="middle">🌱</text>
+  <text x="205" y="30" font-family="sans-serif" font-size="12" text-anchor="middle">🌳 🌿 💧</text>
+  <rect x="150" y="42" width="60" height="14" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="180" y="52" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-weight="bold">CRECER</text>
+  <rect x="218" y="42" width="68" height="14" rx="3" fill="#FFF3F3" stroke="#C0505A" stroke-width="1"/>
+  <text x="252" y="52" font-family="serif" font-size="8" fill="#8C1A1A" text-anchor="middle" font-weight="bold">BOSQUE</text>
+  <text x="205" y="78" font-family="sans-serif" font-size="7" fill="#8C1A1A" text-anchor="middle" opacity=".7">Narrativa con palabras globales</text>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Secuencia</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">Cuentos con palabras clave</div>
@@ -1560,7 +1980,22 @@ footer {
 
       <!-- 11. Mi álbum de palabras propias -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#FEF3E8;font-size:32px;">📖<div class="mat-formato">PDF</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#FEF3E8;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FEF3E8"/>
+  <rect x="20" y="8" width="100" height="80" rx="5" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <rect x="20" y="8" width="50" height="80" rx="4" fill="#FFF9F2"/>
+  <line x1="70" y1="8" x2="70" y2="88" stroke="#E08C3A" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="45" y="30" font-family="sans-serif" font-size="16" text-anchor="middle">👧</text>
+  <text x="45" y="46" font-family="serif" font-size="7.5" fill="#8C4A10" text-anchor="middle" font-weight="bold">MI NOMBRE</text>
+  <text x="45" y="60" font-family="serif" font-size="7" fill="#E08C3A" text-anchor="middle">Sofia</text>
+  <text x="95" y="30" font-family="sans-serif" font-size="16" text-anchor="middle">🐕</text>
+  <text x="95" y="46" font-family="serif" font-size="7.5" fill="#8C4A10" text-anchor="middle" font-weight="bold">MI MASCOTA</text>
+  <text x="95" y="60" font-family="serif" font-size="7" fill="#E08C3A" text-anchor="middle">Toby</text>
+  <rect x="140" y="14" width="140" height="68" rx="5" fill="#FFF9F2" stroke="#E08C3A" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="210" y="40" font-family="sans-serif" font-size="28" text-anchor="middle">➕</text>
+  <text x="210" y="62" font-family="serif" font-size="8" fill="#E08C3A" text-anchor="middle">Mi próxima palabra</text>
+  <text x="150" y="88" font-family="sans-serif" font-size="7" fill="#8C4A10" text-anchor="middle" opacity=".7">Identidad · Escritura significativa</text>
+</svg><div class="mat-formato">PDF</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Ficha de trabajo</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">Mi álbum de palabras propias</div>
@@ -1571,7 +2006,30 @@ footer {
 
       <!-- 12. Lotería de palabras -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;font-size:32px;">🃏<div class="mat-formato">PDF · Color</div></div>
+        <div class="tarjeta-thumb mat-thumb" style="background:#EEF3FC;padding:0;overflow:hidden;position:relative;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#EEF3FC"/>
+  <!-- igual que tarjeta de actividad pero con badge PDF -->
+  <rect x="20" y="10" width="80" height="76" rx="6" fill="#fff" stroke="#5B8FD4" stroke-width="1.5"/>
+  <line x1="20" y1="35" x2="100" y2="35" stroke="#EEF3FC" stroke-width="1"/>
+  <line x1="20" y1="60" x2="100" y2="60" stroke="#EEF3FC" stroke-width="1"/>
+  <line x1="47" y1="10" x2="47" y2="86" stroke="#EEF3FC" stroke-width="1"/>
+  <line x1="74" y1="10" x2="74" y2="86" stroke="#EEF3FC" stroke-width="1"/>
+  <text x="34" y="26" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">GATO</text>
+  <text x="61" y="26" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">PATO</text>
+  <text x="88" y="26" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">SOL</text>
+  <text x="34" y="51" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">LUNA</text>
+  <rect x="52" y="40" width="22" height="18" rx="2" fill="#5B8FD4" opacity=".2"/>
+  <text x="63" y="51" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">MAR</text>
+  <text x="88" y="51" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">PINO</text>
+  <text x="34" y="76" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">PEZ</text>
+  <text x="63" y="76" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">FLOR</text>
+  <text x="88" y="76" font-family="serif" font-size="7" fill="#1A4A8C" text-anchor="middle">NUBE</text>
+  <circle cx="175" cy="48" r="22" fill="#5B8FD4" opacity=".15" stroke="#5B8FD4" stroke-width="1.5"/>
+  <text x="175" y="44" font-family="serif" font-size="8" fill="#1A4A8C" text-anchor="middle" font-weight="bold">GATO</text>
+  <text x="175" y="58" font-family="sans-serif" font-size="16" text-anchor="middle">🐱</text>
+  <text x="245" y="48" font-family="sans-serif" font-size="30" text-anchor="middle">🃏</text>
+  <text x="150" y="88" font-family="sans-serif" font-size="7" fill="#1A4A8C" text-anchor="middle" opacity=".7">Imprimible · PDF Color · 1° primaria</text>
+</svg><div class="mat-formato">PDF · Color</div></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Juego</span>
           <div class="tarjeta-titulo" data-tipo="Tarjetas">Lotería de palabras</div>
@@ -1768,7 +2226,27 @@ footer {
 
       <!-- 1. Mi álbum de palabras propias -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#FEF0E8;">🏠</div>
+        <div class="tarjeta-thumb" style="background:#FEF0E8;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FEF0E8"/>
+  <!-- Casa -->
+  <polygon points="80,15 30,55 130,55" fill="#E08C3A" opacity=".3"/>
+  <rect x="40" y="55" width="80" height="35" rx="2" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <rect x="68" y="68" width="24" height="22" rx="2" fill="#FEF0E8" stroke="#E08C3A" stroke-width="1"/>
+  <rect x="44" y="60" width="16" height="14" rx="2" fill="#FEF0E8"/>
+  <rect x="100" y="60" width="16" height="14" rx="2" fill="#FEF0E8"/>
+  <!-- Tarjetas dentro de casa -->
+  <rect x="155" y="20" width="50" height="28" rx="4" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <text x="180" y="33" font-family="sans-serif" font-size="14" text-anchor="middle">🏠</text>
+  <text x="180" y="44" font-family="serif" font-size="7.5" fill="#8C4A10" text-anchor="middle" font-weight="bold">CASA</text>
+  <rect x="215" y="30" width="50" height="28" rx="4" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <text x="240" y="43" font-family="sans-serif" font-size="14" text-anchor="middle">👨‍👩‍👧</text>
+  <text x="240" y="54" font-family="serif" font-size="7.5" fill="#8C4A10" text-anchor="middle" font-weight="bold">FAMILIA</text>
+  <rect x="155" y="60" width="50" height="28" rx="4" fill="#fff" stroke="#E08C3A" stroke-width="1.5"/>
+  <text x="180" y="73" font-family="sans-serif" font-size="14" text-anchor="middle">🐶</text>
+  <text x="180" y="84" font-family="serif" font-size="7.5" fill="#8C4A10" text-anchor="middle" font-weight="bold">MASCOTA</text>
+  <rect x="215" y="62" width="50" height="28" rx="4" fill="#FEF0E8" stroke="#E08C3A" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="240" y="80" font-family="sans-serif" font-size="18" fill="#E08C3A" text-anchor="middle">+</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FEF0E8;color:#8C4A10">Actividad en casa</span>
           <div class="tarjeta-titulo" data-tipo="Actividades en casa">El rincón de palabras en el hogar</div>
@@ -1780,7 +2258,27 @@ footer {
 
       <!-- 2. Guía familias lectura en voz alta -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#E8F5EC;">📖</div>
+        <div class="tarjeta-thumb" style="background:#E8F5EC;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#E8F5EC"/>
+  <!-- Adulto leyendo a niño -->
+  <text x="60" y="55" font-family="sans-serif" font-size="36" text-anchor="middle">👩</text>
+  <text x="120" y="62" font-family="sans-serif" font-size="28" text-anchor="middle">👦</text>
+  <!-- Libro -->
+  <rect x="65" y="60" width="50" height="28" rx="3" fill="#fff" stroke="#4CAF79" stroke-width="1.5"/>
+  <line x1="90" y1="60" x2="90" y2="88" stroke="#4CAF79" stroke-width="1" stroke-dasharray="2,2"/>
+  <rect x="68" y="64" width="20" height="18" rx="1" fill="#E8F5EC"/>
+  <rect x="93" y="64" width="20" height="18" rx="1" fill="#E8F5EC"/>
+  <!-- Ondas de sonido -->
+  <path d="M155,30 Q170,38 155,46" stroke="#4CAF79" stroke-width="2" fill="none"/>
+  <path d="M155,22 Q178,35 155,48" stroke="#4CAF79" stroke-width="1.5" fill="none" opacity=".6"/>
+  <path d="M155,14 Q186,32 155,50" stroke="#4CAF79" stroke-width="1" fill="none" opacity=".4"/>
+  <!-- Palabras flotando -->
+  <rect x="170" y="20" width="110" height="50" rx="5" fill="rgba(255,255,255,.7)"/>
+  <text x="225" y="34" font-family="serif" font-size="8" fill="#2D5B3F" text-anchor="middle" font-style="italic">"Había una vez...</text>
+  <text x="225" y="46" font-family="serif" font-size="8" fill="#2D5B3F" text-anchor="middle" font-style="italic">en un lugar muy</text>
+  <text x="225" y="58" font-family="serif" font-size="8" fill="#2D5B3F" text-anchor="middle" font-style="italic">lejano..."</text>
+  <text x="150" y="88" font-family="sans-serif" font-size="7" fill="#2D5B3F" text-anchor="middle" opacity=".7">10 minutos diarios · Todos los grados</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Guía de lectura</span>
           <div class="tarjeta-titulo" data-tipo="Guías de lectura">Cómo leer en voz alta con tu hijo o hija</div>
@@ -1792,7 +2290,22 @@ footer {
 
       <!-- 3. Tarjetas de palabras globales -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#EEF3FC;">🃏</div>
+        <div class="tarjeta-thumb" style="background:#EEF3FC;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#EEF3FC"/>
+  <rect x="15" y="10" width="65" height="72" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="1.5" transform="rotate(-6,48,46)"/>
+  <rect x="22" y="8" width="65" height="72" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="2"/>
+  <text x="54" y="38" font-family="sans-serif" font-size="22" text-anchor="middle">🌺</text>
+  <text x="54" y="56" font-family="serif" font-size="10" fill="#1A4A8C" text-anchor="middle" font-weight="bold">FLOR</text>
+  <rect x="105" y="10" width="65" height="72" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="1.5" transform="rotate(4,137,46)"/>
+  <rect x="108" y="8" width="65" height="72" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="2"/>
+  <text x="140" y="38" font-family="sans-serif" font-size="22" text-anchor="middle">🚗</text>
+  <text x="140" y="56" font-family="serif" font-size="10" fill="#1A4A8C" text-anchor="middle" font-weight="bold">CARRO</text>
+  <rect x="195" y="12" width="65" height="72" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="1.5" transform="rotate(-3,228,48)"/>
+  <rect x="198" y="10" width="65" height="72" rx="4" fill="#fff" stroke="#5B8FD4" stroke-width="2"/>
+  <text x="230" y="40" font-family="sans-serif" font-size="22" text-anchor="middle">🌙</text>
+  <text x="230" y="58" font-family="serif" font-size="10" fill="#1A4A8C" text-anchor="middle" font-weight="bold">LUNA</text>
+  <text x="150" y="90" font-family="sans-serif" font-size="7" fill="#1A4A8C" text-anchor="middle" opacity=".7">Recortables · Plastificables · B/N</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Imprimible</span>
           <div class="tarjeta-titulo" data-tipo="Imprimibles">Tarjetas de palabras para el hogar</div>
@@ -1804,7 +2317,22 @@ footer {
 
       <!-- 4. Juegos de palabras en familia -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#F3EEF8;">🎲</div>
+        <div class="tarjeta-thumb" style="background:#F3EEF8;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#F3EEF8"/>
+  <text x="50" y="55" font-family="sans-serif" font-size="36" text-anchor="middle">👨</text>
+  <text x="105" y="52" font-family="sans-serif" font-size="28" text-anchor="middle">👩</text>
+  <text x="155" y="62" font-family="sans-serif" font-size="24" text-anchor="middle">👧</text>
+  <text x="198" y="60" font-family="sans-serif" font-size="22" text-anchor="middle">👦</text>
+  <!-- Globo de diálogo con juego -->
+  <rect x="218" y="8" width="72" height="50" rx="8" fill="#fff" stroke="#9B59B6" stroke-width="1.5"/>
+  <polygon points="228,58 240,58 234,68" fill="#fff" stroke="#9B59B6" stroke-width="1.5"/>
+  <polygon points="229,58 241,58 235,65" fill="#fff"/>
+  <text x="254" y="22" font-family="sans-serif" font-size="9" fill="#5A2A8C" text-anchor="middle">¿Qué palabra</text>
+  <text x="254" y="33" font-family="sans-serif" font-size="9" fill="#5A2A8C" text-anchor="middle">rima con</text>
+  <rect x="228" y="37" width="52" height="14" rx="3" fill="#F3EEF8" stroke="#9B59B6" stroke-width="1"/>
+  <text x="254" y="47" font-family="serif" font-size="9" fill="#5A2A8C" text-anchor="middle" font-weight="bold">MARIPOSA?</text>
+  <text x="150" y="88" font-family="sans-serif" font-size="7" fill="#5A2A8C" text-anchor="middle" opacity=".7">Sin materiales · Cualquier momento</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Actividad en casa</span>
           <div class="tarjeta-titulo" data-tipo="Actividades en casa">Juegos de palabras en familia</div>
@@ -1816,7 +2344,28 @@ footer {
 
       <!-- 5. Diario de lectura familiar -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#FFF3F3;">📝</div>
+        <div class="tarjeta-thumb" style="background:#FFF3F3;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#FFF3F3"/>
+  <rect x="30" y="8" width="100" height="80" rx="5" fill="#fff" stroke="#C0505A" stroke-width="2"/>
+  <rect x="30" y="8" width="14" height="80" rx="5" fill="#C0505A" opacity=".3"/>
+  <!-- líneas de diario -->
+  <line x1="50" y1="26" x2="122" y2="26" stroke="#FFE0E0" stroke-width="1"/>
+  <line x1="50" y1="36" x2="122" y2="36" stroke="#FFE0E0" stroke-width="1"/>
+  <line x1="50" y1="46" x2="122" y2="46" stroke="#FFE0E0" stroke-width="1"/>
+  <line x1="50" y1="56" x2="122" y2="56" stroke="#FFE0E0" stroke-width="1"/>
+  <line x1="50" y1="66" x2="122" y2="66" stroke="#FFE0E0" stroke-width="1"/>
+  <line x1="50" y1="76" x2="122" y2="76" stroke="#FFE0E0" stroke-width="1"/>
+  <text x="86" y="18" font-family="serif" font-size="8" fill="#C0505A" text-anchor="middle" font-weight="bold">DIARIO LECTOR</text>
+  <text x="86" y="32" font-family="sans-serif" font-size="7" fill="#4A6580">Leímos: El patito feo</text>
+  <text x="86" y="42" font-family="sans-serif" font-size="7" fill="#4A6580">Fecha: 12 oct.</text>
+  <text x="86" y="52" font-family="sans-serif" font-size="7" fill="#4A6580">Nos gustó porque...</text>
+  <rect x="50" y="57" width="72" height="14" rx="2" fill="#FFF3F3"/>
+  <!-- Familia leyendo -->
+  <text x="210" y="55" font-family="sans-serif" font-size="38" text-anchor="middle">📖</text>
+  <text x="170" y="78" font-family="sans-serif" font-size="14" text-anchor="middle">👨‍👩‍👧</text>
+  <text x="250" y="78" font-family="sans-serif" font-size="14" text-anchor="middle">❤️</text>
+  <text x="210" y="92" font-family="sans-serif" font-size="7" fill="#8C1A1A" text-anchor="middle" opacity=".7">Hábito lector familiar</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Imprimible</span>
           <div class="tarjeta-titulo" data-tipo="Imprimibles">Diario de lectura familiar</div>
@@ -1828,7 +2377,19 @@ footer {
 
       <!-- 6. Guía de evaluación psicogenética -->
       <div class="tarjeta">
-        <div class="tarjeta-thumb" style="background:#EEF3FC;">📊</div>
+        <div class="tarjeta-thumb" style="background:#EEF3FC;padding:0;overflow:hidden;"><svg viewBox="0 0 300 96" xmlns="http://www.w3.org/2000/svg" width="100%" height="96">
+  <rect width="300" height="96" fill="#EEF3FC"/>
+  <rect x="20" y="8" width="260" height="75" rx="5" fill="#fff" stroke="#5B8FD4" stroke-width="1.5"/>
+  <rect x="20" y="8" width="260" height="14" rx="5" fill="#5B8FD4" opacity=".2"/>
+  <text x="150" y="18" font-family="sans-serif" font-size="7.5" fill="#1A4A8C" text-anchor="middle" font-weight="bold">GUÍA DE EVALUACIÓN PSICOGENÉTICA</text>
+  <text x="45" y="36" font-family="sans-serif" font-size="22" text-anchor="middle">🧠</text>
+  <text x="45" y="60" font-family="sans-serif" font-size="22" text-anchor="middle">📋</text>
+  <rect x="75" y="26" width="195" height="55" rx="4" fill="#F0F4FB"/>
+  <text x="172" y="40" font-family="sans-serif" font-size="7.5" fill="#1A4A8C" text-anchor="middle" font-weight="bold">Consigna diagnóstica:</text>
+  <text x="172" y="52" font-family="serif" font-size="7.5" fill="#4A6580" text-anchor="middle" font-style="italic">"Escribe como puedas:</text>
+  <text x="172" y="63" font-family="serif" font-size="7.5" fill="#4A6580" text-anchor="middle" font-style="italic">sol · gato · mariposa"</text>
+  <text x="172" y="74" font-family="sans-serif" font-size="7" fill="#5B8FD4" text-anchor="middle">Diagnóstico inicial · Para el docente</text>
+</svg></div>
         <div class="tarjeta-body">
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Guía de lectura</span>
           <div class="tarjeta-titulo" data-tipo="Guías de lectura">Guía de evaluación psicogenética</div>
