@@ -987,11 +987,106 @@ footer {
   display: flex; justify-content: space-between; align-items: center;
 }
 .footer-bottom span { font-size: 12px; color: rgba(255,255,255,.4); }
+
+/* ═══ MODAL VISTA PREVIA ═══════════════════════════════════════════════ */
+.modal-ov{display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(8,22,40,.82);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:16px}
+.modal-ov.on{display:flex;animation:mFade .2s ease}
+@keyframes mFade{from{opacity:0}to{opacity:1}}
+.modal-box{background:#fff;border-radius:16px;
+  box-shadow:0 28px 90px rgba(8,22,40,.45);
+  width:100%;max-width:760px;max-height:92vh;
+  display:flex;flex-direction:column;overflow:hidden;
+  animation:mSlide .26s cubic-bezier(.22,1,.36,1)}
+@keyframes mSlide{from{transform:translateY(22px);opacity:0}to{transform:none;opacity:1}}
+.modal-head{background:linear-gradient(135deg,#1A5276 0%,#2471A3 60%,#2E86C1 100%);
+  padding:18px 22px;display:flex;gap:14px;align-items:flex-start;flex-shrink:0}
+.modal-ico{width:50px;height:50px;border-radius:12px;
+  background:rgba(255,255,255,.18);display:flex;align-items:center;
+  justify-content:center;font-size:23px;flex-shrink:0}
+.modal-hi{flex:1;min-width:0}
+.modal-badge{font-size:11px;font-weight:600;background:rgba(255,255,255,.2);
+  color:#fff;border-radius:20px;padding:3px 11px;display:inline-block;margin-bottom:5px}
+.modal-titulo{font-size:17px;font-weight:700;color:#fff;line-height:1.3;
+  margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.modal-meta{font-size:12px;color:rgba(255,255,255,.72)}
+.modal-x{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.18);
+  border:none;color:#fff;font-size:16px;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;transition:background .15s;margin-top:-2px}
+.modal-x:hover{background:rgba(255,255,255,.35)}
+.modal-body{overflow-y:auto;padding:20px 22px;flex:1}
+.modal-body::-webkit-scrollbar{width:5px}
+.modal-body::-webkit-scrollbar-thumb{background:#d0dce8;border-radius:3px}
+.modal-stit{font-size:11px;font-weight:700;color:#2471A3;
+  text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px;
+  display:flex;align-items:center;gap:6px}
+.modal-stit::after{content:'';flex:1;height:1px;background:#e8eef4}
+.modal-desc{font-size:13.5px;color:#4a5d70;line-height:1.72;
+  background:#EBF5FB;border-radius:8px;padding:12px 15px;
+  border-left:3px solid #7FB3D3;margin-bottom:12px}
+.modal-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.modal-tag{font-size:12px;padding:4px 11px;border-radius:20px;
+  background:#EBF5FB;color:#2471A3;border:1px solid #AED6F1;font-weight:500}
+.modal-pdf-frame{width:100%;height:410px;border:1px solid #dde6ef;
+  border-radius:8px;background:#f7f9fb}
+.modal-vid-frame{width:100%;aspect-ratio:16/9;border-radius:8px;
+  overflow:hidden;border:1px solid #dde6ef}
+.modal-vid-frame iframe{width:100%;height:100%;border:none}
+.modal-foot{padding:14px 20px;border-top:1px solid #eaeff4;
+  display:flex;gap:10px;justify-content:flex-end;flex-shrink:0;background:#f7f9fb}
+.mbtn{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;
+  border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none;
+  transition:all .16s;text-decoration:none;font-family:inherit}
+.mbtn-p{background:#2471A3;color:#fff}
+.mbtn-p:hover{background:#1A5276;transform:translateY(-1px);box-shadow:0 4px 12px rgba(36,113,163,.3)}
+.mbtn-s{background:#fff;color:#5a6a7a;border:1px solid #dde6ef}
+.mbtn-s:hover{border-color:#AED6F1;color:#1A5276}
+/* Botón vista previa en tarjetas */
+.btn-pv{display:flex;align-items:center;gap:6px;width:100%;
+  background:#f0f5fa;color:#4a6880;border:1px solid #dde6ef;
+  border-radius:8px;padding:7px 14px;font-size:12.5px;font-weight:500;
+  cursor:pointer;margin-top:8px;transition:all .15s;
+  justify-content:center;font-family:inherit}
+.btn-pv:hover{background:#EBF5FB;color:#1A5276;border-color:#AED6F1}
+/* Soporte modo oscuro */
+body.oscuro .modal-box{background:#1a2535}
+body.oscuro .modal-foot{background:#141d2b}
+body.oscuro .modal-body{background:#1a2535}
+body.oscuro .modal-desc{background:#1e3a52;color:#a8c4dc;border-color:#2E6DA3}
+body.oscuro .modal-stit{color:#5DADE2}
+body.oscuro .modal-stit::after{background:#2c3e50}
+body.oscuro .modal-tags .modal-tag{background:#1e3a52;color:#5DADE2;border-color:#2E6DA3}
+body.oscuro .modal-foot{border-color:#2c3e50}
+body.oscuro .mbtn-s{background:#1e2d3d;color:#8aa5bc;border-color:#2c3e50}
+body.oscuro .btn-pv{background:#1e2d3d;color:#8aa5bc;border-color:#2c3e50}
+body.oscuro .btn-pv:hover{background:#1e3a52;color:#5DADE2;border-color:#2E6DA3}
+
 </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
+<!-- ═══ MODAL VISTA PREVIA ══════════════════════════════════════════════ -->
+<div class="modal-ov" id="mOv" onclick="if(event.target===this)mClose()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-ico" id="mIco">📄</div>
+      <div class="modal-hi">
+        <span class="modal-badge" id="mBadge">Tipo</span>
+        <div class="modal-titulo" id="mTitle">Título</div>
+        <div class="modal-meta" id="mMeta">Meta</div>
+      </div>
+      <button class="modal-x" onclick="mClose()">✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+    <div class="modal-foot">
+      <button class="mbtn mbtn-s" onclick="mClose()">Cerrar</button>
+      <a class="mbtn mbtn-p" id="mDl" href="#" target="_blank">⬇ Descargar PDF</a>
+    </div>
+  </div>
+</div>
 <header class="topbar">
   <div class="logo">
     <div class="logo-mark"><span>Aa</span></div>
@@ -1115,7 +1210,8 @@ footer {
           <div class="novedad-seccion">Lecturas</div>
           <div class="novedad-titulo">Nacimos para aprender</div>
           <div class="novedad-meta">Constructivismo · Neuroeducación</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/nacimos_para_%20aprender.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Nacimos para aprender')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/nacimos_para_%20aprender.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1127,7 +1223,8 @@ footer {
           <div class="novedad-seccion">Lecturas</div>
           <div class="novedad-titulo">Didáctica de la lengua escrita</div>
           <div class="novedad-meta">Enfoque global · Práctica docente</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/did%C3%A1ctica_de_la_lengua_escrita.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Didáctica de la lengua escrita')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/did%C3%A1ctica_de_la_lengua_escrita.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1139,7 +1236,8 @@ footer {
           <div class="novedad-seccion">Actividades</div>
           <div class="novedad-titulo">Actividades para promover la alfabetización</div>
           <div class="novedad-meta">Preescolar y Primaria · Variedad de propuestas</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/actividades_para_promover_la_alfabetizaci%C3%B3n.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Actividades para promover la alfabetización')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/actividades_para_promover_la_alfabetizaci%C3%B3n.pdf" download target="_blank" class="novedad-btn" onclick="event.stopPropagation()">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1195,7 +1293,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="Preescolar">El banco de palabras del salón</div>
           <div class="tarjeta-meta">Preescolar · Enfoque: palabra global</div>
           <div class="tarjeta-tags"><span class="tag">Palabra global</span><span class="tag">Escritura</span><span class="tag">Identidad</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('El banco de palabras del salón')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1235,7 +1334,9 @@ footer {
           <div class="tarjeta-titulo" data-grado="1° primaria">Lotería de palabras con sentido</div>
           <div class="tarjeta-meta">1° primaria · Enfoque: lectura global</div>
           <div class="tarjeta-tags"><span class="tag">Juego</span><span class="tag">Palabra global</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Loteria_de_palabras.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Lotería de palabras con sentido')">👁 Vista previa</button>
+          <button class="btn-pv" onclick="mOpen('Lotería de palabras')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Loteria_de_palabras.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1270,7 +1371,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="Preescolar">Álbum de palabras propias</div>
           <div class="tarjeta-meta">Preescolar · Enfoque: identidad y escritura</div>
           <div class="tarjeta-tags"><span class="tag">Identidad</span><span class="tag">Escritura</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Álbum de palabras propias')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1309,7 +1411,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="Preescolar">Muro de palabras del entorno</div>
           <div class="tarjeta-meta">Preescolar o 1° · Enfoque: contexto cotidiano</div>
           <div class="tarjeta-tags"><span class="tag">Palabra global</span><span class="tag">Contexto</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Muro_de_palabras_del_entorno.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Muro de palabras del entorno')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Muro_de_palabras_del_entorno.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1341,7 +1444,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="Todos">Formato de secuencia didáctica</div>
           <div class="tarjeta-meta">Todos los grados · Editable</div>
           <div class="tarjeta-tags"><span class="tag">Planeación</span><span class="tag">Escritura</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Formato de secuencia didáctica')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1375,7 +1479,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="2° primaria">Cuentos con palabras clave</div>
           <div class="tarjeta-meta">1° o 2° primaria · Enfoque: narrativa</div>
           <div class="tarjeta-tags"><span class="tag">Comprensión</span><span class="tag">Juego</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Cuentos_con_palabras_clave.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Cuentos con palabras clave')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Cuentos_con_palabras_clave.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1421,7 +1526,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="1° primaria">Planeación anual — Alfabetización globalizada</div>
           <div class="tarjeta-meta">1° Primaria · Ciclo completo</div>
           <div class="tarjeta-tags"><span class="tag">Planeación</span><span class="tag">Anual</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Planeación anual — Alfabetización globalizada')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1457,7 +1563,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="Todos">Plan de sesión — Los 4 momentos</div>
           <div class="tarjeta-meta">Todos los grados · Metodología 4 momentos</div>
           <div class="tarjeta-tags"><span class="tag">Planeación</span><span class="tag">Escritura</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/plan_de_sesi%C3%B3n_4_momentos.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Plan de sesión — Los 4 momentos')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/plan_de_sesi%C3%B3n_4_momentos.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1484,7 +1591,8 @@ footer {
           <div class="tarjeta-titulo" data-grado="Todos">Actividades para promover la alfabetización</div>
           <div class="tarjeta-meta">Preescolar y Primaria · Variedad de propuestas</div>
           <div class="tarjeta-tags"><span class="tag">Palabra global</span><span class="tag">Escritura</span><span class="tag">Comprensión</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/actividades_para_promover_la_alfabetizaci%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Actividades para promover la alfabetización')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/actividades_para_promover_la_alfabetizaci%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1529,7 +1637,8 @@ footer {
             <div class="item-titulo">¿Qué hipótesis tienen los niños acerca del sistema de escritura?</div>
             <div class="item-desc">Análisis de las hipótesis que los niños construyen progresivamente sobre la lengua escrita: hipótesis silábica, alfabética y sus conflictos cognitivos.</div>
             <div class="item-tags"><span class="tag">Psicogénesis</span><span class="tag">Constructivismo</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/%C2%BFQu%C3%A9_hip%C3%B3tesis_tienen_los_ni%C3%B1os.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('¿Qué hipótesis tienen los niños acerca del sistema de escritura?')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/%C2%BFQu%C3%A9_hip%C3%B3tesis_tienen_los_ni%C3%B1os.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1540,7 +1649,8 @@ footer {
             <div class="item-titulo">El espacio de la lectura</div>
             <div class="item-desc">Reflexión sobre los entornos y condiciones que favorecen el encuentro entre los niños y los textos escritos desde una perspectiva globalizada.</div>
             <div class="item-tags"><span class="tag">Enfoque global</span><span class="tag">Ambiente letrado</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_espacio_de_la_lectura.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('El espacio de la lectura')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_espacio_de_la_lectura.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1551,7 +1661,8 @@ footer {
             <div class="item-titulo">El método Decroly</div>
             <div class="item-desc">Descripción detallada del método ideo-visual de Ovide Decroly: centros de interés, globalización del aprendizaje y la palabra generadora como eje de la alfabetización.</div>
             <div class="item-tags"><span class="tag">Enfoque global</span><span class="tag">Histórico</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/el_m%C3%A9todo_Decroly.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('El método Decroly')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/el_m%C3%A9todo_Decroly.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1562,7 +1673,8 @@ footer {
             <div class="item-titulo">La alfabetización: los niños y la última década del siglo</div>
             <div class="item-desc">Balance crítico de las investigaciones sobre alfabetización infantil durante los años noventa y sus implicaciones para la práctica docente contemporánea.</div>
             <div class="item-tags"><span class="tag">Constructivismo</span><span class="tag">Investigación</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/la_Alfabetizaci%C3%B3n_Ni%C3%B1os_en_la_ultima_decada.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('La alfabetización: los niños y la última década del siglo')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/la_Alfabetizaci%C3%B3n_Ni%C3%B1os_en_la_ultima_decada.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1573,7 +1685,8 @@ footer {
             <div class="item-titulo">Alfabetización inicial: aportes y limitaciones</div>
             <div class="item-desc">Revisión de los principales aportes del enfoque constructivista a la alfabetización inicial, sus alcances pedagógicos y las tensiones que aún persisten en el aula.</div>
             <div class="item-tags"><span class="tag">Constructivismo</span><span class="tag">Práctica docente</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Alfabetizaci%C3%B3n_inicial_aportes_y_limitaciones.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('Alfabetización inicial: aportes y limitaciones')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Alfabetizaci%C3%B3n_inicial_aportes_y_limitaciones.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1584,7 +1697,8 @@ footer {
             <div class="item-titulo">La enseñanza y el aprendizaje de la lectura y escritura — Primaria Fase 3</div>
             <div class="item-desc">Marco curricular de la SEP para la enseñanza de la lengua escrita en la Fase 3 de primaria, con orientaciones didácticas para docentes basadas en el enfoque globalizador.</div>
             <div class="item-tags"><span class="tag">Enfoque global</span><span class="tag">Curricular</span><span class="tag">SEP</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/La-ensenanza-y-el-aprendizaje-de-la-lectura-y-escritura_Primaria_Fase-3.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('La enseñanza y el aprendizaje de la lectura y escritura — Primaria Fase 3')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/La-ensenanza-y-el-aprendizaje-de-la-lectura-y-escritura_Primaria_Fase-3.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1595,7 +1709,8 @@ footer {
             <div class="item-titulo">La adquisición y desarrollo del lenguaje</div>
             <div class="item-desc">Estudio del proceso mediante el cual los niños adquieren y desarrollan el lenguaje oral y escrito, con implicaciones directas para la práctica de la alfabetización inicial.</div>
             <div class="item-tags"><span class="tag">Constructivismo</span><span class="tag">Desarrollo del lenguaje</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/la_adquisici%C3%B3n_y_desarrollo_del_lenguaje.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('La adquisición y desarrollo del lenguaje')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/la_adquisici%C3%B3n_y_desarrollo_del_lenguaje.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1606,7 +1721,8 @@ footer {
             <div class="item-titulo">Metodología de los 4 momentos</div>
             <div class="item-desc">Descripción de la metodología de los cuatro momentos para la enseñanza de la lectura y escritura: presentación global, análisis, síntesis y aplicación.</div>
             <div class="item-tags"><span class="tag">Enfoque global</span><span class="tag">Metodología</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/METODOLOGIA%20DE%20LOS%204%20MOMENTOS.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('Metodología de los 4 momentos')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/METODOLOGIA%20DE%20LOS%204%20MOMENTOS.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1617,7 +1733,8 @@ footer {
             <div class="item-titulo">Aportaciones de la psicología a la alfabetización inicial</div>
             <div class="item-desc">Síntesis de los principales aportes de la psicología cognitiva y del desarrollo al campo de la alfabetización inicial: percepción, memoria, motivación y aprendizaje significativo.</div>
             <div class="item-tags"><span class="tag">Constructivismo</span><span class="tag">Psicología educativa</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/aportaciones_de_la_psicologia.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('Aportaciones de la psicología a la alfabetización inicial')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/aportaciones_de_la_psicologia.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1628,7 +1745,8 @@ footer {
             <div class="item-titulo">Didáctica de la lengua escrita</div>
             <div class="item-desc">Fundamentos y estrategias didácticas para la enseñanza de la lengua escrita en los primeros grados, con énfasis en situaciones comunicativas auténticas y significativas.</div>
             <div class="item-tags"><span class="tag">Enfoque global</span><span class="tag">Práctica docente</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/did%C3%A1ctica_de_la_lengua_escrita.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('Didáctica de la lengua escrita')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/did%C3%A1ctica_de_la_lengua_escrita.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1639,7 +1757,8 @@ footer {
             <div class="item-titulo">Nacimos para aprender</div>
             <div class="item-desc">Reflexión sobre la disposición natural del ser humano hacia el aprendizaje y cómo la escuela puede potenciar o inhibir esa capacidad, con especial atención a la alfabetización temprana.</div>
             <div class="item-tags"><span class="tag">Constructivismo</span><span class="tag">Neuroeducación</span></div>
-            <a href="https://jhm-creator.github.io/Alfainicio01/materiales/nacimos_para_%20aprender.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
+            
+          <button class="btn-pv" onclick="mOpen('Nacimos para aprender')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/nacimos_para_%20aprender.pdf" download target="_blank" class="btn-descargar" style="margin-top:12px;">⬇ Descargar PDF</a>
           </div>
           <div class="item-accion">→</div>
         </div>
@@ -1696,7 +1815,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Lámina</span>
           <div class="tarjeta-titulo" data-tipo="Láminas">Muro de palabras del entorno</div>
           <div class="tarjeta-meta">A4 · Imprimible · Preescolar o 1°</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Muro_de_palabras_del_entorno.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Muro de palabras del entorno')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Muro_de_palabras_del_entorno.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1725,7 +1845,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Tarjetas</span>
           <div class="tarjeta-titulo" data-tipo="Tarjetas">Tarjetas de palabras globales</div>
           <div class="tarjeta-meta">Carta · Recortables · Plastificables</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Tarjetas_de_palabras_globales.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Tarjetas de palabras globales')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Tarjetas_de_palabras_globales.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1749,7 +1870,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Formato docente</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Formato de secuencia didáctica</div>
           <div class="tarjeta-meta">Todos los grados · Editable</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Formato de secuencia didáctica')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1782,7 +1904,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Registro</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Lista de cotejo — escritura inicial</div>
           <div class="tarjeta-meta">Carta · Por alumno · 1° primaria</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Lista_cotejo_escritura_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Lista de cotejo — escritura inicial')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Lista_cotejo_escritura_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1812,7 +1935,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Ficha de trabajo</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">Completa la palabra con imagen</div>
           <div class="tarjeta-meta">A4 · Preescolar o 1°</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Ficha_completa_la_palabra_con_imagen.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Completa la palabra con imagen')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Ficha_completa_la_palabra_con_imagen.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1845,7 +1969,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Evaluación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Guía de evaluación psicogenética</div>
           <div class="tarjeta-meta">Carta · Para el docente</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Guía de evaluación psicogenética')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1879,7 +2004,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Evaluación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Rúbrica de comprensión lectora inicial</div>
           <div class="tarjeta-meta">1° y 2° Primaria · Evaluación formativa</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Rubrica_comprension_lectora_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Rúbrica de comprensión lectora inicial')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Rubrica_comprension_lectora_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1917,7 +2043,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Planeación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Planeación anual — Alfabetización globalizada</div>
           <div class="tarjeta-meta">1° Primaria · Ciclo completo</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Planeación anual — Alfabetización globalizada')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1946,7 +2073,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Secuencia</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">El banco de palabras del salón</div>
           <div class="tarjeta-meta">Preescolar · Enfoque: palabra global</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('El banco de palabras del salón')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -1974,7 +2102,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Secuencia</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">Cuentos con palabras clave</div>
           <div class="tarjeta-meta">1° o 2° primaria · Narrativa</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Cuentos_con_palabras_clave.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Cuentos con palabras clave')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Cuentos_con_palabras_clave.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2000,7 +2129,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Ficha de trabajo</span>
           <div class="tarjeta-titulo" data-tipo="Fichas de trabajo">Mi álbum de palabras propias</div>
           <div class="tarjeta-meta">Preescolar · Identidad y escritura</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Mi álbum de palabras propias')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2034,7 +2164,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Juego</span>
           <div class="tarjeta-titulo" data-tipo="Tarjetas">Lotería de palabras</div>
           <div class="tarjeta-meta">1° primaria · Lectura global</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Loteria_de_palabras.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Lotería de palabras')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Loteria_de_palabras.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2067,7 +2198,8 @@ footer {
             <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--azul);line-height:1.3;margin-bottom:10px;">Así se enseña a leer</div>
             <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;margin-bottom:14px;">Conferencia de Jorge Eliécer Gómez López en el Liceo Freire. Propone en la edad preescolar estimulación para la lectura rápida y comprensiva con elementos de programación neurolingüística.</div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;"><span class="tag">Preescolar</span><span class="tag">PNL</span><span class="tag">Lectura rápida</span><span class="tag">Liceo Freire</span></div>
-            <a href="https://youtu.be/dzrGF9xYymI" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
+            
+          <button class="btn-pv" onclick="mOpen('Así se enseña a leer')">👁 Vista previa</button><a href="https://youtu.be/dzrGF9xYymI" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
           </div>
         </div>
       </div>
@@ -2083,7 +2215,8 @@ footer {
             <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--azul);line-height:1.3;margin-bottom:10px;">Cómo enseñar a leer hoy</div>
             <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;margin-bottom:14px;">Charla de Jorge Eliécer Gómez López con padres del Jardín Infantil Mentes Brillantes. Comparte la aplicación práctica del programa <em>Yo soy muy inteligente</em>.</div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;"><span class="tag">Familias</span><span class="tag">Lectura temprana</span><span class="tag">Confianza</span><span class="tag">Ritmo propio</span></div>
-            <a href="https://youtu.be/Ixmg0A6VAuY" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
+            
+          <button class="btn-pv" onclick="mOpen('Cómo enseñar a leer hoy')">👁 Vista previa</button><a href="https://youtu.be/Ixmg0A6VAuY" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
           </div>
         </div>
       </div>
@@ -2099,7 +2232,8 @@ footer {
             <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--azul);line-height:1.3;margin-bottom:10px;">Aprender a leer sin deletrear</div>
             <div style="font-size:13px;color:var(--texto-secundario);line-height:1.65;margin-bottom:14px;">Hace más de 200 años Joseph Jacotot propuso una manera diferente de enseñar a leer. Hoy la neurociencia cognitiva ratifica su método de palabras y frases como la forma natural de adquirir la lectura.</div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;"><span class="tag">Neurociencia</span><span class="tag">Jacotot</span><span class="tag">Lectura global</span><span class="tag">Evidencia científica</span></div>
-            <a href="https://youtu.be/mV-ozJ_3xl8" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
+            
+          <button class="btn-pv" onclick="mOpen('Aprender a leer sin deletrear')">👁 Vista previa</button><a href="https://youtu.be/mV-ozJ_3xl8" target="_blank" style="margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:var(--azul-medio);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:500;width:fit-content;transition:background .15s;" onmouseover="this.style.background='var(--acento-hover)'" onmouseout="this.style.background='var(--azul-medio)'">▶ Ver en YouTube</a>
           </div>
         </div>
       </div>
@@ -2136,7 +2270,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Planeación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Planeación anual — Alfabetización globalizada</div>
           <div class="tarjeta-meta">1° Primaria · Ciclo completo</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Planeación anual — Alfabetización globalizada')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2146,7 +2281,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#FEF3E8;color:#8C4A10">Formato docente</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Formato de secuencia didáctica</div>
           <div class="tarjeta-meta">Todos los grados · Editable</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Formato de secuencia didáctica')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2156,7 +2292,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#FFF3F3;color:#8C1A1A">Evaluación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Guía de evaluación psicogenética</div>
           <div class="tarjeta-meta">Diagnóstico inicial · Todos los grados</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Guía de evaluación psicogenética')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2166,7 +2303,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#F3EEF8;color:#5A2A8C">Registro</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Lista de cotejo — escritura inicial</div>
           <div class="tarjeta-meta">Carta · Por alumno · 1° primaria</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Lista_cotejo_escritura_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Lista de cotejo — escritura inicial')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Lista_cotejo_escritura_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2176,7 +2314,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#EEF3FC;color:#1A4A8C">Evaluación</span>
           <div class="tarjeta-titulo" data-tipo="Formatos docentes">Rúbrica de comprensión lectora inicial</div>
           <div class="tarjeta-meta">1° y 2° Primaria · Evaluación formativa</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Rubrica_comprension_lectora_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Rúbrica de comprensión lectora inicial')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Rubrica_comprension_lectora_inicial.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2186,7 +2325,8 @@ footer {
           <span class="tarjeta-tipo" style="background:#E8F5EC;color:#2D5B3F">Secuencia</span>
           <div class="tarjeta-titulo" data-tipo="Planeación">El banco de palabras del salón</div>
           <div class="tarjeta-meta">Preescolar · Secuencia de 3 sesiones</div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('El banco de palabras del salón')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2252,7 +2392,8 @@ footer {
           <div class="tarjeta-titulo" data-tipo="Actividades en casa">El rincón de palabras en el hogar</div>
           <div class="tarjeta-meta">Preescolar y 1° · Para toda la familia</div>
           <div class="tarjeta-tags"><span class="tag">Ambiente letrado</span><span class="tag">Palabras propias</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf" download target="_blank" class="btn-descargar">⬇ Descargar guía</a>
+          
+          <button class="btn-pv" onclick="mOpen('El rincón de palabras en el hogar')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf" download target="_blank" class="btn-descargar">⬇ Descargar guía</a>
         </div>
       </div>
 
@@ -2284,7 +2425,8 @@ footer {
           <div class="tarjeta-titulo" data-tipo="Guías de lectura">Cómo leer en voz alta con tu hijo o hija</div>
           <div class="tarjeta-meta">Todos los grados · 10 min al día</div>
           <div class="tarjeta-tags"><span class="tag">Lectura compartida</span><span class="tag">Comprensión</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_familias_lectura_en_voz_alta.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Cómo leer en voz alta con tu hijo o hija')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_familias_lectura_en_voz_alta.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2311,7 +2453,8 @@ footer {
           <div class="tarjeta-titulo" data-tipo="Imprimibles">Tarjetas de palabras para el hogar</div>
           <div class="tarjeta-meta">Preescolar · Recortables · B/N</div>
           <div class="tarjeta-tags"><span class="tag">Palabra global</span><span class="tag">Juego</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Tarjetas_de_palabras_globales.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Tarjetas de palabras para el hogar')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Tarjetas_de_palabras_globales.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2338,7 +2481,8 @@ footer {
           <div class="tarjeta-titulo" data-tipo="Actividades en casa">Juegos de palabras en familia</div>
           <div class="tarjeta-meta">1° y 2° primaria · Sin materiales</div>
           <div class="tarjeta-tags"><span class="tag">Juego</span><span class="tag">Oral y escrito</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Juegos_de_palabras_en_familia.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Juegos de palabras en familia')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Juegos_de_palabras_en_familia.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2371,7 +2515,8 @@ footer {
           <div class="tarjeta-titulo" data-tipo="Imprimibles">Diario de lectura familiar</div>
           <div class="tarjeta-meta">Todos los grados · Seguimiento mensual</div>
           <div class="tarjeta-tags"><span class="tag">Hábito lector</span><span class="tag">Registro</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Diario_lectura_familiar.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Diario de lectura familiar')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Diario_lectura_familiar.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -2395,7 +2540,8 @@ footer {
           <div class="tarjeta-titulo" data-tipo="Guías de lectura">Guía de evaluación psicogenética</div>
           <div class="tarjeta-meta">Para el docente · Diagnóstico inicial</div>
           <div class="tarjeta-tags"><span class="tag">Evaluación</span><span class="tag">Psicogénesis</span></div>
-          <a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
+          
+          <button class="btn-pv" onclick="mOpen('Guía de evaluación psicogenética')">👁 Vista previa</button><a href="https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf" download target="_blank" class="btn-descargar">⬇ Descargar PDF</a>
         </div>
       </div>
 
@@ -3526,6 +3672,43 @@ function toggleHito(el) {
 }
 
 renderTimeline();
+
+/* ═══ MODAL VISTA PREVIA ══════════════════════════════════════════════ */
+const _RP = {"El banco de palabras del salón": {"i": "📋", "t": "Secuencia · 3 sesiones", "m": "Preescolar · Palabra global", "d": "Recurso colectivo donde los niños reúnen palabras con significado real. Tarjetas del salón, nombres propios, objetos del aula. La palabra completa como unidad mínima de aprendizaje.", "tags": ["Palabra global", "Escritura", "Identidad", "Preescolar"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/El_Banco_de_palabras_del_sal%C3%B3n.pdf", "p": "pdf"}, "Lotería de palabras con sentido": {"i": "🃏", "t": "Actividad · 1 sesión", "m": "1° primaria · Lectura global", "d": "Juego de lotería donde los niños reconocen palabras completas sin silabear. Tablero 4×4 y tarjetas del cantador con pistas contextuales.", "tags": ["Juego", "Palabra global", "1° primaria"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Loteria_de_palabras.pdf", "p": "pdf"}, "Álbum de palabras propias": {"i": "📖", "t": "Secuencia · 5 sesiones", "m": "Preescolar · Identidad y escritura", "d": "Portafolio personal donde el niño reúne las palabras más significativas para él. Crece durante todo el ciclo escolar y se lleva a casa al finalizar.", "tags": ["Identidad", "Escritura", "Preescolar", "Portafolio"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf", "p": "pdf"}, "Muro de palabras del entorno": {"i": "🖼️", "t": "Lámina imprimible", "m": "A4 · Imprimible · Preescolar o 1°", "d": "Lámina con palabras del entorno: ESCUELA, MERCADO, PARQUE, IGLESIA, FARMACIA, BIBLIOTECA, CANCHA, TIENDA. Para colocar en el salón como ambiente letrado.", "tags": ["Lámina", "Ambiente letrado", "Imprimible", "Color"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Muro_de_palabras_del_entorno.pdf", "p": "pdf"}, "Formato de secuencia didáctica": {"i": "✏️", "t": "Formato docente editable", "m": "Todos los grados · Editable", "d": "Plantilla profesional para planear secuencias desde el enfoque globalizado. Propósito pedagógico, enfoque teórico, tabla de sesiones y evaluación formativa.", "tags": ["Planeación", "Escritura", "Editable", "Docente"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Formato_de_secuencia_didactica.pdf", "p": "pdf"}, "Cuentos con palabras clave": {"i": "🎭", "t": "Secuencia · 4 sesiones", "m": "1° o 2° primaria · Narrativa", "d": "Los niños crean cuentos colectivos e individuales partiendo de palabras clave. Integra lectura global, producción escrita y creatividad narrativa con diferenciación por nivel.", "tags": ["Comprensión", "Juego", "Narrativa", "Escritura"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Cuentos_con_palabras_clave.pdf", "p": "pdf"}, "Planeación anual — Alfabetización globalizada": {"i": "📅", "t": "Planeación · Ciclo completo", "m": "1° Primaria · Ciclo completo", "d": "Planeación anual bimestral con enfoque globalizado. De agosto a julio, con propósitos, actividades e indicadores por período.", "tags": ["Planeación", "Anual", "1° Primaria", "Editable"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Planeacion_anual_%20Alfabetizaci%C3%B3n_globalizada.pdf", "p": "pdf"}, "Plan de sesión — Los 4 momentos": {"i": "📝", "t": "Formato docente · Metodología", "m": "Todos los grados · 4 momentos", "d": "Formato de planeación basado en los 4 momentos: Presentación global → Análisis → Síntesis → Aplicación. Fundamento metodológico del enfoque globalizado.", "tags": ["Planeación", "4 momentos", "Metodología", "Editable"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/plan_de_sesi%C3%B3n_4_momentos.pdf", "p": "pdf"}, "Actividades para promover la alfabetización": {"i": "🎯", "t": "Colección · Variado", "m": "Preescolar y Primaria · Variado", "d": "Colección de propuestas prácticas para promover la alfabetización inicial desde el enfoque globalizado. Organizadas por propósito pedagógico y nivel educativo.", "tags": ["Palabra global", "Escritura", "Comprensión", "Variado"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/actividades_para_promover_la_alfabetizaci%C3%B3n.pdf", "p": "pdf"}, "¿Qué hipótesis tienen los niños acerca del sistema de escritura?": {"i": "📘", "t": "Artículo · Psicogénesis", "m": "Psicogénesis · Constructivismo", "d": "Análisis de las hipótesis que los niños construyen progresivamente sobre la lengua escrita: hipótesis silábica, alfabética y sus conflictos cognitivos. Texto esencial de Ferreiro.", "tags": ["Psicogénesis", "Constructivismo", "Ferreiro"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/%C2%BFQu%C3%A9_hip%C3%B3tesis_tienen_los_ni%C3%B1os.pdf", "p": "pdf"}, "El espacio de la lectura": {"i": "📗", "t": "Artículo · Enfoque global", "m": "Enfoque global · Ambiente letrado", "d": "Reflexión sobre los entornos y condiciones que favorecen el encuentro entre los niños y los textos escritos desde una perspectiva globalizada del aprendizaje.", "tags": ["Enfoque global", "Ambiente letrado", "Contexto"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/El_espacio_de_la_lectura.pdf", "p": "pdf"}, "El método Decroly": {"i": "📙", "t": "Artículo · Histórico", "m": "Enfoque global · Histórico · Ideo-visual", "d": "Descripción detallada del método ideo-visual de Ovide Decroly: centros de interés, globalización del aprendizaje y la palabra generadora como eje de la alfabetización.", "tags": ["Enfoque global", "Histórico", "Decroly", "Ideo-visual"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/el_m%C3%A9todo_Decroly.pdf", "p": "pdf"}, "La alfabetización: los niños y la última década del siglo": {"i": "📄", "t": "Artículo · Investigación", "m": "Constructivismo · Investigación", "d": "Balance crítico de las investigaciones sobre alfabetización infantil durante los años noventa y sus implicaciones para la práctica docente contemporánea.", "tags": ["Constructivismo", "Investigación", "Latinoamérica"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/la_Alfabetizaci%C3%B3n_Ni%C3%B1os_en_la_ultima_decada.pdf", "p": "pdf"}, "Alfabetización inicial: aportes y limitaciones": {"i": "📄", "t": "Artículo · Revisión crítica", "m": "Constructivismo · Práctica docente", "d": "Revisión de los principales aportes del enfoque constructivista a la alfabetización inicial, sus alcances pedagógicos y las tensiones que aún persisten en el aula.", "tags": ["Constructivismo", "Práctica docente", "Revisión crítica"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Alfabetizaci%C3%B3n_inicial_aportes_y_limitaciones.pdf", "p": "pdf"}, "La enseñanza y el aprendizaje de la lectura y escritura — Primaria Fase 3": {"i": "📗", "t": "Documento curricular · SEP", "m": "Enfoque global · México · SEP", "d": "Marco curricular de la SEP para la enseñanza de la lengua escrita en la Fase 3 de primaria, con orientaciones didácticas para docentes basadas en el enfoque globalizador.", "tags": ["Enfoque global", "Curricular", "SEP", "México"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/La-ensenanza-y-el-aprendizaje-de-la-lectura-y-escritura_Primaria_Fase-3.pdf", "p": "pdf"}, "La adquisición y desarrollo del lenguaje": {"i": "📘", "t": "Artículo · Desarrollo del lenguaje", "m": "Constructivismo · Lenguaje", "d": "Estudio del proceso mediante el cual los niños adquieren y desarrollan el lenguaje oral y escrito, con implicaciones directas para la práctica de la alfabetización inicial.", "tags": ["Constructivismo", "Desarrollo del lenguaje", "Psicolingüística"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/la_adquisici%C3%B3n_y_desarrollo_del_lenguaje.pdf", "p": "pdf"}, "Metodología de los 4 momentos": {"i": "📙", "t": "Artículo · Metodología", "m": "Enfoque global · Metodología", "d": "Descripción de la metodología de los cuatro momentos para la enseñanza de la lectura y escritura: presentación global, análisis, síntesis y aplicación.", "tags": ["Enfoque global", "Metodología", "4 momentos"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/METODOLOGIA%20DE%20LOS%204%20MOMENTOS.pdf", "p": "pdf"}, "Aportaciones de la psicología a la alfabetización inicial": {"i": "📄", "t": "Artículo · Psicología educativa", "m": "Constructivismo · Psicología", "d": "Síntesis de los principales aportes de la psicología cognitiva y del desarrollo al campo de la alfabetización inicial: percepción, memoria, motivación y aprendizaje significativo.", "tags": ["Constructivismo", "Psicología educativa", "Neuroeducación"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/aportaciones_de_la_psicologia.pdf", "p": "pdf"}, "Didáctica de la lengua escrita": {"i": "📗", "t": "Artículo · Práctica docente", "m": "Enfoque global · Didáctica", "d": "Fundamentos y estrategias didácticas para la enseñanza de la lengua escrita en los primeros grados, con énfasis en situaciones comunicativas auténticas y significativas.", "tags": ["Enfoque global", "Práctica docente", "Didáctica"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/did%C3%A1ctica_de_la_lengua_escrita.pdf", "p": "pdf"}, "Nacimos para aprender": {"i": "📄", "t": "Artículo · Neuroeducación", "m": "Constructivismo · Neuroeducación", "d": "Reflexión sobre la disposición natural del ser humano hacia el aprendizaje y cómo la escuela puede potenciar o inhibir esa capacidad, con atención especial a la alfabetización temprana.", "tags": ["Constructivismo", "Neuroeducación", "Motivación"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/nacimos_para_%20aprender.pdf", "p": "pdf"}, "Tarjetas de palabras globales": {"i": "🃏", "t": "Tarjetas recortables", "m": "Carta · Recortables · Plastificables", "d": "Tarjetas con ÁRBOL, SOL, PERRO y más. Recortables y plastificables. Para juegos de reconocimiento, clasificación y construcción de oraciones desde el enfoque ideo-visual.", "tags": ["Tarjetas", "Palabra global", "Recortable", "B/N"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Tarjetas_de_palabras_globales.pdf", "p": "pdf"}, "Lista de cotejo — escritura inicial": {"i": "📊", "t": "Instrumento de evaluación", "m": "Carta · Por alumno · 1° primaria", "d": "Registro por alumno con indicadores de escritura inicial. Incluye nivel de conceptualización, uso de palabras con significado y actitud. Escala: Logrado / En proceso / No logrado.", "tags": ["Evaluación", "Lista de cotejo", "Escritura inicial", "1° primaria"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Lista_cotejo_escritura_inicial.pdf", "p": "pdf"}, "Completa la palabra con imagen": {"i": "🖍️", "t": "Ficha de trabajo · Color", "m": "A4 · Preescolar o 1°", "d": "El niño observa la imagen, lee la palabra completa y completa las letras faltantes. LEÓN, RANA, MARIPOSA. Siempre parte de la palabra global, nunca de letras aisladas.", "tags": ["Ficha", "Escritura", "Imprimible", "Color"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Ficha_completa_la_palabra_con_imagen.pdf", "p": "pdf"}, "Guía de evaluación psicogenética": {"i": "📝", "t": "Diagnóstico inicial", "m": "Diagnóstico inicial · Todos los grados", "d": "Identifica el nivel psicogenético de cada niño. Consigna diagnóstica incluida. Registro grupal con espacio para observaciones y plan de intervención.", "tags": ["Diagnóstico", "Psicogénesis", "Evaluación", "Docente"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Guia_de_evaluacion_psicogenetica.pdf", "p": "pdf"}, "Rúbrica de comprensión lectora inicial": {"i": "📊", "t": "Rúbrica · Evaluación formativa", "m": "1° y 2° Primaria", "d": "Rúbrica con criterios: identifica tema, infiere datos, opina con base. Escala: Inicial, En proceso, Logrado. Perspectiva constructivista: leer es construir significado.", "tags": ["Evaluación", "Comprensión lectora", "Rúbrica", "Constructivismo"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Rubrica_comprension_lectora_inicial.pdf", "p": "pdf"}, "Mi álbum de palabras propias": {"i": "📖", "t": "Ficha de trabajo · Identidad", "m": "Preescolar · Identidad y escritura", "d": "Libro personal: MI NOMBRE, MI MASCOTA, MI PRÓXIMA PALABRA. Identidad y escritura significativa. El niño elige sus palabras más importantes y las registra con dibujos.", "tags": ["Identidad", "Escritura", "Portafolio", "Preescolar"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf", "p": "pdf"}, "Lotería de palabras": {"i": "🃏", "t": "Juego imprimible · Color", "m": "1° primaria · Lectura global", "d": "Tablero imprimible con GATO, PATO, SOL, LUNA, MAR, PINO, PEZ, FLOR, NUBE. Juego completo de lotería con tarjetas del cantador. Reconocimiento global sin silabear.", "tags": ["Juego", "Lectura global", "Imprimible", "Color"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Loteria_de_palabras.pdf", "p": "pdf"}, "Así se enseña a leer": {"i": "▶", "t": "Video · Conferencia", "m": "Preescolar · PNL · Liceo Freire", "d": "Conferencia de Jorge Eliécer Gómez López en el Liceo Freire. Estimulación para la lectura rápida y comprensiva en edad preescolar con elementos de programación neurolingüística.", "tags": ["Conferencia", "Preescolar", "PNL", "Lectura temprana"], "u": "https://www.youtube.com/embed/dzrGF9xYymI", "p": "video"}, "Cómo enseñar a leer hoy": {"i": "▶", "t": "Video · Familias", "m": "Jardín de niños · Confianza · Ritmo", "d": "Charla de Jorge Eliécer Gómez López con padres del Jardín Infantil Mentes Brillantes sobre el programa Yo soy muy inteligente: lectura ágil respetando el ritmo de cada niño.", "tags": ["Familias", "Lectura temprana", "Confianza", "Ritmo propio"], "u": "https://www.youtube.com/embed/Ixmg0A6VAuY", "p": "video"}, "Aprender a leer sin deletrear": {"i": "▶", "t": "Video · Neurociencia", "m": "Método Jacotot · Evidencia científica", "d": "Hace más de 200 años Jacotot propuso leer sin deletrear. La neurociencia cognitiva ratifica hoy su método: la palabra completa con sentido es la forma natural de adquirir la lectura.", "tags": ["Neurociencia", "Jacotot", "Lectura global", "Evidencia científica"], "u": "https://www.youtube.com/embed/mV-ozJ_3xl8", "p": "video"}, "El rincón de palabras en el hogar": {"i": "🏠", "t": "Actividad en casa", "m": "Preescolar y 1° · Para toda la familia", "d": "Guía para crear un ambiente letrado en casa con las palabras CASA, FAMILIA, MASCOTA y más. Cómo elegirlas, dónde colocarlas y cómo usarlas en actividades cotidianas.", "tags": ["Familias", "Ambiente letrado", "Hogar", "Palabras propias"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Mi_%C3%A1lbum_de_palabras_propias.pdf", "p": "pdf"}, "Cómo leer en voz alta con tu hijo o hija": {"i": "📖", "t": "Guía de lectura", "m": "Todos los grados · 10 min al día", "d": "Había una vez... 10 minutos diarios de lectura en voz alta. Cómo preparar el momento, cómo leer con expresión y qué hacer después para fortalecer la comprensión.", "tags": ["Familias", "Lectura compartida", "Hábito lector", "Comprensión"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Guia_familias_lectura_en_voz_alta.pdf", "p": "pdf"}, "Tarjetas de palabras para el hogar": {"i": "🃏", "t": "Imprimible para casa", "m": "Preescolar · Recortables · B/N", "d": "Tarjetas con FLOR, CARRO, LUNA y más para usar en casa. Recortables y plastificables. Para jugar a reconocer palabras globales desde el hogar.", "tags": ["Familias", "Tarjetas", "Palabra global", "Juego"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Tarjetas_de_palabras_globales.pdf", "p": "pdf"}, "Juegos de palabras en familia": {"i": "🎲", "t": "Actividad en casa · Sin materiales", "m": "1° y 2° primaria · Sin materiales", "d": "¿Qué palabra rima con MARIPOSA? Juegos sin materiales para cualquier momento del día. Trabajan vocabulario oral sin silabear nunca.", "tags": ["Familias", "Juegos", "Sin materiales", "Oral y escrito"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Juegos_de_palabras_en_familia.pdf", "p": "pdf"}, "Diario de lectura familiar": {"i": "📖", "t": "Imprimible · Registro mensual", "m": "Todos los grados · Seguimiento mensual", "d": "Registro mensual: Leímos El patito feo, fecha 12 oct., nos gustó porque... Hábito lector familiar documentado mes a mes.", "tags": ["Familias", "Registro", "Hábito lector", "Imprimible"], "u": "https://jhm-creator.github.io/Alfainicio01/materiales/Diario_lectura_familiar.pdf", "p": "pdf"}};
+
+function mOpen(t){
+  const r=_RP[t];
+  if(!r){console.warn('[Alfainicio] recurso no encontrado:',t);return;}
+  document.getElementById('mIco').textContent=r.i;
+  document.getElementById('mBadge').textContent=r.t;
+  document.getElementById('mTitle').textContent=t;
+  document.getElementById('mMeta').textContent=r.m;
+  const dl=document.getElementById('mDl');
+  if(r.p==='video'){dl.href=r.u.replace('/embed/','/watch?v=');dl.textContent='▶ Ver en YouTube';}
+  else{dl.href=r.u;dl.textContent='⬇ Descargar PDF';}
+  const tags=(r.tags||[]).map(g=>`<span class="modal-tag">${g}</span>`).join('');
+  const prev=r.p==='video'
+    ?`<div class="modal-vid-frame"><iframe src="${r.u}" allowfullscreen loading="lazy"></iframe></div>`
+    :`<iframe class="modal-pdf-frame" src="${r.u}" loading="lazy" title="${t}"><p>No se puede mostrar el PDF. <a href="${r.u}" target="_blank">Ábrelo aquí →</a></p></iframe>`;
+  document.getElementById('mBody').innerHTML=
+    `<div style="margin-bottom:16px"><div class="modal-stit">Descripción</div>
+     <div class="modal-desc">${r.d}</div>
+     <div class="modal-tags">${tags}</div></div>
+     <div><div class="modal-stit">${r.p==='video'?'Reproducir video':'Vista previa del documento'}</div>${prev}</div>`;
+  document.getElementById('mOv').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+
+function mClose(){
+  document.getElementById('mOv').classList.remove('on');
+  document.body.style.overflow='';
+  const vi=document.querySelector('.modal-vid-frame iframe');
+  if(vi)vi.src=vi.src;
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')mClose();});
+/* ════════════════════════════════════════════════════════════════════ */
+
 </script>
 </body>
 </html>
